@@ -1,0 +1,8 @@
+35ccaf5ae7fae6eddd6907dce2e89428bdfb90a6 assets/lensrandoms/blockstates/powerhole.json
+673a0a54fed20e6e3e08d5fc40bde7e0b8fd8b7e assets/lensrandoms/blockstates/rgblock.json
+1804842b70b368cfeae9565549f7925d1e5916de assets/lensrandoms/models/block/powerhole.json
+a801bcae9d94ed8a0781aa3c2f7538cc8a5034f7 assets/lensrandoms/models/block/rgblock.json
+bc284cdaae235c1a2912ad2193eaacb3be987206 assets/lensrandoms/models/item/powerhole.json
+c574e08d73c878221472d779ef195345c12f3a13 assets/lensrandoms/models/item/rgblock.json
+a0fa92904eb4f3c970f4869db1cd3c25d83bcac1 data/lensrandoms/loot_tables/blocks/powerhole.json
+349f452b61d274d47059fe7c921ca26720a46dfd data/lensrandoms/loot_tables/blocks/rgblock.json

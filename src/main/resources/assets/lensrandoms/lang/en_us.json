@@ -1,3 +1,11 @@
 {
-	"item.lensrandoms.test_item": "Test Item"
-}
+	"item.lensrandoms.test_item": "Icon of the Creator",
+	"item.lensrandoms.rgb_inator": "\u00A74R\u00A72G\u00A71B\u00A7r-inator",
+	"item.lensrandoms.test_apple": "Test Apple",
+	"block.lensrandoms.rgblock": "RGBlock",
+	"block.lensrandoms.powerhole": "Power Wormhole",
+	"tooltip.rgb_inator.rgb_inator": "Changes the RGB values of RGBlocks",
+	"lensrandoms.gui.done": "Done",
+	"lensrandoms.gui.cancel":"Cancel",
+	"itemGroup.lensrandomstab": "Len's Randoms Stuff"
+} 

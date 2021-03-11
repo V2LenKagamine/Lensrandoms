@@ -1,5 +1,3 @@
 package io.github.v2lenkagamine.core.init;
-
-public class Containertypes {
-
+public class ContainerTypes {
 }
