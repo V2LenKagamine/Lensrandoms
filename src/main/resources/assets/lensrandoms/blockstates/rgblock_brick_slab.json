@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "lensrandoms:block/rgblock_brick_slab_top"
+    },
+    "type=bottom": {
+      "model": "lensrandoms:block/rgblock_brick_slab"
+    },
+    "type=double": {
+      "model": "lensrandoms:block/rgblock_brick"
+    }
+  }
+}

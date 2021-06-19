@@ -12,7 +12,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.TileEntity;
 
-public class RGBlockTE extends TileEntity{
+public class RGBlockTE extends TileEntity {
 	
 	public Color color = new Color(0, 0, 0);
 
@@ -24,11 +24,11 @@ public class RGBlockTE extends TileEntity{
     public RGBlockTE() {
         super(TileEntityTypes.RGBLOCK_TE.get());
     }
+   
 
     @Override
     @Nonnull
     public CompoundNBT write(@Nonnull CompoundNBT compound) {
-        System.out.println("writing Color " + getColorAsInt());
         final CompoundNBT target = super.write(compound);
         target.putInt("color", this.getColorAsInt());
         return compound;
@@ -41,7 +41,6 @@ public class RGBlockTE extends TileEntity{
         if(world != null){
             updateTile();
         }
-        System.out.println("setting Color " + nbt.getInt("color"));
     }
 
     @Nullable
@@ -54,14 +53,12 @@ public class RGBlockTE extends TileEntity{
 
     @Override
     public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-        System.out.println("Received Data Packet at " + pkt.getPos());
         this.setColorFromInt(pkt.getNbtCompound().getInt("color"));
     }
 
     @Override
     @Nonnull
     public CompoundNBT getUpdateTag() {
-        System.out.println("Getting an Update Tag");
         CompoundNBT nbt = super.getUpdateTag();
         nbt.putInt("color", this.getColorAsInt());
         return nbt;
@@ -69,9 +66,7 @@ public class RGBlockTE extends TileEntity{
 
     @Override
     public void handleUpdateTag(BlockState state, CompoundNBT tag) {
-        System.out.println("Handling Update Tag");
         this.setColorFromInt(tag.getInt("color"));
-        System.out.println("setting Color " + tag.getInt("color"));
     }
 
     public int getColorAsInt() {
@@ -80,8 +75,7 @@ public class RGBlockTE extends TileEntity{
     }
 
     public void setColorFromInt(final int color) {
-        System.out.println("New Color is now " + color);
-        this.setColor(new Color((color >> 16) & 0xFF, (color >> 8) & 0xFF, color & 0xFF));
+        this.setColor(new Color(color));
         this.markDirty();
     }
 

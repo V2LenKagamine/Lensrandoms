@@ -1,6 +1,8 @@
+
 {
   "textures" : {
-    "1" : "lensrandoms:block/rgblock"
+    "1" : "lensrandoms:block/rgblock",
+    "particle" : "lensrandoms:block/rgblock"
   },
   "elements": [
     {

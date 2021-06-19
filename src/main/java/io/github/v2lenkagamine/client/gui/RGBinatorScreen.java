@@ -38,7 +38,7 @@ public final class RGBinatorScreen extends Screen {
         addButton(redval);
         addButton(greenval);
         addButton(blueval);
-        addButton(new Button(relX + 10, relY + 10, 160, 20, new StringTextComponent("Save"), button -> Networking.sendToServer(new RGBInatorPacket(red, green, blue))));
+        addButton(new Button(relX + 10, relY + 10, 160, 20, new StringTextComponent("Save"), button -> this.save()));
         addButton(new Button(relX + 10, relY + 37, 160, 20, new StringTextComponent("Close"), button -> this.closeScreen()));
     }
 
@@ -47,6 +47,11 @@ public final class RGBinatorScreen extends Screen {
 		Minecraft.getInstance().displayGuiScreen(new RGBinatorScreen(player));
 	}
 
+	protected void save() {
+		Networking.sendToServer(new RGBInatorPacket((int)red, (int)green, (int)blue));
+		this.closeScreen();
+	}
+	
 	public RGBinatorScreen(PlayerEntity player) {
 		super(new StringTextComponent(""));
 		this.player = player;

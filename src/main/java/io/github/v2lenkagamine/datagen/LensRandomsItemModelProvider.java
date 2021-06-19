@@ -3,6 +3,7 @@ package io.github.v2lenkagamine.datagen;
 import java.util.function.Supplier;
 
 import io.github.v2lenkagamine.Lensrandoms;
+import io.github.v2lenkagamine.core.items.Items;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -24,5 +25,9 @@ public class LensRandomsItemModelProvider extends ItemModelProvider{
 	
 	@Override
 	protected void registerModels() {
+		simpleItem(Items.RGB_INATOR);
+		simpleItem(Items.GUN_BLUNDERBUS);
+		simpleItem(Items.TEST_APPLE);
+		simpleItem(Items.TEST_ITEM);
 	}
 }

@@ -16,16 +16,24 @@ public class Networking {
     public static void registerMessages() {
         INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(Lensrandoms.MOD_ID + "networking"),
                 () -> "1.0", s -> true, s -> true);    
-        INSTANCE.messageBuilder(RGBInatorPacket.class, nextID())
-        .encoder(RGBInatorPacket::toBytes)
-        .decoder(RGBInatorPacket::new)
-        .consumer(RGBInatorPacket::handle)
-        .add();
         INSTANCE.messageBuilder(ChangeColorPacket.class, nextID())
         .encoder(ChangeColorPacket::toBytes)
         .decoder(ChangeColorPacket::new)
         .consumer(ChangeColorPacket::handle)
         .add();
+        
+        INSTANCE.messageBuilder(RGBInatorPacket.class, nextID())
+        .encoder(RGBInatorPacket::toBytes)
+        .decoder(RGBInatorPacket::new)
+        .consumer(RGBInatorPacket::handle)
+        .add();
+        
+        INSTANCE.messageBuilder(ChangeChannelPacket.class, nextID())
+        .encoder(ChangeChannelPacket::toBytes)
+        .decoder(ChangeChannelPacket::new)
+        .consumer(ChangeChannelPacket::handle)
+        .add();
+        
     }
 
     public static void sendToServer(Object packet) {

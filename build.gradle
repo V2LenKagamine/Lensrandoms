@@ -119,6 +119,13 @@ dependencies {
     // compile "some.group:artifact:version"
   	// at runtime, use the full JEI jar
   	runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.1.71")
+  	runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")// Mekanism: Tools
+    runtimeOnly fg.deobf("curse.maven:TOP-245211:3157997")//The One Probe
+    runtimeOnly fg.deobf("curse.maven:Curios-309927:3231111")
+    
     // Real examples
     // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
     // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
@@ -138,6 +145,7 @@ repositories {
   maven { url = "https://dvs1.progwml6.com/files/maven/"}
   maven { url = "https://modmaven.k-4u.nl/"}
   maven { url "https://maven.tehnut.info/" }
+  maven { url 'https://modmaven.dev/' }
   maven { url "https://www.cursemaven.com" }
 }
 // Example for how to get properties into the manifest for reading by the runtime..

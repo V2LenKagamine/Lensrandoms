@@ -8,31 +8,29 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
 
 public class RGBInatorPacket {
-    private final double R;
-    private final double G;
-    private final double B;
+    private final int R;
+    private final int G;
+    private final int B;
        public RGBInatorPacket(PacketBuffer buf) {
-           R = buf.readDouble();
-           G = buf.readDouble();
-           B = buf.readDouble();
+           R = buf.readInt();
+           G = buf.readInt();
+           B = buf.readInt();
        }
-       public RGBInatorPacket(double red, double green, double blue) {
+       public RGBInatorPacket(int red, int green, int blue) {
            this.R = red;
            this.B = blue;
            this.G = green;
        }
        public void toBytes(PacketBuffer buf) {
-           buf.writeDouble(R);    
-           buf.writeDouble(G);    
-           buf.writeDouble(B);    
+           buf.writeInt(R);    
+           buf.writeInt(G);    
+           buf.writeInt(B);    
        }
 
        public boolean handle(Supplier<NetworkEvent.Context> ctx) {
            ctx.get().enqueueWork(() -> {
         	  PlayerEntity player = ctx.get().getSender();
         	  RGB_Inator.RGBInatorSave(player.getHeldItemMainhand(), R, G, B);
-        	  System.out.println(player.getHeldItemMainhand().getTag());
-        	  
            });
            return true;
        }

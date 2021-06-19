@@ -30,22 +30,25 @@ public class RGB_Inator extends Item {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add(new TranslationTextComponent("tooltip.rgb_inator.rgb_inator"));
 		if (stack.hasTag()) {
-				tooltip.add(new StringTextComponent(("\u00A7f") + (stack.getTag())));
+				tooltip.add(new StringTextComponent(("\u00A74 Red:") + (stack.getTag().getInt("Red") + ("\u00A72 Green:") + (stack.getTag().getInt("Green") + ("\u00A71 Blue:") + (stack.getTag().getInt("Blue"))))));
 				
 			}
 		}
 	@SuppressWarnings("deprecation")
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
-		if (player.isUser()) {
+		if (!player.isUser()) {
+			return new ActionResult<ItemStack>(ActionResultType.FAIL, player.getHeldItem(hand));
+		}
+		if (hand == Hand.MAIN_HAND) {
 			DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> RGBinatorScreen.open(player));
 		}
 		return new ActionResult<>(ActionResultType.SUCCESS, player.getHeldItem(hand));
 	}
-	public static ItemStack RGBInatorSave (ItemStack stack,double red, double green, double blue) {
-		  stack.getOrCreateTag().putDouble("Red", red);
-		  stack.getOrCreateTag().putDouble("Green", green);
-		  stack.getOrCreateTag().putDouble("Blue", blue);
+	public static ItemStack RGBInatorSave (ItemStack stack,int red, int green, int blue) {
+		  stack.getOrCreateTag().putInt("Red", red);
+		  stack.getOrCreateTag().putInt("Green", green);
+		  stack.getOrCreateTag().putInt("Blue", blue);
 		return stack;
 		
 	}
