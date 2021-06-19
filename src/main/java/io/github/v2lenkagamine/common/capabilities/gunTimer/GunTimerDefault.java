@@ -1,22 +1,9 @@
 package io.github.v2lenkagamine.common.capabilities.gunTimer;
 
-import net.minecraft.nbt.CompoundNBT;
-
 public class GunTimerDefault implements IGunTimer{
 
 	private int reloadTime;
 	
-	@Override
-	public CompoundNBT serializeNBT() {
-		CompoundNBT nbt = new CompoundNBT();
-		nbt.putInt("ReloadTime", getTimerTicks());
-		return nbt;
-	}
-
-	@Override
-	public void deserializeNBT(CompoundNBT nbt) {
-		this.setTimerTicks(nbt.getInt("ReloadTime"));
-	}
 
 	@Override
 	public int getTimer() {

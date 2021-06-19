@@ -9,7 +9,6 @@ public class CapabilityGunTimer {
 	@CapabilityInject(IGunTimer.class)
 	public static final Capability<IGunTimer> GUN_TIMER_CAPABILITY = null;
 	
-	
 	public static void register() {
 		CapabilityManager.INSTANCE.register(IGunTimer.class, new GunTimerStorageEmpty(),GunTimerDefault::new);
 	}

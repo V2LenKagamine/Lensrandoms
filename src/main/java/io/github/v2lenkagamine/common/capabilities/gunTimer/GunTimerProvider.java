@@ -1,5 +1,6 @@
 package io.github.v2lenkagamine.common.capabilities.gunTimer;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import net.minecraft.util.Direction;
@@ -9,12 +10,12 @@ import net.minecraftforge.common.util.LazyOptional;
 
 public class GunTimerProvider implements ICapabilityProvider{
 	
-	public static final Capability<IGunTimer> GUN_TIMER_CAPABILITY = null;
+	public final LazyOptional<IGunTimer> gunContainer = LazyOptional.of(GunTimerDefault::new);
 	
 	
 	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
-		return GUN_TIMER_CAPABILITY == cap ? LazyOptional.of(GunTimerDefault::new).cast() : LazyOptional.empty();
+	public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
+		return cap == CapabilityGunTimer.GUN_TIMER_CAPABILITY ? gunContainer.cast() : LazyOptional.empty();
 	}
 }
 		
