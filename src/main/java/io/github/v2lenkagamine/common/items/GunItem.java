@@ -18,10 +18,7 @@ public abstract class GunItem extends Item{
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
 		
-		if (this instanceof GunItem)
 	         return new GunTimerProvider();
-	      else
-	         return super.initCapabilities(stack, nbt);
 		
 	}
 }

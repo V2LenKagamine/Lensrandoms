@@ -18,7 +18,8 @@ public class BlunderbusItem extends GunItem{
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-		LazyOptional<IGunTimer> capability = playerIn.getActiveItemStack().getCapability(CapabilityGunTimer.GUN_TIMER_CAPABILITY);
+		ItemStack item = playerIn.getHeldItem(handIn);
+		LazyOptional<IGunTimer> capability = item.getCapability(CapabilityGunTimer.GUN_TIMER_CAPABILITY);
 		if (capability.isPresent())
 			{
 			
