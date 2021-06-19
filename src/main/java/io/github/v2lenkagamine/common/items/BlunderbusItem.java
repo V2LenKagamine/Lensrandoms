@@ -23,7 +23,7 @@ public class BlunderbusItem extends GunItem{
 		if (capability.isPresent())
 			{
 			
-			WeaponFire.fireShotgun(playerIn, 5, 8);
+			WeaponFire.firePierceAll(playerIn, 5, 4, 10);
 			
 			}
 		return super.onItemRightClick(worldIn, playerIn, handIn);

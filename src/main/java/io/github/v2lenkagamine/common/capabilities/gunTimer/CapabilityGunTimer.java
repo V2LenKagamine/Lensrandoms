@@ -7,7 +7,7 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 public class CapabilityGunTimer {
 	
 	@CapabilityInject(IGunTimer.class)
-	public static Capability<IGunTimer> GUN_TIMER_CAPABILITY = null;
+	public static final Capability<IGunTimer> GUN_TIMER_CAPABILITY = null;
 	
 	
 	public static void register() {

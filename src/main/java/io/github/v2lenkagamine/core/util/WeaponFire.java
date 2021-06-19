@@ -16,8 +16,9 @@ import net.minecraft.util.math.vector.Vector3d;
 
 public class WeaponFire {
 
-	public static void fireNormal (PlayerEntity playerIn,int range,int damage) {
+	public static void fireNormal (PlayerEntity playerIn,int range,int maxDamage,int minDamage) {
 		double distance = Math.pow(range, 2);
+		int damage = RandomBetween.randBetween(minDamage, maxDamage);
 		
 		RayTraceResult result = playerIn.pick(distance, 1.0F, false);
 		Vector3d look = playerIn.getLookVec();
@@ -37,8 +38,9 @@ public class WeaponFire {
 		
 	}
 	
-	public static void fireShotgun (PlayerEntity playerIn,int range,int damage) {
+	public static void firePierceAll (PlayerEntity playerIn,int range,int maxDamage,int minDamage) {
 		double distance = Math.pow(range, 2);
+		int damage = RandomBetween.randBetween(minDamage, maxDamage);
 		
 		RayTraceResult result = playerIn.pick(distance, 1.0F, false);
 		Vector3d look = playerIn.getLookVec();
