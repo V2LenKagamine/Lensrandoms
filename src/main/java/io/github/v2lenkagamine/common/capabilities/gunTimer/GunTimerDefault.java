@@ -7,7 +7,7 @@ public class GunTimerDefault implements IGunTimer{
 
 	@Override
 	public int getTimer() {
-		int timer = getTimerTicks() * 20;
+		int timer = (getTimerTicks() / 20);
 		return timer;
 	}
 
@@ -29,5 +29,14 @@ public class GunTimerDefault implements IGunTimer{
 		reloadTime = time;
 		
 	}
+
+	@Override
+	public void timerDown() {
+	int	timenew = getTimerTicks();
+		timenew--;
+		setTimerTicks(timenew);
+		
+	}
+
 
 }

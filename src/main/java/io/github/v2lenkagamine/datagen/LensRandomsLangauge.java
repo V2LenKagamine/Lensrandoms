@@ -41,6 +41,7 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add(Items.RGB_INATOR.get(),"\u00A74R\u00A72G\u00A71B\u00A7r-inator");
 		add(Items.TEST_ITEM.get(), "Icon of the Creator");
 		add(Items.GUN_BLUNDERBUS.get(), "Blunderbus");
+		add(Items.SIMPLE_BULLET.get(), "Simple Bullet");
 		
 		
 		//Misc

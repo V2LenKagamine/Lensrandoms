@@ -2,7 +2,7 @@ package io.github.v2lenkagamine.common.networking;
 
 import java.util.function.Supplier;
 
-import io.github.v2lenkagamine.core.items.RGB_Inator;
+import io.github.v2lenkagamine.common.items.RGB_Inator;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;

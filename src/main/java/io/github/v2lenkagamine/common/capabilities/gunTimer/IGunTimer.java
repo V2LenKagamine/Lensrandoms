@@ -10,6 +10,5 @@ public interface IGunTimer{
 	
 	void setTimerTicks(int time);
 	
-	
-	
+	void timerDown();
 }

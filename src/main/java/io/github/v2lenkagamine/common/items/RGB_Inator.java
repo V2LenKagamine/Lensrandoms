@@ -1,4 +1,4 @@
-package io.github.v2lenkagamine.core.items;
+package io.github.v2lenkagamine.common.items;
 
 import java.util.List;
 

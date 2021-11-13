@@ -16,7 +16,7 @@ import net.minecraft.util.math.vector.Vector3d;
 
 public class WeaponFire {
 
-	public static void fireNormal (PlayerEntity playerIn,int range,int maxDamage,int minDamage) {
+	public static void fireNormal (PlayerEntity playerIn,int range,int minDamage,int maxDamage) {
 		double distance = Math.pow(range, 2);
 		int damage = RandomBetween.randBetween(minDamage, maxDamage);
 		
@@ -38,7 +38,7 @@ public class WeaponFire {
 		
 	}
 	
-	public static void firePierceAll (PlayerEntity playerIn,int range,int maxDamage,int minDamage) {
+	public static void firePierceAll (PlayerEntity playerIn,int range,int minDamage,int maxDamage) {
 		double distance = Math.pow(range, 2);
 		int damage = RandomBetween.randBetween(minDamage, maxDamage);
 		
