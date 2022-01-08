@@ -2,12 +2,12 @@ package io.github.v2lenkagamine.core.util;
 
 import java.util.ArrayList;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 
 public class ItemUtil {
-	public static boolean getPlayerItem(PlayerEntity player, ItemStack stack, boolean consumeItem, int amount) {
+	public static boolean getPlayerItem(Player player, ItemStack stack, boolean consumeItem, int amount) {
 		if (stack.isEmpty())
 			return false;
 
@@ -17,20 +17,20 @@ public class ItemUtil {
 		if (amount == 1) {
 			ItemStack checkStack;
 
-			if (isStackSame((checkStack = player.getHeldItem(Hand.MAIN_HAND)), stack) && !checkStack.isEmpty()) {
+			if (isStackSame((checkStack = player.getItemInHand(InteractionHand.MAIN_HAND)), stack) && !checkStack.isEmpty()) {
 				if (consumeItem)
 					checkStack.shrink(1);
 
 				return true;
 			}
-			else if (isStackSame((checkStack = player.getHeldItem(Hand.OFF_HAND)), stack) && !checkStack.isEmpty()) {
+			else if (isStackSame((checkStack = player.getItemInHand(InteractionHand.OFF_HAND)), stack) && !checkStack.isEmpty()) {
 				if (consumeItem)
 					checkStack.shrink(1);
 
 				return true;
 			}
 			else {
-				for (ItemStack inventoryStack : player.inventory.mainInventory) {
+				for (ItemStack inventoryStack : player.getInventory().items) {
 					if (!inventoryStack.isEmpty() && isStackSame(stack, inventoryStack)) {
 						if (consumeItem)
 							inventoryStack.shrink(1);
@@ -39,7 +39,7 @@ public class ItemUtil {
 					}
 				}
 
-				for (ItemStack armorStack : player.inventory.armorInventory) {
+				for (ItemStack armorStack : player.getInventory().armor) {
 					if (!armorStack.isEmpty() && isStackSame(stack, armorStack)) {
 						if (consumeItem)
 							armorStack.shrink(1);
@@ -56,18 +56,18 @@ public class ItemUtil {
 			int totalStack = 0;
 			ItemStack checkStack;
 
-			if (isStackSame((checkStack = player.getHeldItem(Hand.MAIN_HAND)), stack) && !checkStack.isEmpty()) {
+			if (isStackSame((checkStack = player.getItemInHand(InteractionHand.MAIN_HAND)), stack) && !checkStack.isEmpty()) {
 				matchedStacks.add(checkStack);
 				totalStack += checkStack.getCount();
 			}
 
-			if (totalStack < amount && isStackSame((checkStack = player.getHeldItem(Hand.OFF_HAND)), stack) && !checkStack.isEmpty()) {
+			if (totalStack < amount && isStackSame((checkStack = player.getItemInHand(InteractionHand.OFF_HAND)), stack) && !checkStack.isEmpty()) {
 				matchedStacks.add(checkStack);
 				totalStack += checkStack.getCount();
 			}
 
 			if (totalStack < amount) {
-				for (ItemStack mainStack : player.inventory.mainInventory) {
+				for (ItemStack mainStack : player.getInventory().items) {
 					if (!mainStack.isEmpty() && isStackSame(stack, mainStack)) {
 						matchedStacks.add(mainStack);
 						totalStack += mainStack.getCount();
@@ -79,7 +79,7 @@ public class ItemUtil {
 			}
 
 			if (totalStack < amount) {
-				for (ItemStack armorStack : player.inventory.armorInventory) {
+				for (ItemStack armorStack : player.getInventory().armor) {
 					if (!armorStack.isEmpty() && isStackSame(stack, armorStack)) {
 						matchedStacks.add(armorStack);
 						totalStack += armorStack.getCount();

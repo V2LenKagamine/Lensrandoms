@@ -18,7 +18,6 @@ public class LensRandomsLangauge extends LanguageProvider{
 		
 		
 		//Blocks
-		add(Blocks.POWER_HOLE.get(),"Power Wormhole");
 		add(Blocks.RGBLOCK.get(), "RGBlock");
 		add(Blocks.RGBLOCK_GLOW.get(),"Glowing RGBlock");
 		add(Blocks.RGBLOCK_SLAB.get(),"RGBlock Slab");

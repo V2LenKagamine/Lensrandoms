@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import io.github.v2lenkagamine.client.util.Clientutils;
 import io.github.v2lenkagamine.common.LensRandomsConfig;
 import io.github.v2lenkagamine.common.capabilities.gunTimer.CapabilityGunTimer;
-import io.github.v2lenkagamine.common.capabilities.powerholeNetwork.CapabilityPowerholeNetwork;
 import io.github.v2lenkagamine.common.networking.Networking;
 import io.github.v2lenkagamine.core.init.TileEntityTypes;
 import io.github.v2lenkagamine.core.items.BlockItems;
@@ -19,8 +18,8 @@ import io.github.v2lenkagamine.datagen.LensRandomsItemModelProvider;
 import io.github.v2lenkagamine.datagen.LensRandomsLangauge;
 import io.github.v2lenkagamine.datagen.LensRandomsLootTableProvider;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -29,15 +28,15 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 @Mod(Lensrandoms.MOD_ID)
 @Mod.EventBusSubscriber(modid = Lensrandoms.MOD_ID, bus = Bus.MOD)
 public class Lensrandoms {
 		public static final Logger LOGGER = LogManager.getLogger();
 		public static final String MOD_ID = "lensrandoms";
-		public static final ItemGroup LENS_RANDOMS = new LensRandomsGroup("lensrandomstab");
+		public static final CreativeModeTab LENS_RANDOMS = new LensRandomsGroup("lensrandomstab");
 		
 		public Lensrandoms() {
 			final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -46,7 +45,7 @@ public class Lensrandoms {
 			bus.register(BlockItems.class);
 			bus.addListener(this::setupCommon);
 			RegistryHelper.register();
-			TileEntityTypes.TILE_ENTITY_TYPE.register(bus);
+			TileEntityTypes.BLOCK_ENTITY_TYPE.register(bus);
 			Networking.registerMessages();
 			ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LensRandomsConfig.SERVER_CONFIG);
 			bus.register(LensRandomsConfig.class);
@@ -72,18 +71,17 @@ public class Lensrandoms {
 	  
 	 
 	private void setupCommon(final FMLCommonSetupEvent event) {
-			CapabilityPowerholeNetwork.register();
 			CapabilityGunTimer.register();
 		}
 	
-		public static class LensRandomsGroup extends ItemGroup{ 
+		public static class LensRandomsGroup extends CreativeModeTab{ 
 			
 			public LensRandomsGroup(String label) {
 				super(label);
 			}
 			
 			@Override
-			public ItemStack createIcon() {
+			public ItemStack makeIcon() {
 				return Items.TEST_ITEM.get().getDefaultInstance();
 			}
 			

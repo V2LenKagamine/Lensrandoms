@@ -1,11 +1,11 @@
 package io.github.v2lenkagamine.common.networking;
 
 import io.github.v2lenkagamine.Lensrandoms;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.network.NetworkDirection;
-import net.minecraftforge.fml.network.NetworkRegistry;
-import net.minecraftforge.fml.network.simple.SimpleChannel;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.network.NetworkDirection;
+import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.simple.SimpleChannel;
 
 public class Networking {
     private static SimpleChannel INSTANCE;
@@ -28,18 +28,12 @@ public class Networking {
         .consumer(RGBInatorPacket::handle)
         .add();
         
-        INSTANCE.messageBuilder(ChangeChannelPacket.class, nextID())
-        .encoder(ChangeChannelPacket::toBytes)
-        .decoder(ChangeChannelPacket::new)
-        .consumer(ChangeChannelPacket::handle)
-        .add();
-        
     }
 
     public static void sendToServer(Object packet) {
         INSTANCE.sendToServer(packet);
     }
-    public static void sendToClient(Object packet, ServerPlayerEntity player) {
-        INSTANCE.sendTo(packet, player.connection.netManager, NetworkDirection.PLAY_TO_CLIENT);
+    public static void sendToClient(Object packet, ServerPlayer player) {
+        INSTANCE.sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
     }
 }

@@ -2,7 +2,7 @@ package io.github.v2lenkagamine.client.util;
 
 import io.github.v2lenkagamine.core.init.blocks.Blocks;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
@@ -28,13 +28,13 @@ public class Clientutils {
 				RgbInit.rgbInit(Blocks.RGBLOCK_GLASS_BORDER_GLOW.get());
 	}
 	public static void SetGlassUp() {
-		RenderTypeLookup.setRenderLayer(Blocks.RGBLOCK_GLASS.get(), RenderType.getTranslucent());
-		RenderTypeLookup.setRenderLayer(Blocks.RGBLOCK_GLASS_BORDER.get(), RenderType.getTranslucent());
-		RenderTypeLookup.setRenderLayer(Blocks.RGBLOCK_GLASS_GLOW.get(), RenderType.getTranslucent());
-		RenderTypeLookup.setRenderLayer(Blocks.RGBLOCK_GLASS_BORDER_GLOW.get(), RenderType.getTranslucent());
-		RenderTypeLookup.setRenderLayer(Blocks.CLEARGLASS.get(), RenderType.getTranslucent());
-		RenderTypeLookup.setRenderLayer(Blocks.CLEARGLASS_GLOW.get(), RenderType.getTranslucent());
-		RenderTypeLookup.setRenderLayer(Blocks.CLEARGLASS_BORDER.get(), RenderType.getTranslucent());
-		RenderTypeLookup.setRenderLayer(Blocks.CLEARGLASS_BORDER_GLOW.get(), RenderType.getTranslucent());
+		ItemBlockRenderTypes.setRenderLayer(Blocks.RGBLOCK_GLASS.get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(Blocks.RGBLOCK_GLASS_BORDER.get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(Blocks.RGBLOCK_GLASS_GLOW.get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(Blocks.RGBLOCK_GLASS_BORDER_GLOW.get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(Blocks.CLEARGLASS.get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(Blocks.CLEARGLASS_GLOW.get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(Blocks.CLEARGLASS_BORDER.get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(Blocks.CLEARGLASS_BORDER_GLOW.get(), RenderType.translucent());
 	}
 }

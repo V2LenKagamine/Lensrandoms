@@ -1,9 +1,9 @@
 package io.github.v2lenkagamine.datagen;
 
 import io.github.v2lenkagamine.Lensrandoms;
-import net.minecraft.data.BlockTagsProvider;
+import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.ItemTagsProvider;
+import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ItemTags extends ItemTagsProvider{
@@ -13,7 +13,7 @@ public class ItemTags extends ItemTagsProvider{
 	}
 
 	@Override
-	protected void registerTags() {
+	protected void addTags() {
 		
 		
 	}

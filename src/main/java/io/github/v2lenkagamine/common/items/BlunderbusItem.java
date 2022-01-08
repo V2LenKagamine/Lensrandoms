@@ -5,12 +5,14 @@ import io.github.v2lenkagamine.common.capabilities.gunTimer.IGunTimer;
 import io.github.v2lenkagamine.core.items.Items;
 import io.github.v2lenkagamine.core.util.ItemUtil;
 import io.github.v2lenkagamine.core.util.WeaponFire;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.LazyOptional;
+
+import net.minecraft.world.item.Item.Properties;
 
 public class BlunderbusItem extends GunItem{
 
@@ -19,8 +21,8 @@ public class BlunderbusItem extends GunItem{
 	}
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-		ItemStack item = playerIn.getHeldItem(handIn);
+	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
+		ItemStack item = playerIn.getItemInHand(handIn);
 		LazyOptional<IGunTimer> capability = item.getCapability(CapabilityGunTimer.GUN_TIMER_CAPABILITY);
 		if (capability.isPresent())
 			{
@@ -32,6 +34,6 @@ public class BlunderbusItem extends GunItem{
 					}
 				}
 			}
-		return super.onItemRightClick(worldIn, playerIn, handIn);
+		return super.use(worldIn, playerIn, handIn);
 	}
 }

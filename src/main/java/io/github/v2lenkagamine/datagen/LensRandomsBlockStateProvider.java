@@ -4,11 +4,11 @@ import java.util.function.Supplier;
 
 import io.github.v2lenkagamine.Lensrandoms;
 import io.github.v2lenkagamine.core.init.blocks.Blocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.StairsBlock;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -21,7 +21,6 @@ public class LensRandomsBlockStateProvider extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		simpleBlock(Blocks.POWER_HOLE.get());
 		simpleBlock(Blocks.RGBLOCK.get());
 		simpleSlab(Blocks.RGBLOCK_SLAB.get(),model(Blocks.RGBLOCK.getId()));
 		simpleStairs(Blocks.RGBLOCK_STAIR.get(),model(Blocks.RGBLOCK.getId()));
@@ -61,7 +60,7 @@ public class LensRandomsBlockStateProvider extends BlockStateProvider {
 		this.slabBlock(block, model(key), model(suffixPath(key, "_top")), doubleSlabModel);
 		simpleBlockItem(block,model(key));
 	}
-	 private void simpleStairs(StairsBlock block,ModelFile model) {
+	 private void simpleStairs(StairBlock block,ModelFile model) {
 	        ResourceLocation key = block.getRegistryName();
 	        this.stairsBlock(block, model(key), model(suffixPath(key, "_inner")), model(suffixPath(key, "_outer")));
 	        simpleBlockItem(block,model(key));

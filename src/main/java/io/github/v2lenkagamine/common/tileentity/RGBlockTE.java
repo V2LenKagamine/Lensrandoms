@@ -6,19 +6,19 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import io.github.v2lenkagamine.core.init.TileEntityTypes;
-import net.minecraft.block.BlockState;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class RGBlockTE extends TileEntity {
+public class RGBlockTE extends BlockEntity {
 	
 	public Color color = new Color(0, 0, 0);
 
     public void setColor(Color color) {
         this.color = color;
-        this.markDirty();
+        this.setChanged();
     }
 
     public RGBlockTE() {
@@ -28,44 +28,44 @@ public class RGBlockTE extends TileEntity {
 
     @Override
     @Nonnull
-    public CompoundNBT write(@Nonnull CompoundNBT compound) {
-        final CompoundNBT target = super.write(compound);
+    public CompoundTag save(@Nonnull CompoundTag compound) {
+        final CompoundTag target = super.save(compound);
         target.putInt("color", this.getColorAsInt());
         return compound;
     }
 
     @Override
-    public void read(@Nonnull BlockState state,@Nonnull CompoundNBT nbt) {
-        super.read(state, nbt);
+    public void load(@Nonnull BlockState state,@Nonnull CompoundTag nbt) {
+        super.load(state, nbt);
         this.setColorFromInt(nbt.getInt("color"));
-        if(world != null){
+        if(level != null){
             updateTile();
         }
     }
 
     @Nullable
     @Override
-    public SUpdateTileEntityPacket getUpdatePacket() {
-        final CompoundNBT nbt = new CompoundNBT();
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        final CompoundTag nbt = new CompoundTag();
         nbt.putInt("color", this.getColorAsInt());
-        return new SUpdateTileEntityPacket(this.getPos(), -1, nbt);
+        return new ClientboundBlockEntityDataPacket(this.getBlockPos(), -1, nbt);
     }
 
     @Override
-    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-        this.setColorFromInt(pkt.getNbtCompound().getInt("color"));
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        this.setColorFromInt(pkt.getTag().getInt("color"));
     }
 
     @Override
     @Nonnull
-    public CompoundNBT getUpdateTag() {
-        CompoundNBT nbt = super.getUpdateTag();
+    public CompoundTag getUpdateTag() {
+        CompoundTag nbt = super.getUpdateTag();
         nbt.putInt("color", this.getColorAsInt());
         return nbt;
     }
 
     @Override
-    public void handleUpdateTag(BlockState state, CompoundNBT tag) {
+    public void handleUpdateTag(BlockState state, CompoundTag tag) {
         this.setColorFromInt(tag.getInt("color"));
     }
 
@@ -76,7 +76,7 @@ public class RGBlockTE extends TileEntity {
 
     public void setColorFromInt(final int color) {
         this.setColor(new Color(color));
-        this.markDirty();
+        this.setChanged();
     }
 
     public Color getColor() {
@@ -84,9 +84,9 @@ public class RGBlockTE extends TileEntity {
     }
     public void updateTile() {
         this.requestModelDataUpdate();
-        this.markDirty();
-        if (this.getWorld() != null) {
-            this.getWorld().notifyBlockUpdate(pos, this.getBlockState(), this.getBlockState(), 3);
+        this.setChanged();
+        if (this.getLevel() != null) {
+            this.getLevel().sendBlockUpdated(worldPosition, this.getBlockState(), this.getBlockState(), 3);
         }
     }
 }

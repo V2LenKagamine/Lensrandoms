@@ -5,21 +5,21 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.Level;
 
 public class RayTraceList {
-	public static List<EntityRayTraceResult> rayTraceEntityList(World worldIn, Entity projectile, Vector3d startVec, Vector3d endVec, AxisAlignedBB boundingBox, Predicate<Entity> filter) {
-        List<EntityRayTraceResult> entityRayTracelist = new ArrayList<>();
+	public static List<EntityHitResult> rayTraceEntityList(Level worldIn, Entity projectile, Vec3 startVec, Vec3 endVec, AABB boundingBox, Predicate<Entity> filter) {
+        List<EntityHitResult> entityRayTracelist = new ArrayList<>();
 
-        for(Entity entity1 : worldIn.getEntitiesInAABBexcluding(projectile, boundingBox, filter)) {
-           AxisAlignedBB axisalignedbb = entity1.getBoundingBox().grow((double)0.3F);
-           Optional<Vector3d> optional = axisalignedbb.rayTrace(startVec, endVec);
+        for(Entity entity1 : worldIn.getEntities(projectile, boundingBox, filter)) {
+           AABB axisalignedbb = entity1.getBoundingBox().inflate((double)0.3F);
+           Optional<Vec3> optional = axisalignedbb.clip(startVec, endVec);
            if (optional.isPresent()) {
-              entityRayTracelist.add(new EntityRayTraceResult(entity1));
+              entityRayTracelist.add(new EntityHitResult(entity1));
            }
         }
 

@@ -3,33 +3,35 @@ package io.github.v2lenkagamine.common.items;
 import io.github.v2lenkagamine.common.capabilities.gunTimer.CapabilityGunTimer;
 import io.github.v2lenkagamine.common.capabilities.gunTimer.GunTimerProvider;
 import io.github.v2lenkagamine.common.capabilities.gunTimer.IGunTimer;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
+
+import net.minecraft.world.item.Item.Properties;
 
 public abstract class GunItem extends Item{
 
 
 	public GunItem(Properties properties) {
-		super(properties.maxStackSize(1));
+		super(properties.stacksTo(1));
 	}
 	@Override
 	public boolean isRepairable(ItemStack stack) {
 		return false;
 	}
 	@Override
-	public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
+	public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
 		
 	         return new GunTimerProvider();
 		
 	}
 	
 	@Override
-	public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+	public void inventoryTick(ItemStack stack, Level worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 		
 		if(isSelected) {
 			LazyOptional<IGunTimer> lazyCap = stack.getCapability(CapabilityGunTimer.GUN_TIMER_CAPABILITY);

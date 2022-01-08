@@ -10,15 +10,15 @@ import io.github.v2lenkagamine.common.networking.ChangeColorPacket;
 import io.github.v2lenkagamine.common.networking.Networking;
 import io.github.v2lenkagamine.common.tileentity.RGBlockTE;
 import io.github.v2lenkagamine.core.items.Items;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 
 public class RGBlock_Slab extends SlabBlock{
 		
@@ -31,20 +31,20 @@ public class RGBlock_Slab extends SlabBlock{
 	    }
 		 @Nullable
 		    @Override
-		    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+		    public BlockEntity createTileEntity(BlockState state, BlockGetter world) {
 		        return new RGBlockTE();
 		    }
 		 @Override
 		    @Nonnull
-		    public void onBlockPlacedBy(World worldIn,@Nonnull BlockPos pos, @Nonnull BlockState state,@Nonnull LivingEntity placer, ItemStack stack) {
-		        if (placer.getHeldItemOffhand().getItem() == Items.RGB_INATOR.get()) {
-		        	CompoundNBT nbt = placer.getHeldItemOffhand().getTag();
+		    public void setPlacedBy(Level worldIn,@Nonnull BlockPos pos, @Nonnull BlockState state,@Nonnull LivingEntity placer, ItemStack stack) {
+		        if (placer.getOffhandItem().getItem() == Items.RGB_INATOR.get()) {
+		        	CompoundTag nbt = placer.getOffhandItem().getTag();
 		        	int red = nbt.getInt("Red");
 		        	int green = nbt.getInt("Green");
 		        	int blue = nbt.getInt("Blue");
 		        	int color = ((red & 0xFF) << 16) | ((green & 0xFF) << 8) | (blue & 0xFF);
-		        	((RGBlockTE) Objects.requireNonNull(worldIn.getTileEntity(pos))).setColorFromInt(color);
-			        worldIn.notifyBlockUpdate(pos,state,state,3);
+		        	((RGBlockTE) Objects.requireNonNull(worldIn.getBlockEntity(pos))).setColorFromInt(color);
+			        worldIn.sendBlockUpdated(pos,state,state,3);
 			        Networking.sendToServer(new ChangeColorPacket(color,pos));
 		    	
 		        }

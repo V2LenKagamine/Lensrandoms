@@ -1,9 +1,9 @@
 package io.github.v2lenkagamine.core.enums;
 
-import net.minecraft.block.material.MaterialColor;
-import net.minecraft.item.DyeColor;
-import net.minecraft.item.Item;
-import net.minecraft.tags.ITag;
+import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
+import net.minecraft.tags.Tag;
 
 public enum EnumColor {
 	
@@ -26,14 +26,14 @@ public enum EnumColor {
 	
 	public final String code;
 	private int[] rgbCode;
-	private final ITag<Item> dyeTag;
+	private final Tag<Item> dyeTag;
     private final MaterialColor mapColor;
     private final String registryPrefix;
     
 	EnumColor(String code, int[] rgbCode,DyeColor dyeColor,String registryPrefix) {
-		 this(code,rgbCode, dyeColor.getMapColor(), dyeColor.getTag(), registryPrefix);
+		 this(code,rgbCode, dyeColor.getMaterialColor(), dyeColor.getTag(), registryPrefix);
 	}
-	EnumColor(String code, int[] rgbCode, MaterialColor mapColor, ITag<Item> dyeTag, String registryPrefix) {
+	EnumColor(String code, int[] rgbCode, MaterialColor mapColor, Tag<Item> dyeTag, String registryPrefix) {
 		
 		this.registryPrefix = registryPrefix;
         this.code = code;
@@ -49,7 +49,7 @@ public enum EnumColor {
         return rgbCode;
     }
 	
-	public ITag<Item> getDyeTag() {
+	public Tag<Item> getDyeTag() {
         return dyeTag;
     }
 	

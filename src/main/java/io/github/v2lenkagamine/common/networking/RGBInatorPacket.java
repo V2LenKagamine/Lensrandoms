@@ -3,15 +3,15 @@ package io.github.v2lenkagamine.common.networking;
 import java.util.function.Supplier;
 
 import io.github.v2lenkagamine.common.items.RGB_Inator;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.PacketBuffer;
-import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.network.NetworkEvent;
 
 public class RGBInatorPacket {
     private final int R;
     private final int G;
     private final int B;
-       public RGBInatorPacket(PacketBuffer buf) {
+       public RGBInatorPacket(FriendlyByteBuf buf) {
            R = buf.readInt();
            G = buf.readInt();
            B = buf.readInt();
@@ -21,7 +21,7 @@ public class RGBInatorPacket {
            this.B = blue;
            this.G = green;
        }
-       public void toBytes(PacketBuffer buf) {
+       public void toBytes(FriendlyByteBuf buf) {
            buf.writeInt(R);    
            buf.writeInt(G);    
            buf.writeInt(B);    
@@ -29,8 +29,8 @@ public class RGBInatorPacket {
 
        public boolean handle(Supplier<NetworkEvent.Context> ctx) {
            ctx.get().enqueueWork(() -> {
-        	  PlayerEntity player = ctx.get().getSender();
-        	  RGB_Inator.RGBInatorSave(player.getHeldItemMainhand(), R, G, B);
+        	  Player player = ctx.get().getSender();
+        	  RGB_Inator.RGBInatorSave(player.getMainHandItem(), R, G, B);
            });
            return true;
        }

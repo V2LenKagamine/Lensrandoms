@@ -1,29 +1,29 @@
 package io.github.v2lenkagamine.core.init.blocks;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.ToolType;
 
 public class BlockProperties {
-    public static final AbstractBlock.Properties stoneProps = AbstractBlock.Properties.create(Material.ROCK)
+    public static final BlockBehaviour.Properties stoneProps = BlockBehaviour.Properties.of(Material.STONE)
             .harvestLevel(0)
-            .hardnessAndResistance(1.5f)
+            .strength(1.5f)
             .sound(SoundType.STONE)
             .harvestTool(ToolType.PICKAXE);
-    public static final AbstractBlock.Properties glassProps = AbstractBlock.Properties.create(Material.GLASS)
-				.notSolid()
-				.setAllowsSpawn((state,world,pos,entityType) -> false)
-				.setOpaque((state, world, pos) -> false)
-                .setSuffocates((state, world, pos) -> false)
-                .setBlocksVision((state, world, pos) -> false)
+    public static final BlockBehaviour.Properties glassProps = BlockBehaviour.Properties.of(Material.GLASS)
+				.noOcclusion()
+				.isValidSpawn((state,world,pos,entityType) -> false)
+				.isRedstoneConductor((state, world, pos) -> false)
+                .isSuffocating((state, world, pos) -> false)
+                .isViewBlocking((state, world, pos) -> false)
                 .sound(SoundType.GLASS)
-                .hardnessAndResistance(0.3f);
-    public static final AbstractBlock.Properties machineProps = AbstractBlock.Properties.create(Material.IRON)
+                .strength(0.3f);
+    public static final BlockBehaviour.Properties machineProps = BlockBehaviour.Properties.of(Material.METAL)
     		.harvestLevel(0)
-    		.hardnessAndResistance(3)
+    		.strength(3)
     		.sound(SoundType.METAL)
-    		.setRequiresTool()
+    		.requiresCorrectToolForDrops()
     		.harvestTool(ToolType.PICKAXE);
     
     //The following is useful for glass type blocks.
@@ -38,19 +38,19 @@ public class BlockProperties {
 		return colorComponents;
 	}
      */
-    public static final AbstractBlock.Properties glowingStoneProps = AbstractBlock.Properties.create(Material.ROCK)
+    public static final BlockBehaviour.Properties glowingStoneProps = BlockBehaviour.Properties.of(Material.STONE)
             .harvestLevel(0)
-            .hardnessAndResistance(1.5f)
+            .strength(1.5f)
             .sound(SoundType.STONE)
-    		.setLightLevel(b -> 15)
+    		.lightLevel(b -> 15)
     		.harvestTool(ToolType.PICKAXE);
-    public static final AbstractBlock.Properties glowingGlassProps = AbstractBlock.Properties.create(Material.GLASS)
-			.notSolid()
-			.setAllowsSpawn((state,world,pos,entityType) -> false)
-			.setOpaque((state, world, pos) -> false)
-            .setSuffocates((state, world, pos) -> false)
-            .setBlocksVision((state, world, pos) -> false)
-            .setLightLevel(b -> 15)
+    public static final BlockBehaviour.Properties glowingGlassProps = BlockBehaviour.Properties.of(Material.GLASS)
+			.noOcclusion()
+			.isValidSpawn((state,world,pos,entityType) -> false)
+			.isRedstoneConductor((state, world, pos) -> false)
+            .isSuffocating((state, world, pos) -> false)
+            .isViewBlocking((state, world, pos) -> false)
+            .lightLevel(b -> 15)
             .sound(SoundType.GLASS)
-            .sound(SoundType.GLASS).hardnessAndResistance(0.3f);
+            .sound(SoundType.GLASS).strength(0.3f);
 }

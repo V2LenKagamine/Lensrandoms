@@ -4,15 +4,15 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 import io.github.v2lenkagamine.common.tileentity.RGBlockTE;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraftforge.network.NetworkEvent;
 
 public class ChangeColorPacket {
     private final int color;
     private final BlockPos pos;
 
-    public ChangeColorPacket(PacketBuffer buf) {
+    public ChangeColorPacket(FriendlyByteBuf buf) {
         this.color = buf.readInt();
         this.pos = buf.readBlockPos();
 
@@ -24,11 +24,11 @@ public class ChangeColorPacket {
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> ((RGBlockTE) Objects.requireNonNull(Objects.requireNonNull(ctx.get().getSender()).world.getTileEntity(pos))).setColorFromInt(color));
+        ctx.get().enqueueWork(() -> ((RGBlockTE) Objects.requireNonNull(Objects.requireNonNull(ctx.get().getSender()).level.getBlockEntity(pos))).setColorFromInt(color));
         return true;
     }
 
-    public void toBytes(PacketBuffer buf) {
+    public void toBytes(FriendlyByteBuf buf) {
         buf.writeInt(color);
         buf.writeBlockPos(pos);
     }

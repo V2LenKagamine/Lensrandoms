@@ -18,8 +18,6 @@ public class LensRandomsConfig {
 	public static final String CATEGORY_COMMON = "Common";
 	
 	public static ForgeConfigSpec.ConfigValue<Double> DAMAGE_MULTI;
-	public static ForgeConfigSpec.ConfigValue<Integer> POWERHOLE_CAPACITY;
-	public static ForgeConfigSpec.ConfigValue<Integer> POWERHOLE_TRANSFER;
 	
 	
 	static {
@@ -50,15 +48,6 @@ public class LensRandomsConfig {
 		DAMAGE_MULTI = builder
 				.comment("Think this mod is too weak? Crank up the damage! default:1 Range: 0.5 to 100 Type: Double")
 				.defineInRange("damageMulti", 1.0, 0.5, 100.0);
-		
-		POWERHOLE_CAPACITY = builder
-				.comment("How much energy should the Powerhole hold? Default: 100,000 Range: 1 to " + Integer.MAX_VALUE + ". Typer: Integer")
-				.defineInRange("powerholeStorage", 100000, 1, Integer.MAX_VALUE);
-		
-		POWERHOLE_TRANSFER = builder
-				.comment("How much energy should the Powerhole be able to send/recieve per tick? Default: 10,000 Range: 1 to " + Integer.MAX_VALUE + ". Type: Integer")
-				.defineInRange("powerholeTransfer", 10000, 1, Integer.MAX_VALUE);
-		
 		
 		builder.pop();
 		

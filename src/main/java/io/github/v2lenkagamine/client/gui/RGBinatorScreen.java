@@ -5,23 +5,23 @@ import java.util.function.Function;
 
 import io.github.v2lenkagamine.common.networking.Networking;
 import io.github.v2lenkagamine.common.networking.RGBInatorPacket;
-import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.widget.OptionSlider;
-import net.minecraft.client.gui.widget.button.Button;
-import net.minecraft.client.settings.SliderPercentageOption;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.client.Options;
+import net.minecraft.client.ProgressOption;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.SliderButton;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.entity.player.Player;
 public final class RGBinatorScreen extends Screen {
 	
-	public PlayerEntity player;
+	public Player player;
 	protected double red;
     protected double blue;
     protected double green;
-    protected OptionSlider redval;
-    protected OptionSlider greenval;
-    protected OptionSlider blueval;
+    protected SliderButton redval;
+    protected SliderButton greenval;
+    protected SliderButton blueval;
     protected Button buttonSave;
     protected Button buttonClose;
     private static final int WIDTH = 179;
@@ -32,35 +32,35 @@ public final class RGBinatorScreen extends Screen {
         final int relX = (this.width - WIDTH) / 2;
         final int relY = (this.height - HEIGHT) / 2;
         Minecraft instance = Minecraft.getInstance();
-		redval = (OptionSlider)buildSlider("Red: ", s -> red, (settings, i) -> red = i).createWidget(instance.gameSettings, 0, 40, 100);
-        greenval = (OptionSlider)buildSlider("Green: ", s -> green, (settings, i) -> green = i).createWidget(instance.gameSettings, 0, 80, 100);
-        blueval = (OptionSlider)buildSlider("Blue: ", s -> blue, (settings, i) -> blue = i).createWidget(instance.gameSettings, 0, 120, 100);
+		redval = (SliderButton)buildSlider("Red: ", s -> red, (settings, i) -> red = i).createButton(instance.options, 0, 40, 100);
+        greenval = (SliderButton)buildSlider("Green: ", s -> green, (settings, i) -> green = i).createButton(instance.options, 0, 80, 100);
+        blueval = (SliderButton)buildSlider("Blue: ", s -> blue, (settings, i) -> blue = i).createButton(instance.options, 0, 120, 100);
         addButton(redval);
         addButton(greenval);
         addButton(blueval);
-        addButton(new Button(relX + 10, relY + 10, 160, 20, new StringTextComponent("Save"), button -> this.save()));
-        addButton(new Button(relX + 10, relY + 37, 160, 20, new StringTextComponent("Close"), button -> this.closeScreen()));
+        addButton(new Button(relX + 10, relY + 10, 160, 20, new TextComponent("Save"), button -> this.save()));
+        addButton(new Button(relX + 10, relY + 37, 160, 20, new TextComponent("Close"), button -> this.onClose()));
     }
 
 
-	public static void open(PlayerEntity player) {
-		Minecraft.getInstance().displayGuiScreen(new RGBinatorScreen(player));
+	public static void open(Player player) {
+		Minecraft.getInstance().setScreen(new RGBinatorScreen(player));
 	}
 
 	protected void save() {
 		Networking.sendToServer(new RGBInatorPacket((int)red, (int)green, (int)blue));
-		this.closeScreen();
+		this.onClose();
 	}
 	
-	public RGBinatorScreen(PlayerEntity player) {
-		super(new StringTextComponent(""));
+	public RGBinatorScreen(Player player) {
+		super(new TextComponent(""));
 		this.player = player;
 
 	}
 	
-	protected SliderPercentageOption buildSlider(String key, Function<GameSettings, Double> getter, BiConsumer<GameSettings, Double> setter){
-        return new SliderPercentageOption(key, 1.0D, 255.0D, 1.0F, getter, setter, (settings, optionValues) -> {
-            return new StringTextComponent(key + (int)optionValues.get(settings));
+	protected ProgressOption buildSlider(String key, Function<Options, Double> getter, BiConsumer<Options, Double> setter){
+        return new ProgressOption(key, 1.0D, 255.0D, 1.0F, getter, setter, (settings, optionValues) -> {
+            return new TextComponent(key + (int)optionValues.get(settings));
         });
        
     }
