@@ -5,8 +5,10 @@ import org.apache.logging.log4j.LogManager;
 import io.github.v2lenkagamine.Lensrandoms;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.config.ModConfigEvent;
 
+@Mod.EventBusSubscriber
 public class LensRandomsConfig {
 	
 	public static ForgeConfigSpec SERVER_CONFIG;
@@ -53,11 +55,11 @@ public class LensRandomsConfig {
 		
 	}
     @SubscribeEvent
-    public static void onLoad(final ModConfig.Loading configEvent) {
+    public static void onLoad(final ModConfigEvent.Loading configEvent) {
     	LogManager.getLogger().debug(Lensrandoms.MOD_ID,"Loaded config file {}",configEvent.getConfig().getFileName());
     }
     @SubscribeEvent
-    public static void onReload(final ModConfig.Reloading configEvent) {
+    public static void onReload(final ModConfigEvent.Reloading configEvent) {
 
     }
 }

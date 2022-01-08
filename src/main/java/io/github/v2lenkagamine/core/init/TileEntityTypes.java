@@ -12,7 +12,7 @@ public class TileEntityTypes {
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPE = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, Lensrandoms.MOD_ID);
 	
 	//RGBlocks
-	public static final RegistryObject<BlockEntityType<RGBlockTE>> RGBLOCK_TE = BLOCK_ENTITY_TYPE.register("rgblock",
+	public static final RegistryObject<BlockEntityType<RGBlockTE>> RGBLOCKTE = BLOCK_ENTITY_TYPE.register("rgblock",
 			() -> BlockEntityType.Builder.of(RGBlockTE::new, Blocks.RGBLOCK.get(),Blocks.RGBLOCK_STAIR.get(),Blocks.RGBLOCK_SLAB.get(),Blocks.RGBLOCK_GLOW.get(),Blocks.RGBLOCK_BRICK.get(),
 			Blocks.RGBLOCK_BRICK.get(),Blocks.RGBLOCK_BRICK_GLOW.get(),Blocks.RGBLOCK_BRICK_SLAB.get(),Blocks.RGBLOCK_BRICK_STAIR.get(),Blocks.RGBLOCK_GLASS.get(),Blocks.RGBLOCK_GLASS_BORDER.get()
 			,Blocks.RGBLOCK_GLASS_BORDER_GLOW.get(),Blocks.RGBLOCK_GLASS_GLOW.get()).build(null));

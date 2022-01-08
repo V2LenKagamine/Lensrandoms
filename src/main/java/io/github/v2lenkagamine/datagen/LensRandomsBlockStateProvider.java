@@ -53,7 +53,7 @@ public class LensRandomsBlockStateProvider extends BlockStateProvider {
 	@Override
 	public void simpleBlock(Block block) {
 		super.simpleBlock(block);
-		this.simpleBlockItem(block, model(block.getBlock()));
+		this.simpleBlockItem(block, model(block.asItem()));
 	}
 	private void simpleSlab(SlabBlock block,ModelFile doubleSlabModel) {
 		ResourceLocation key = block.getRegistryName();

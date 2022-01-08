@@ -3,15 +3,13 @@ package io.github.v2lenkagamine.common.items;
 import io.github.v2lenkagamine.common.capabilities.gunTimer.CapabilityGunTimer;
 import io.github.v2lenkagamine.common.capabilities.gunTimer.GunTimerProvider;
 import io.github.v2lenkagamine.common.capabilities.gunTimer.IGunTimer;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
-
-import net.minecraft.world.item.Item.Properties;
 
 public abstract class GunItem extends Item{
 

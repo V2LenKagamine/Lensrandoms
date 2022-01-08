@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import io.github.v2lenkagamine.core.init.TileEntityTypes;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -21,22 +22,19 @@ public class RGBlockTE extends BlockEntity {
         this.setChanged();
     }
 
-    public RGBlockTE() {
-        super(TileEntityTypes.RGBLOCK_TE.get());
+    public RGBlockTE(BlockPos pos, BlockState state) {
+        super(TileEntityTypes.RGBLOCKTE.get(),pos,state);
     }
    
 
     @Override
-    @Nonnull
-    public CompoundTag save(@Nonnull CompoundTag compound) {
-        final CompoundTag target = super.save(compound);
-        target.putInt("color", this.getColorAsInt());
-        return compound;
+    public void saveAdditional(@Nonnull CompoundTag compound) {
+        compound.putInt("color", this.getColorAsInt());
     }
 
     @Override
-    public void load(@Nonnull BlockState state,@Nonnull CompoundTag nbt) {
-        super.load(state, nbt);
+    public void load(@Nonnull CompoundTag nbt) {
+        super.load(nbt);
         this.setColorFromInt(nbt.getInt("color"));
         if(level != null){
             updateTile();
@@ -46,9 +44,7 @@ public class RGBlockTE extends BlockEntity {
     @Nullable
     @Override
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
-        final CompoundTag nbt = new CompoundTag();
-        nbt.putInt("color", this.getColorAsInt());
-        return new ClientboundBlockEntityDataPacket(this.getBlockPos(), -1, nbt);
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
     @Override
@@ -59,15 +55,9 @@ public class RGBlockTE extends BlockEntity {
     @Override
     @Nonnull
     public CompoundTag getUpdateTag() {
-        CompoundTag nbt = super.getUpdateTag();
-        nbt.putInt("color", this.getColorAsInt());
-        return nbt;
+        return writeToSave(new CompoundTag());
     }
 
-    @Override
-    public void handleUpdateTag(BlockState state, CompoundTag tag) {
-        this.setColorFromInt(tag.getInt("color"));
-    }
 
     public int getColorAsInt() {
         final Color color = this.getColor();
@@ -88,5 +78,10 @@ public class RGBlockTE extends BlockEntity {
         if (this.getLevel() != null) {
             this.getLevel().sendBlockUpdated(worldPosition, this.getBlockState(), this.getBlockState(), 3);
         }
+    }
+    public CompoundTag writeToSave(CompoundTag tag) {
+    	tag.putInt("color", this.getColorAsInt());
+    	return(tag);
+    	
     }
 }

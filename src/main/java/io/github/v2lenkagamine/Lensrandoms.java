@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Logger;
 
 import io.github.v2lenkagamine.client.util.Clientutils;
 import io.github.v2lenkagamine.common.LensRandomsConfig;
-import io.github.v2lenkagamine.common.capabilities.gunTimer.CapabilityGunTimer;
 import io.github.v2lenkagamine.common.networking.Networking;
 import io.github.v2lenkagamine.core.init.TileEntityTypes;
 import io.github.v2lenkagamine.core.items.BlockItems;
@@ -71,7 +70,7 @@ public class Lensrandoms {
 	  
 	 
 	private void setupCommon(final FMLCommonSetupEvent event) {
-			CapabilityGunTimer.register();
+		
 		}
 	
 		public static class LensRandomsGroup extends CreativeModeTab{ 

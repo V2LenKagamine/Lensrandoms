@@ -3,21 +3,26 @@ package io.github.v2lenkagamine.common.capabilities.gunTimer;
 import javax.annotation.Nullable;
 
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.Tag;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.Capability.IStorage;
+import net.minecraftforge.common.capabilities.ICapabilitySerializable;
+import net.minecraftforge.common.util.LazyOptional;
 
-public class GunTimerStorageEmpty implements IStorage<IGunTimer>{
+public class GunTimerStorageEmpty implements ICapabilitySerializable<CompoundTag>{
 	
 	@Nullable
 	@Override
-	public Tag writeNBT(Capability<IGunTimer> capability, IGunTimer instance, Direction side) {
+	public CompoundTag serializeNBT() {
 		return null;
 	}
 
 	@Override
-	public void readNBT(Capability<IGunTimer> capability, IGunTimer instance, Direction side, Tag nbt) {
+	public void deserializeNBT(CompoundTag nbt) {
 		
 	}
 
+	@Override
+	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+		return getCapability(cap);
+	}
 }

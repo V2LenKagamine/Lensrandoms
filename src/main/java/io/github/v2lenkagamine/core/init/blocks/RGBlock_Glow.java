@@ -10,29 +10,25 @@ import io.github.v2lenkagamine.common.networking.ChangeColorPacket;
 import io.github.v2lenkagamine.common.networking.Networking;
 import io.github.v2lenkagamine.common.tileentity.RGBlockTE;
 import io.github.v2lenkagamine.core.items.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class RGBlock_Glow extends Block{
+public class RGBlock_Glow extends Block implements EntityBlock{
 		
 		public RGBlock_Glow() {
 			super(BlockProperties.glowingStoneProps);
 		}
-		@Override
-	    public boolean hasTileEntity(BlockState state) {
-	        return true;
-	    }
 		 @Nullable
 		    @Override
-		    public BlockEntity createTileEntity(BlockState state, BlockGetter world) {
-		        return new RGBlockTE();
+		    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		        return new RGBlockTE(pos, state);
 		    }
 		 @Override
 		    @Nonnull
