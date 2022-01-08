@@ -1,8 +1,7 @@
 package io.github.v2lenkagamine.common.items;
 
 import io.github.v2lenkagamine.common.capabilities.gunTimer.CapabilityGunTimer;
-import io.github.v2lenkagamine.common.capabilities.gunTimer.GunTimerProvider;
-import io.github.v2lenkagamine.common.capabilities.gunTimer.IGunTimer;
+import io.github.v2lenkagamine.common.capabilities.gunTimer.GunTimerData;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
@@ -24,7 +23,7 @@ public abstract class GunItem extends Item{
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
 		
-	         return new GunTimerProvider();
+	         return new CapabilityGunTimer();
 		
 	}
 	
@@ -32,7 +31,7 @@ public abstract class GunItem extends Item{
 	public void inventoryTick(ItemStack stack, Level worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 		
 		if(isSelected) {
-			LazyOptional<IGunTimer> lazyCap = stack.getCapability(CapabilityGunTimer.GUN_TIMER_CAPABILITY);
+			LazyOptional<GunTimerData> lazyCap = stack.getCapability(CapabilityGunTimer.GUN_TIMER_CAPABILITY);
 			if (lazyCap.isPresent())
 			{
 				if (lazyCap.resolve().get().getTimerTicks() > 0) 

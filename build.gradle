@@ -123,7 +123,9 @@ dependencies {
     // Real examples
     // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
     // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
+	runtimeOnly fg.deobf("curse.maven:Jade-324717:3564963")
+	runtimeOnly fg.deobf("curse.maven:JEI-238222:3596020")
+	implementation fg.deobf("curse.maven:Curios-309927:3581722")
     // The 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
     // provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
 
@@ -136,10 +138,6 @@ dependencies {
 
 }
 repositories {
-  maven { url = "https://dvs1.progwml6.com/files/maven/"}
-  maven { url = "https://modmaven.k-4u.nl/"}
-  maven { url "https://maven.tehnut.info/" }
-  maven { url 'https://modmaven.dev/' }
   maven { url "https://www.cursemaven.com" }
 }
 // Example for how to get properties into the manifest for reading by the runtime..

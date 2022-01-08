@@ -1,7 +1,7 @@
 package io.github.v2lenkagamine.common.items;
 
 import io.github.v2lenkagamine.common.capabilities.gunTimer.CapabilityGunTimer;
-import io.github.v2lenkagamine.common.capabilities.gunTimer.IGunTimer;
+import io.github.v2lenkagamine.common.capabilities.gunTimer.GunTimerData;
 import io.github.v2lenkagamine.core.items.Items;
 import io.github.v2lenkagamine.core.util.ItemUtil;
 import io.github.v2lenkagamine.core.util.WeaponFire;
@@ -21,7 +21,7 @@ public class BlunderbusItem extends GunItem{
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
 		ItemStack item = playerIn.getItemInHand(handIn);
-		LazyOptional<IGunTimer> capability = item.getCapability(CapabilityGunTimer.GUN_TIMER_CAPABILITY);
+		LazyOptional<GunTimerData> capability = item.getCapability(CapabilityGunTimer.GUN_TIMER_CAPABILITY);
 		if (capability.isPresent())
 			{
 				if (capability.resolve().get().getTimerTicks() < 1) 
