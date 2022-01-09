@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import io.github.v2lenkagamine.client.util.Clientutils;
 import io.github.v2lenkagamine.common.LensRandomsConfig;
 import io.github.v2lenkagamine.common.networking.Networking;
+import io.github.v2lenkagamine.core.init.ContainersInit;
 import io.github.v2lenkagamine.core.init.TileEntityTypes;
 import io.github.v2lenkagamine.core.items.BlockItems;
 import io.github.v2lenkagamine.core.items.Items;
@@ -45,6 +46,7 @@ public class Lensrandoms {
 			TileEntityTypes.BLOCK_ENTITY_TYPE.register(bus);
 			Networking.registerMessages();
 			ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LensRandomsConfig.SERVER_CONFIG);
+			ContainersInit.CONTAINERS.register(bus);
 			bus.register(LensRandomsConfig.class);
 		
 			

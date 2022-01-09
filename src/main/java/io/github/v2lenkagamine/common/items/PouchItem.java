@@ -1,6 +1,5 @@
 package io.github.v2lenkagamine.common.items;
 
-import io.github.v2lenkagamine.client.gui.BulletPouchContainer;
 import io.github.v2lenkagamine.common.capabilities.bulletpouch.CapabilityBulletPouch;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

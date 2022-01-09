@@ -1,44 +1,33 @@
-package io.github.v2lenkagamine.client.gui;
+package io.github.v2lenkagamine.common.items;
 
-import io.github.v2lenkagamine.Lensrandoms;
-import io.github.v2lenkagamine.client.util.ModTags;
-import io.github.v2lenkagamine.common.items.PouchItem;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
+import io.github.v2lenkagamine.core.init.ContainersInit;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class BulletPouchContainer extends AbstractContainerMenu{
 
-	private ResourceLocation GUI = new ResourceLocation(Lensrandoms.MOD_ID, "textures/gui/bullet_pouch_GUI.png");
 	
 	private ItemStackHandler inv;
-	private InteractionHand handIn;
 	private ItemStack pouch;
-	
+	private IItemHandler pinv;
 	
 	
 	public BulletPouchContainer(int id,Inventory playerInv) {
-		super(, id);
+		super(ContainersInit.BULLET_POUCH_CONTAINER.get(), id);
 		pouch = playerInv.player.getMainHandItem();
-		handIn = InteractionHand.MAIN_HAND;
-		if (pouch.isEmpty() || !(pouch.getItem() instanceof PouchItem)) {
-			pouch = playerInv.player.getOffhandItem();
-			handIn = InteractionHand.OFF_HAND;
-		}
 
 		inv = PouchItem.getHandler(pouch);
+		layoutPInv(10,70);
 		
 	}
 	@Override
 	public boolean stillValid(Player player) {
-		return false;
+		return player.getMainHandItem().equals(pouch, false);
 	}
 	private int addSlotRange(IItemHandler handler, int index, int x,int y,int amount,int dx) {
 		for (int i = 0; i < amount; i++) {
@@ -58,9 +47,9 @@ public class BulletPouchContainer extends AbstractContainerMenu{
 
 	
 	private void layoutPInv(int leftCol,int topRow) {
-		addSlotBox(,9,leftCol,topRow,9,18,3,18);
+		addSlotBox(pinv,9,leftCol,topRow,9,18,3,18);
 		topRow+=58;
-		addSlotRange(,0,leftCol,topRow,9,18);
+		addSlotRange(pinv,0,leftCol,topRow,9,18);
 	}
 	
 }
