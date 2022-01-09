@@ -16,7 +16,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 public class PouchItem extends Item implements MenuProvider{
@@ -38,16 +37,6 @@ public class PouchItem extends Item implements MenuProvider{
 		return new InteractionResultHolder<ItemStack>(InteractionResult.PASS, player.getItemInHand(hand));
 	}
 	
-	public static ItemStackHandler getHandler(ItemStack stack) {
-		if (stack.isEmpty())
-			return null;
-		ItemStackHandler handler = new ItemStackHandler(104);
-		if (stack.hasTag()) handler.deserializeNBT(stack.getTag().getCompound("inv"));
-		return handler;
-		
-		
-		
-	}
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inv, Player player) {

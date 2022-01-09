@@ -4,25 +4,25 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import io.github.v2lenkagamine.Lensrandoms;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.TranslatableComponent;
+import io.github.v2lenkagamine.common.items.BulletPouchContainer;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 @OnlyIn(Dist.CLIENT)
-public class BulletPouchScreen extends Screen{
+public class BulletPouchScreen extends AbstractContainerScreen<BulletPouchContainer>{
 	
-	private static final int WIDTH = 179;
-	private static final int HIGHT = 151;
-	
-	
+
 	private ResourceLocation GUI = new ResourceLocation(Lensrandoms.MOD_ID, "textures/gui/bullet_pouch_GUI.png");
 	
-	protected BulletPouchScreen() {
-		super(new TranslatableComponent("screen.lensrandoms.bulletpouch"));
+	protected BulletPouchScreen(BulletPouchContainer container,Inventory inv,Component name) {
+		super(container,inv,name);
+		this.imageHeight = 256;
+		this.imageWidth = 256;
 	}
 
 	@Override
@@ -31,15 +31,19 @@ public class BulletPouchScreen extends Screen{
 	}
 	@Override
 	public void render(PoseStack matrixStack,int mouseX,int mouseY,float partialTicks) {
-		RenderSystem.setShaderTexture(0, GUI);
-		RenderSystem.setShaderColor(1.0F, 1.0f, 1.0f, 1.0f);
-		int relX = (this.width - WIDTH) /2;
-		int relY = (this.height - HIGHT)/2;
-		this.blit(matrixStack,relX,relY,0,0,WIDTH,HIGHT);
-		super.render(matrixStack, mouseX, mouseY, partialTicks);
+        this.renderBackground(matrixStack);
+        super.render(matrixStack, mouseX, mouseY, partialTicks);
+        this.renderTooltip(matrixStack, mouseX, mouseY);
 		
 	}
-	public static void open() {
-		Minecraft.getInstance().setScreen(new BulletPouchScreen());
+	
+
+	@Override
+	protected void renderBg(PoseStack matrixStack, float partialTicks, int mouseX, int mouseY) {
+		RenderSystem.setShaderTexture(0, GUI);
+		int relX = (this.width - this.imageWidth) /2;
+		int relY = (this.height - this.imageHeight) /2;
+		this.blit(matrixStack,relX,relY,0,0,this.imageWidth,this.imageHeight);
+		
 	}
 }
