@@ -35,11 +35,11 @@ public final class RGBinatorScreen extends Screen {
 		redval = (SliderButton)buildSlider("Red: ", s -> red, (settings, i) -> red = i).createButton(instance.options, 0, 40, 100);
         greenval = (SliderButton)buildSlider("Green: ", s -> green, (settings, i) -> green = i).createButton(instance.options, 0, 80, 100);
         blueval = (SliderButton)buildSlider("Blue: ", s -> blue, (settings, i) -> blue = i).createButton(instance.options, 0, 120, 100);
-        addWidget(redval);
-        addWidget(greenval);
-        addWidget(blueval);
-        addWidget(new Button(relX + 10, relY + 10, 160, 20, new TextComponent("Save"), button -> this.save()));
-        addWidget(new Button(relX + 10, relY + 37, 160, 20, new TextComponent("Close"), button -> this.onClose()));
+        addRenderableWidget(redval);
+        addRenderableWidget(greenval);
+        addRenderableWidget(blueval);
+        addRenderableWidget(new Button(relX + 10, relY + 10, 160, 20, new TextComponent("Save"), button -> this.save()));
+        addRenderableWidget(new Button(relX + 10, relY + 37, 160, 20, new TextComponent("Close"), button -> this.onClose()));
     }
 
 

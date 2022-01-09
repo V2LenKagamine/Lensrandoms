@@ -1,6 +1,8 @@
 package io.github.v2lenkagamine.datagen;
 
 import io.github.v2lenkagamine.Lensrandoms;
+import io.github.v2lenkagamine.client.util.ModTags;
+import io.github.v2lenkagamine.core.items.Items;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -15,6 +17,6 @@ public class ItemTags extends ItemTagsProvider{
 	@Override
 	protected void addTags() {
 		
-		
+		tag(ModTags.Items.BULLETS).add(Items.SIMPLE_BULLET.get());
 	}
 }

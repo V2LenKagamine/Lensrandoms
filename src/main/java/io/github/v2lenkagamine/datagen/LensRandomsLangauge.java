@@ -48,6 +48,7 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add("lensrandoms.gui.cancel","Cancel");
 		add("tooltip.rgb_inator.rgb_inator", "When in Offhand, changes the color of placed RGBlocks.");
 		add("itemGroup.lensrandomstab","Len's Randoms Stuff");
+		add("screen.lensrandoms.bulletpouch","Bullet Pouch");
 		
 	}
 }

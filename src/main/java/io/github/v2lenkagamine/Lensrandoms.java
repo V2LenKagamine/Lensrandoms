@@ -26,7 +26,6 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
@@ -42,7 +41,6 @@ public class Lensrandoms {
 			bus.addListener(Clientutils::ClientUtilsStartUp);
 			bus.addListener(this::gatherData);
 			bus.register(BlockItems.class);
-			bus.addListener(this::setupCommon);
 			RegistryHelper.register();
 			TileEntityTypes.BLOCK_ENTITY_TYPE.register(bus);
 			Networking.registerMessages();
@@ -69,9 +67,6 @@ public class Lensrandoms {
 	  }
 	  
 	 
-	private void setupCommon(final FMLCommonSetupEvent event) {
-		
-		}
 	
 		public static class LensRandomsGroup extends CreativeModeTab{ 
 			
