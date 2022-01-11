@@ -41,6 +41,7 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add(Items.TEST_ITEM.get(), "Icon of the Creator");
 		add(Items.GUN_BLUNDERBUS.get(), "Blunderbus");
 		add(Items.SIMPLE_BULLET.get(), "Simple Bullet");
+		add(Items.TACTICAL_POUCHES.get(), "Tactical Pouches");
 		
 		
 		//Misc
@@ -48,7 +49,7 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add("lensrandoms.gui.cancel","Cancel");
 		add("tooltip.rgb_inator.rgb_inator", "When in Offhand, changes the color of placed RGBlocks.");
 		add("itemGroup.lensrandomstab","Len's Randoms Stuff");
-		add("screen.lensrandoms.bulletpouch","Bullet Pouch");
+		add("screen.lensrandoms.bulletpouch","Tactical Pouches");
 		
 	}
 }

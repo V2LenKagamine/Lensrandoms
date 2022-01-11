@@ -1,5 +1,6 @@
 package io.github.v2lenkagamine.common.items;
 
+import io.github.v2lenkagamine.client.util.ModTags;
 import io.github.v2lenkagamine.common.capabilities.bulletpouch.CapabilityBulletPouch;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -16,6 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 public class PouchItem extends Item implements MenuProvider{
@@ -48,5 +50,14 @@ public class PouchItem extends Item implements MenuProvider{
 		return new TranslatableComponent(this.getDescriptionId());
 	}
 	
+	public static ItemStackHandler getHandler(ItemStack stack) {
+		if (stack.isEmpty()) return null;
+		ItemStackHandler handler = new ItemStackHandler(104);
+		if (stack.hasTag()) handler.deserializeNBT(stack.getTag().getCompound("inv"));
+			return handler;
+	}
+	public static boolean mayPlaceIn(ItemStack item) {
+		return !item.isEmpty() && item.is(ModTags.Items.BULLETS);
+	}
 	
 }

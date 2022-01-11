@@ -38,5 +38,6 @@ public class LensRandomsItemModelProvider extends ItemModelProvider{
 		simpleItem(Items.TEST_APPLE);
 		simpleItem(Items.TEST_ITEM);
 		simpleItem(Items.SIMPLE_BULLET);
+		simpleItem(Items.TACTICAL_POUCHES);
 	}
 }
