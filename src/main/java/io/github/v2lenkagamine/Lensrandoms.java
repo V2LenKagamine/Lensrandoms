@@ -10,6 +10,7 @@ import io.github.v2lenkagamine.core.init.ContainersInit;
 import io.github.v2lenkagamine.core.init.TileEntityTypes;
 import io.github.v2lenkagamine.core.items.BlockItems;
 import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.util.CuriosCompat;
 import io.github.v2lenkagamine.core.util.RegistryHelper;
 import io.github.v2lenkagamine.datagen.BlockTags;
 import io.github.v2lenkagamine.datagen.ItemTags;
@@ -23,10 +24,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
@@ -42,13 +45,15 @@ public class Lensrandoms {
 			bus.addListener(Clientutils::ClientUtilsStartUp);
 			bus.addListener(this::gatherData);
 			bus.register(BlockItems.class);
+			bus.register(CuriosCompat.class);
+			bus.register(LensRandomsConfig.class);
 			RegistryHelper.register();
 			TileEntityTypes.BLOCK_ENTITY_TYPE.register(bus);
 			Networking.registerMessages();
 			ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LensRandomsConfig.SERVER_CONFIG);
 			ContainersInit.CONTAINERS.register(bus);
-			bus.register(LensRandomsConfig.class);
-		
+			CuriosCompat.initCuriosCompat();
+			
 			
 			//Always put on bottom VVV
 			MinecraftForge.EVENT_BUS.register(this);
@@ -67,8 +72,6 @@ public class Lensrandoms {
 			  gen.addProvider(new ItemTags(gen,blockTags,helper));
 		  }
 	  }
-	  
-	 
 	
 		public static class LensRandomsGroup extends CreativeModeTab{ 
 			

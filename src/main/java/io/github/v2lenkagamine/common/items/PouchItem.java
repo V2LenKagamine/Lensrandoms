@@ -17,6 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -52,12 +53,11 @@ public class PouchItem extends Item implements MenuProvider{
 	
 	public static ItemStackHandler getHandler(ItemStack stack) {
 		if (stack.isEmpty()) return null;
-		ItemStackHandler handler = new ItemStackHandler(104);
-		if (stack.hasTag()) handler.deserializeNBT(stack.getTag().getCompound("inv"));
+		ItemStackHandler handler = new ItemStackHandler(9);
+		if (stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).isPresent());
 			return handler;
 	}
 	public static boolean mayPlaceIn(ItemStack item) {
 		return !item.isEmpty() && item.is(ModTags.Items.BULLETS);
 	}
-	
 }
