@@ -26,7 +26,11 @@ public class BlunderbusItem extends GunItem{
 			{
 				if (capability.resolve().get().getTimerTicks() < 1) 
 				{
-					if (ItemUtil.getPlayerItem(playerIn, new ItemStack (Items.SIMPLE_BULLET.get()), true, 1)) {
+					if (ItemUtil.lookInPouches(playerIn, new ItemStack (Items.SIMPLE_BULLET.get()), true, 1)) {
+						WeaponFire.firePierceAll(playerIn, 5, 4, 10);
+						capability.resolve().get().setTimer(5);
+					}
+					else if (ItemUtil.getPlayerItem(playerIn, new ItemStack (Items.SIMPLE_BULLET.get()), true, 1)) {
 						WeaponFire.firePierceAll(playerIn, 5, 4, 10);
 						capability.resolve().get().setTimer(5);
 					}

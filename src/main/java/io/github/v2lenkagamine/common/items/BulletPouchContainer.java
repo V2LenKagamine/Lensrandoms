@@ -12,14 +12,13 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
 public class BulletPouchContainer extends AbstractContainerMenu{
 
 	private IItemHandler playerInvHan;
-	private ItemStackHandler bagInv;
+	private IItemHandler bagInv;
 	private ItemStack bag;
 	
 	public BulletPouchContainer(int id,Inventory playerInv) {
@@ -40,27 +39,32 @@ public class BulletPouchContainer extends AbstractContainerMenu{
 	
 	@Override
 	public ItemStack quickMoveStack(Player player, int slotnum) {
-		ItemStack emptyStack = ItemStack.EMPTY;
+		ItemStack itemStack = ItemStack.EMPTY;
 		Slot slot = slots.get(slotnum);
 		if (slot != null && slot.hasItem()) {
-			ItemStack stack = slot.getItem();
-			stack = stack.copy();
-			if (slotnum <9) {
-				if (!moveItemStackTo(stack, 9, 45, true)) return emptyStack;
-				else { if (stack.is(ModTags.Items.BULLETS)) {
-					return emptyStack;
+			ItemStack itemStack1 = slot.getItem();
+			itemStack = itemStack1.copy();
+			if (slotnum < 9) {
+	            if (!this.moveItemStackTo(itemStack1, 9, this.slots.size(), true)) return ItemStack.EMPTY; 
+	            else { if (itemStack.is(ModTags.Items.BULLETS)){
+	            	return ItemStack.EMPTY;
+	            }
+	            return ItemStack.EMPTY;}
+			}
+			if (slotnum > 9) {
+				if (!moveItemStackTo(itemStack1, 0, 9, false)) return ItemStack.EMPTY;
+				else { if (itemStack.is(ModTags.Items.BULLETS)) {
+					return ItemStack.EMPTY;
 					}
-					
+				return ItemStack.EMPTY;
 				}
 			
 			}
-			if (stack.isEmpty()) slot.set(emptyStack); 
+			if (itemStack1.isEmpty()) slot.set(ItemStack.EMPTY); 
 			else slot.setChanged();
-			if (stack == emptyStack) return emptyStack;
-			slot.onTake(player, stack);
 		}
 		
-		return emptyStack;
+		return itemStack;
 	}
 	
 	private int addSlotRange(IItemHandler handler, int index, int x,int y,int amount,int dx) {

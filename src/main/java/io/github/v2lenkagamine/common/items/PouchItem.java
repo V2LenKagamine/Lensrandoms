@@ -1,5 +1,7 @@
 package io.github.v2lenkagamine.common.items;
 
+import java.util.List;
+
 import io.github.v2lenkagamine.client.util.ModTags;
 import io.github.v2lenkagamine.common.capabilities.bulletpouch.CapabilityBulletPouch;
 import net.minecraft.nbt.CompoundTag;
@@ -18,7 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 public class PouchItem extends Item implements MenuProvider{
@@ -51,13 +53,22 @@ public class PouchItem extends Item implements MenuProvider{
 		return new TranslatableComponent(this.getDescriptionId());
 	}
 	
-	public static ItemStackHandler getHandler(ItemStack stack) {
-		if (stack.isEmpty()) return null;
-		ItemStackHandler handler = new ItemStackHandler(9);
-		if (stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).isPresent());
-			return handler;
+	public static IItemHandler getHandler(ItemStack stack) {
+		return stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElse(null);
 	}
 	public static boolean mayPlaceIn(ItemStack item) {
 		return !item.isEmpty() && item.is(ModTags.Items.BULLETS);
 	}
+	
+	@SuppressWarnings("null")
+	public static List<ItemStack> getItems(ItemStack item) {
+		List<ItemStack> itemsInBag = null;
+		for (int x=0;x<9;x++) {
+			itemsInBag.add(getHandler(item).getStackInSlot(x));
+		}
+		
+		return itemsInBag;
+		
+	}
+	
 }

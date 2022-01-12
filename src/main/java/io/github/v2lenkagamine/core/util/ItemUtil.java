@@ -2,11 +2,14 @@ package io.github.v2lenkagamine.core.util;
 
 import java.util.ArrayList;
 
+import io.github.v2lenkagamine.core.items.Items;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.items.CapabilityItemHandler;
+import top.theillusivec4.curios.api.CuriosApi;
 
-public class ItemUtil {
+public class ItemUtil{
 	public static boolean getPlayerItem(Player player, ItemStack stack, boolean consumeItem, int amount) {
 		if (stack.isEmpty())
 			return false;
@@ -106,6 +109,48 @@ public class ItemUtil {
 			return true;
 		}
 	}
+	
+	public static boolean lookInPouches(Player player,ItemStack item,boolean consume,int amount) {
+		
+		if (item.isEmpty())
+			return false;
+
+		if (amount <= 0 || player.isCreative())
+			return true;
+		
+		int slotNum = 0;
+		var stacks = CuriosApi.getCuriosHelper().getCuriosHandler(player).orElse(null).getCurios().get("belt").getStacks();
+		for (int i = 0 ; i < stacks.getSlots();i++) {
+			ItemStack beltCurioItem = stacks.getStackInSlot(i);
+			if (beltCurioItem == new ItemStack (Items.TACTICAL_POUCHES.get())) {
+				for (int y = 0; y > 9;y++) {
+					ItemStack bulletStack = beltCurioItem.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElse(null).getStackInSlot(y);
+					if(isStackSame(bulletStack,item)) {
+						if (consume) bulletStack.shrink(amount);
+						return true;
+					}
+				}
+			}
+		}
+		for(ItemStack inventoryStack : player.getInventory().items) {
+			if (isStackSame(inventoryStack, new ItemStack(Items.TACTICAL_POUCHES.get()))) {
+				ItemStack foundPouch = player.getInventory().getItem(slotNum);
+					for (int x = 0; x > 9; x++) {
+						ItemStack bulletStack = foundPouch.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElse(null).getStackInSlot(x);
+						if (isStackSame(bulletStack,item) && consume) {
+							if (consume) bulletStack.shrink(amount);
+							return true;
+							}
+						}
+					}
+				slotNum++;
+				}
+				
+		return false;
+		}
+	
+	
+	
 	public static boolean isStackSame(ItemStack a, ItemStack b) {
 		if (a.getItem() != b.getItem())
 			return false;
