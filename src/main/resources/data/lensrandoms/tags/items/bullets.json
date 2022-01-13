@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "lensrandoms:simple_bullet"
+    "lensrandoms:simple_bullet",
+    "lensrandoms:pistol_round",
+    "lensrandoms:shotgun_shell",
+    "lensrandoms:rifle_round"
   ]
 }

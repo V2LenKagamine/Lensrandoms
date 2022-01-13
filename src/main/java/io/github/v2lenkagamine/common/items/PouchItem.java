@@ -1,9 +1,7 @@
 package io.github.v2lenkagamine.common.items;
 
-import java.util.List;
-
 import io.github.v2lenkagamine.client.util.ModTags;
-import io.github.v2lenkagamine.common.capabilities.bulletpouch.CapabilityBulletPouch;
+import io.github.v2lenkagamine.common.capabilities.CapabilityBulletPouch;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -33,7 +31,7 @@ public class PouchItem extends Item implements MenuProvider{
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
 		
-	         return new CapabilityBulletPouch(9);
+	         return new CapabilityBulletPouch(27);
 		
 	}
 	@Override
@@ -58,17 +56,6 @@ public class PouchItem extends Item implements MenuProvider{
 	}
 	public static boolean mayPlaceIn(ItemStack item) {
 		return !item.isEmpty() && item.is(ModTags.Items.BULLETS);
-	}
-	
-	@SuppressWarnings("null")
-	public static List<ItemStack> getItems(ItemStack item) {
-		List<ItemStack> itemsInBag = null;
-		for (int x=0;x<9;x++) {
-			itemsInBag.add(getHandler(item).getStackInSlot(x));
-		}
-		
-		return itemsInBag;
-		
 	}
 	
 }

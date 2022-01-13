@@ -1,4 +1,4 @@
-package io.github.v2lenkagamine.common.capabilities.bulletpouch;
+package io.github.v2lenkagamine.common.capabilities;
 
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;

@@ -1,4 +1,4 @@
-package io.github.v2lenkagamine.common.capabilities.gunTimer;
+package io.github.v2lenkagamine.common.capabilities;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -9,11 +9,13 @@ import net.minecraftforge.common.capabilities.CapabilityToken;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
 
-public class CapabilityGunTimer implements ICapabilityProvider{
+public class TimerAmmoCapabilityProvider implements ICapabilityProvider{
 	
 	public static final Capability<GunTimerData> GUN_TIMER_CAPABILITY = CapabilityManager.get(new CapabilityToken<GunTimerData>() {} );
+	public static final Capability<GunAmmoData> GUN_AMMO_CAPABILITY = CapabilityManager.get(new CapabilityToken<GunAmmoData>() {} );
 	
-	final GunTimerData data = new GunTimerData();
+	final GunTimerData dataTimer = new GunTimerData();
+	final GunAmmoData dataAmmo = new GunAmmoData();
 	
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
@@ -24,7 +26,11 @@ public class CapabilityGunTimer implements ICapabilityProvider{
 	@Override
 	public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
 		if (cap == GUN_TIMER_CAPABILITY)
-			return (LazyOptional<T>) LazyOptional.of(() -> data);
+			return (LazyOptional<T>) LazyOptional.of(() -> dataTimer);
+		
+		else if (cap == GUN_AMMO_CAPABILITY) {
+			return (LazyOptional<T>) LazyOptional.of(() -> dataAmmo);
+		}
 		return LazyOptional.empty();
 	}
 }

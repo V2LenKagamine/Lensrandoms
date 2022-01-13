@@ -1,9 +1,12 @@
 package io.github.v2lenkagamine.common.items;
 
-import io.github.v2lenkagamine.common.capabilities.gunTimer.CapabilityGunTimer;
-import io.github.v2lenkagamine.common.capabilities.gunTimer.GunTimerData;
+import io.github.v2lenkagamine.common.capabilities.GunAmmoData;
+import io.github.v2lenkagamine.common.capabilities.GunTimerData;
+import io.github.v2lenkagamine.common.capabilities.TimerAmmoCapabilityProvider;
+import io.github.v2lenkagamine.core.util.ItemUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -23,15 +26,15 @@ public abstract class GunItem extends Item{
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
 		
-	         return new CapabilityGunTimer();
-		
+	         return new TimerAmmoCapabilityProvider();
+	         
 	}
 	
 	@Override
 	public void inventoryTick(ItemStack stack, Level worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 		
 		if(isSelected) {
-			LazyOptional<GunTimerData> lazyCap = stack.getCapability(CapabilityGunTimer.GUN_TIMER_CAPABILITY);
+			LazyOptional<GunTimerData> lazyCap = stack.getCapability(TimerAmmoCapabilityProvider.GUN_TIMER_CAPABILITY);
 			if (lazyCap.isPresent())
 			{
 				if (lazyCap.resolve().get().getTimerTicks() > 0) 
@@ -42,5 +45,21 @@ public abstract class GunItem extends Item{
 			}
 		}		
 		super.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
+	}
+	
+	public void reload(ItemStack stack,int maxAmmo,LivingEntity ent,int cooldown,ItemStack ammoType) {
+		GunAmmoData gunAmmoCap = stack.getCapability(TimerAmmoCapabilityProvider.GUN_AMMO_CAPABILITY).resolve().get();
+		GunTimerData gunTimerCap = stack.getCapability(TimerAmmoCapabilityProvider.GUN_TIMER_CAPABILITY).resolve().get();
+		if (gunAmmoCap.getAmmoLeft() < maxAmmo) {
+			int ammoCons = maxAmmo - gunAmmoCap.getAmmoLeft();
+			if(ItemUtil.lookInPouches(ent, ammoType, true, ammoCons)) {
+				gunAmmoCap.addAmmo(ammoCons);
+				gunTimerCap.setTimer(cooldown);
+			}
+			else if(ItemUtil.getPlayerItem(ent, ammoType, true, ammoCons)) {
+				gunAmmoCap.addAmmo(ammoCons);
+				gunTimerCap.setTimer(cooldown);
+			}
+		}
 	}
 }

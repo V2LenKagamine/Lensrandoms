@@ -22,7 +22,7 @@ public class BulletPouchScreen extends AbstractContainerScreen<BulletPouchContai
 	
 	public BulletPouchScreen(BulletPouchContainer container,Inventory inv,Component name) {
 		super(container,inv,name);
-		this.imageHeight = 129;
+		this.imageHeight = 166;
 		this.imageWidth = 176;
 	}
 
@@ -53,7 +53,7 @@ public class BulletPouchScreen extends AbstractContainerScreen<BulletPouchContai
 	
 	@Override
 	protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
-		this.font.draw(stack, this.playerInventoryTitle, 8.0F, 36.0F, 4210752);
+		this.font.draw(stack, this.playerInventoryTitle, 8.0F, 73.0F, 4210752);
 		this.font.draw(stack, "Tactical Pouches", 6.5F, 6.0F, 4210752);
 	}
 	

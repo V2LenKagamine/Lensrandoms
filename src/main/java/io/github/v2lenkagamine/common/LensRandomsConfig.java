@@ -48,8 +48,8 @@ public class LensRandomsConfig {
 		builder.comment("These settings need not be the same on server and client, but are only loaded on world load.");
 		
 		DAMAGE_MULTI = builder
-				.comment("Think this mod is too weak? Crank up the damage! default:1 Range: 0.5 to 100 Type: Double")
-				.defineInRange("damageMulti", 1.0, 0.5, 100.0);
+				.comment("Think this mod is too weak? Crank up the damage! default:1 Range: 0.1 to 10 Type: Double")
+				.defineInRange("damageMulti", 1.0, 0.1, 10.0);
 		
 		builder.pop();
 		

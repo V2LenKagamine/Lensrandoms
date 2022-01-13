@@ -17,7 +17,10 @@ public class ItemTags extends ItemTagsProvider{
 	@Override
 	protected void addTags() {
 		
-		tag(ModTags.Items.BULLETS).add(Items.SIMPLE_BULLET.get());
+		tag(ModTags.Items.BULLETS).add(Items.SIMPLE_BULLET.get())
+		.add(Items.PISTOL_ROUND.get())
+		.add(Items.SHOTGUN_SHELL.get())
+		.add(Items.RIFLE_ROUND.get());
 		tag(ModTags.Items.CURIO_BELT).add(Items.TACTICAL_POUCHES.get());
 	}
 }

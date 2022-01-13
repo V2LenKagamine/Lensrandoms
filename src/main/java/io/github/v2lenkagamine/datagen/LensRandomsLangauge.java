@@ -42,6 +42,10 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add(Items.GUN_BLUNDERBUS.get(), "Blunderbus");
 		add(Items.SIMPLE_BULLET.get(), "Simple Bullet");
 		add(Items.TACTICAL_POUCHES.get(), "Tactical Pouches");
+		add(Items.PISTOL_ROUND.get(),"Pistol Round");
+		add(Items.RIFLE_ROUND.get(),"Rifle Round");
+		add(Items.GUN_FLINTLOCK.get(),"Flintlock Pistol");
+		add(Items.GUN_REVOLVER.get(),"Simple Revolver");
 		
 		
 		//Misc

@@ -33,11 +33,20 @@ public class LensRandomsItemModelProvider extends ItemModelProvider{
 	
 	@Override
 	protected void registerModels() {
+		
+		//Items
 		simpleItem(Items.RGB_INATOR);
-		simpleTool(Items.GUN_BLUNDERBUS);
 		simpleItem(Items.TEST_APPLE);
 		simpleItem(Items.TEST_ITEM);
 		simpleItem(Items.SIMPLE_BULLET);
 		simpleItem(Items.TACTICAL_POUCHES);
+		simpleItem(Items.PISTOL_ROUND);
+		simpleItem(Items.RIFLE_ROUND);
+		simpleItem(Items.SHOTGUN_SHELL);
+		
+		//Tools
+		simpleTool(Items.GUN_BLUNDERBUS);
+		simpleTool(Items.GUN_FLINTLOCK);
+		simpleTool(Items.GUN_REVOLVER);
 	}
 }

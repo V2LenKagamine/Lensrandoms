@@ -1,4 +1,4 @@
-package io.github.v2lenkagamine.common.capabilities.gunTimer;
+package io.github.v2lenkagamine.common.capabilities;
 
 public class GunTimerData {
 

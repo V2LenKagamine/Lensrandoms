@@ -4,13 +4,20 @@ import java.util.ArrayList;
 
 import io.github.v2lenkagamine.core.items.Items;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public class ItemUtil{
-	public static boolean getPlayerItem(Player player, ItemStack stack, boolean consumeItem, int amount) {
+	public static boolean getPlayerItem(LivingEntity entity, ItemStack stack, boolean consumeItem, int amount) {
+		
+		if (!(entity instanceof Player player)) {return false;}
+		player = (Player) entity;
+		
 		if (stack.isEmpty())
 			return false;
 
@@ -110,7 +117,9 @@ public class ItemUtil{
 		}
 	}
 	
-	public static boolean lookInPouches(Player player,ItemStack item,boolean consume,int amount) {
+	public static boolean lookInPouches(LivingEntity entity,ItemStack item,boolean consume,int amount) {
+		if (!(entity instanceof Player player)) {return false;}
+		player = (Player) entity;
 		
 		if (item.isEmpty())
 			return false;
@@ -122,9 +131,10 @@ public class ItemUtil{
 		var stacks = CuriosApi.getCuriosHelper().getCuriosHandler(player).orElse(null).getCurios().get("belt").getStacks();
 		for (int i = 0 ; i < stacks.getSlots();i++) {
 			ItemStack beltCurioItem = stacks.getStackInSlot(i);
-			if (beltCurioItem == new ItemStack (Items.TACTICAL_POUCHES.get())) {
-				for (int y = 0; y > 9;y++) {
-					ItemStack bulletStack = beltCurioItem.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElse(null).getStackInSlot(y);
+			if (beltCurioItem.getItem() == Items.TACTICAL_POUCHES.get()) {
+				LazyOptional<IItemHandler> beltCap = beltCurioItem.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
+				for (int y = 0; y < 9;y++) {
+					ItemStack bulletStack = beltCap.orElse(null).getStackInSlot(y);
 					if(isStackSame(bulletStack,item)) {
 						if (consume) bulletStack.shrink(amount);
 						return true;
@@ -133,10 +143,10 @@ public class ItemUtil{
 			}
 		}
 		for(ItemStack inventoryStack : player.getInventory().items) {
-			if (isStackSame(inventoryStack, new ItemStack(Items.TACTICAL_POUCHES.get()))) {
-				ItemStack foundPouch = player.getInventory().getItem(slotNum);
-					for (int x = 0; x > 9; x++) {
-						ItemStack bulletStack = foundPouch.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElse(null).getStackInSlot(x);
+			if (inventoryStack.getItem() == Items.TACTICAL_POUCHES.get()) {
+				LazyOptional<IItemHandler> beltCap = player.getInventory().getItem(slotNum).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
+					for (int x = 0; x < 9; x++) {
+						ItemStack bulletStack = beltCap.orElse(null).getStackInSlot(x);
 						if (isStackSame(bulletStack,item) && consume) {
 							if (consume) bulletStack.shrink(amount);
 							return true;
