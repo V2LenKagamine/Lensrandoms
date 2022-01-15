@@ -46,11 +46,20 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add(Items.RIFLE_ROUND.get(),"Rifle Round");
 		add(Items.GUN_FLINTLOCK.get(),"Flintlock Pistol");
 		add(Items.GUN_REVOLVER.get(),"Simple Revolver");
+		add(Items.BREEFCASE.get(),"BrEEfcase");
+		add(Items.BEECASE.get(),"BeeCase");
 		
 		
+		//Sounds
+		add("lensrandoms.gun_click.sub","Gun Clicks");
+		add("lensrandoms.breefcase.sub", "Someone throws a briefcase of bees");
+		add("lensrandoms.reload_base.sub","Gun Reloads");
+		add("lensrandoms.shot_base.sub", "Gun Fires");
+	
 		//Misc
 		add("lensrandoms.gui.done","Done");
 		add("lensrandoms.gui.cancel","Cancel");
+		add("tooltip.breefcase.breefcase","\u00A7cCreator not responsible for damages caused.");
 		add("tooltip.rgb_inator.rgb_inator", "When in Offhand, changes the color of placed RGBlocks.");
 		add("itemGroup.lensrandomstab","Len's Randoms Stuff");
 		add("screen.lensrandoms.bulletpouch","Tactical Pouches");

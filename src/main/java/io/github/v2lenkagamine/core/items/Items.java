@@ -1,7 +1,9 @@
 package io.github.v2lenkagamine.core.items;
 
 import io.github.v2lenkagamine.Lensrandoms;
+import io.github.v2lenkagamine.common.items.BeeCase;
 import io.github.v2lenkagamine.common.items.BlunderbusItem;
+import io.github.v2lenkagamine.common.items.BrEEfcase;
 import io.github.v2lenkagamine.common.items.FlintlockItem;
 import io.github.v2lenkagamine.common.items.PouchItem;
 import io.github.v2lenkagamine.common.items.RGB_Inator;
@@ -21,6 +23,12 @@ public final class Items {
 	//Test Apple
 	public static final RegistryObject<Item> TEST_APPLE = RegistryHelper.ITEMS.register("test_apple", () -> new Item(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)
 			.food(new FoodProperties.Builder().saturationMod(20f).nutrition(20).alwaysEat().build())));
+	
+	//Funni Items(Creative)
+	public static final RegistryObject<BrEEfcase> BREEFCASE = RegistryHelper.ITEMS.register("breefcase", () -> new BrEEfcase(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
+	
+	//Dungeon Loot
+	public static final RegistryObject<BeeCase> BEECASE = RegistryHelper.ITEMS.register("beecase", () -> new BeeCase(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	
 	//Bullets
 	public static final RegistryObject<Item> SIMPLE_BULLET = RegistryHelper.ITEMS.register("simple_bullet", () -> new Item(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));

@@ -30,7 +30,14 @@ public class LensRandomsItemModelProvider extends ItemModelProvider{
 		.parent(new ModelFile.UncheckedModelFile("item/handheld"))
 		.texture("layer0", new ResourceLocation(location.getNamespace(), ITEM_FOLDER + "/" + location.getPath()));
 	}
-	
+	/*
+	public void complexTool(Supplier<? extends Item>itemSupplier) {
+		ResourceLocation location = itemSupplier.get().getRegistryName();
+		this.getBuilder(location.getPath())
+		.parent(new ModelFile.UncheckedModelFile("item/handheld"))
+		.texture("layer0", new ResourceLocation(location.getNamespace(), ITEM_FOLDER + "/" + location.getPath()));
+	}
+	*/
 	@Override
 	protected void registerModels() {
 		
@@ -43,6 +50,8 @@ public class LensRandomsItemModelProvider extends ItemModelProvider{
 		simpleItem(Items.PISTOL_ROUND);
 		simpleItem(Items.RIFLE_ROUND);
 		simpleItem(Items.SHOTGUN_SHELL);
+		simpleItem(Items.BREEFCASE);
+		simpleItem(Items.BEECASE);
 		
 		//Tools
 		simpleTool(Items.GUN_BLUNDERBUS);

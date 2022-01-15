@@ -1,8 +1,11 @@
 package io.github.v2lenkagamine.client.util;
 
+import io.github.v2lenkagamine.core.init.Entitytype;
 import io.github.v2lenkagamine.core.init.blocks.Blocks;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
@@ -12,6 +15,7 @@ public class Clientutils {
 	public static void ClientUtilsStartUp(final FMLClientSetupEvent event) {
 		RegisterBlockColors();
 		SetGlassUp();
+		RegisterEntityModels();
 	}
 	public static void RegisterBlockColors() {
 				RgbInit.rgbInit(Blocks.RGBLOCK.get());
@@ -36,5 +40,9 @@ public class Clientutils {
 		ItemBlockRenderTypes.setRenderLayer(Blocks.CLEARGLASS_GLOW.get(), RenderType.translucent());
 		ItemBlockRenderTypes.setRenderLayer(Blocks.CLEARGLASS_BORDER.get(), RenderType.translucent());
 		ItemBlockRenderTypes.setRenderLayer(Blocks.CLEARGLASS_BORDER_GLOW.get(), RenderType.translucent());
+	}	
+	public static void RegisterEntityModels() {
+		EntityRenderers.register(Entitytype.BREEFCASE_PROJECTILE.get(),ThrownItemRenderer::new);
+		EntityRenderers.register(Entitytype.BEECASE_PROJECTILE.get(), ThrownItemRenderer::new);
 	}
 }

@@ -15,6 +15,7 @@
   "block.lensrandoms.rgblock_glow": "Glowing RGBlock",
   "block.lensrandoms.rgblock_slab": "RGBlock Slab",
   "block.lensrandoms.rgblock_stair": "RGBlock Stair",
+  "item.lensrandoms.breefcase": "BrEEfcase",
   "item.lensrandoms.gun_blunderbus": "Blunderbus",
   "item.lensrandoms.gun_flintlock": "Flintlock Pistol",
   "item.lensrandoms.gun_revolver": "Simple Revolver",
@@ -26,8 +27,13 @@
   "item.lensrandoms.test_apple": "The Apple of Testing",
   "item.lensrandoms.test_item": "Icon of the Creator",
   "itemGroup.lensrandomstab": "Len's Randoms Stuff",
+  "lensrandoms.breefcase.sub": "Someone throws a briefcase of bees",
   "lensrandoms.gui.cancel": "Cancel",
   "lensrandoms.gui.done": "Done",
+  "lensrandoms.gun_click.sub": "Gun Clicks",
+  "lensrandoms.reload_base.sub": "Gun Reloads",
+  "lensrandoms.shot_base.sub": "Gun Fires",
   "screen.lensrandoms.bulletpouch": "Tactical Pouches",
+  "tooltip.breefcase.breefcase": "\u00A7cCreator not responsible for damages caused.",
   "tooltip.rgb_inator.rgb_inator": "When in Offhand, changes the color of placed RGBlocks."
 }

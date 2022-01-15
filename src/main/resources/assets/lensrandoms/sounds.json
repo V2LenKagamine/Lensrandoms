@@ -1,0 +1,26 @@
+{
+  "gun_click": {
+    "subtitle": "lensrandoms.gun_click.sub",
+    "sounds": [
+      "lensrandoms:gun_click"
+    ]
+  },
+  "breefcase": {
+    "subtitle": "lensrandoms.breefcase.sub",
+    "sounds": [
+      "lensrandoms:breefcase"
+    ]
+  },
+  "reload_base": {
+    "subtitle": "lensrandoms.reload_base.sub",
+    "sounds": [
+      "lensrandoms:reload_base"
+    ]
+  },
+  "shot_base": {
+    "subtitle": "lensrandoms.shot_base.sub",
+    "sounds": [
+      "lensrandoms:shot_base"
+    ]
+  }
+}

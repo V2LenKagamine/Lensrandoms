@@ -18,6 +18,7 @@ import io.github.v2lenkagamine.datagen.LensRandomsBlockStateProvider;
 import io.github.v2lenkagamine.datagen.LensRandomsItemModelProvider;
 import io.github.v2lenkagamine.datagen.LensRandomsLangauge;
 import io.github.v2lenkagamine.datagen.LensRandomsLootTableProvider;
+import io.github.v2lenkagamine.datagen.LensRandomsSounds;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -68,6 +69,7 @@ public class Lensrandoms {
 			  BlockTags blockTags = new BlockTags(gen,helper);
 			  gen.addProvider(blockTags);
 			  gen.addProvider(new ItemTags(gen,blockTags,helper));
+			  gen.addProvider(new LensRandomsSounds(gen,helper));
 		  }
 	  }
 	
