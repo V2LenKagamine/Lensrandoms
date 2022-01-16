@@ -39,16 +39,26 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add(Items.TEST_APPLE.get(),"The Apple of Testing");
 		add(Items.RGB_INATOR.get(),"\u00A74R\u00A72G\u00A71B\u00A7r-inator");
 		add(Items.TEST_ITEM.get(), "Icon of the Creator");
-		add(Items.GUN_BLUNDERBUS.get(), "Blunderbus");
-		add(Items.SIMPLE_BULLET.get(), "Simple Bullet");
 		add(Items.TACTICAL_POUCHES.get(), "Tactical Pouches");
-		add(Items.PISTOL_ROUND.get(),"Pistol Round");
-		add(Items.RIFLE_ROUND.get(),"Rifle Round");
-		add(Items.GUN_FLINTLOCK.get(),"Flintlock Pistol");
-		add(Items.GUN_REVOLVER.get(),"Simple Revolver");
 		add(Items.BREEFCASE.get(),"BrEEfcase");
 		add(Items.BEECASE.get(),"BeeCase");
 		
+		//Guns
+		add(Items.GUN_BLUNDERBUS.get(), "Blunderbus");
+		add(Items.GUN_FLINTLOCK.get(),"Flintlock Pistol");
+		add(Items.GUN_REVOLVER.get(),"Simple Revolver");
+		add(Items.GUN_FIFTYCAL.get(),"Fifty Cal. Rifle");
+		add(Items.GUN_LENS_REVOLVER.get(), "Len's Revolver");
+
+		//Ammo
+		add(Items.SIMPLE_BULLET.get(), "Simple Bullet");
+		add(Items.PISTOL_ROUND.get(),"Pistol Round");
+		add(Items.RIFLE_ROUND.get(),"Rifle Round");
+		add(Items.SHOTGUN_SHELL.get(),"Shotgun Shell");
+		add(Items.ARTILLERY_SHELL.get(),"Artillery Shell");
+		add(Items.HE_GRENADE_SHELL.get(), "HE Grenade Round");
+		add(Items.SNIPER_ROUND.get(),"Sniper Round");
+		add(Items.ROCKET.get(),"Rocket");
 		
 		//Sounds
 		add("lensrandoms.gun_click.sub","Gun Clicks");

@@ -1,6 +1,6 @@
 package io.github.v2lenkagamine.common.capabilities;
 
-public class GunTimerData {
+public class GunTimerData{
 
 	private int reloadTime;
 	

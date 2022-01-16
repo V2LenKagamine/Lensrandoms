@@ -4,7 +4,9 @@ import io.github.v2lenkagamine.Lensrandoms;
 import io.github.v2lenkagamine.common.items.BeeCase;
 import io.github.v2lenkagamine.common.items.BlunderbusItem;
 import io.github.v2lenkagamine.common.items.BrEEfcase;
+import io.github.v2lenkagamine.common.items.FiftyCalItem;
 import io.github.v2lenkagamine.common.items.FlintlockItem;
+import io.github.v2lenkagamine.common.items.LensRevolverItem;
 import io.github.v2lenkagamine.common.items.PouchItem;
 import io.github.v2lenkagamine.common.items.RGB_Inator;
 import io.github.v2lenkagamine.common.items.RevolverItem;
@@ -30,18 +32,26 @@ public final class Items {
 	//Dungeon Loot
 	public static final RegistryObject<BeeCase> BEECASE = RegistryHelper.ITEMS.register("beecase", () -> new BeeCase(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	
-	//Bullets
+	
+	//Bullets and ammo
 	public static final RegistryObject<Item> SIMPLE_BULLET = RegistryHelper.ITEMS.register("simple_bullet", () -> new Item(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	public static final RegistryObject<Item> PISTOL_ROUND = RegistryHelper.ITEMS.register("pistol_round", () -> new Item(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	public static final RegistryObject<Item> RIFLE_ROUND = RegistryHelper.ITEMS.register("rifle_round", () -> new Item(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	public static final RegistryObject<Item> SHOTGUN_SHELL = RegistryHelper.ITEMS.register("shotgun_shell", () -> new Item(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
-	//Tactical Pouch
-	public static final RegistryObject<PouchItem> TACTICAL_POUCHES = RegistryHelper.ITEMS.register("tactical_pouches", () -> new PouchItem(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
+	public static final RegistryObject<Item> ARTILLERY_SHELL = RegistryHelper.ITEMS.register("artillery_shell", () -> new Item(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
+	public static final RegistryObject<Item> HE_GRENADE_SHELL = RegistryHelper.ITEMS.register("he_grenade_shell", () -> new Item(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
+	public static final RegistryObject<Item> SNIPER_ROUND = RegistryHelper.ITEMS.register("sniper_round", () -> new Item(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
+	public static final RegistryObject<Item> ROCKET = RegistryHelper.ITEMS.register("rocket", () -> new Item(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	
 	//GUNS
 	public static final RegistryObject<BlunderbusItem> GUN_BLUNDERBUS = RegistryHelper.ITEMS.register("gun_blunderbus", () -> new BlunderbusItem(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	public static final RegistryObject<RevolverItem> GUN_REVOLVER = RegistryHelper.ITEMS.register("gun_revolver", () -> new RevolverItem(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	public static final RegistryObject<FlintlockItem> GUN_FLINTLOCK = RegistryHelper.ITEMS.register("gun_flintlock", () -> new FlintlockItem(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
+	public static final RegistryObject<FiftyCalItem> GUN_FIFTYCAL = RegistryHelper.ITEMS.register("gun_fiftycal", () -> new FiftyCalItem(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
+	public static final RegistryObject<LensRevolverItem> GUN_LENS_REVOLVER = RegistryHelper.ITEMS.register("gun_lens_revolver", () -> new LensRevolverItem(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
+	
+	//Tactical Pouch
+	public static final RegistryObject<PouchItem> TACTICAL_POUCHES = RegistryHelper.ITEMS.register("tactical_pouches", () -> new PouchItem(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	
 	
 	//No touchy

@@ -1,9 +1,9 @@
 package io.github.v2lenkagamine.common.capabilities;
 
-public class GunAmmoData{
+public class GunAmmoData {
 
 	private int ammoIn;
-	
+	private int maxAmmo;
 	
 	public int getAmmoLeft() {
 		return ammoIn;
@@ -20,5 +20,13 @@ public class GunAmmoData{
 		int ammoNew = ammoIn + amount;
 		setAmmo(ammoNew);
 	}
-	
+	public boolean isAmmoFull() {
+		return (getAmmoLeft() == maxAmmo);
+	}
+	public void setMaxAmmo(int amount) {
+		maxAmmo = amount;
+	}
+	public int getMaxAmmo() {
+		return maxAmmo;
+	}
 }

@@ -4,6 +4,10 @@
     "lensrandoms:simple_bullet",
     "lensrandoms:pistol_round",
     "lensrandoms:shotgun_shell",
-    "lensrandoms:rifle_round"
+    "lensrandoms:rifle_round",
+    "lensrandoms:sniper_round",
+    "lensrandoms:artillery_shell",
+    "lensrandoms:he_grenade_shell",
+    "lensrandoms:rocket"
   ]
 }

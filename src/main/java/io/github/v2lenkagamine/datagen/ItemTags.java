@@ -16,11 +16,16 @@ public class ItemTags extends ItemTagsProvider{
 
 	@Override
 	protected void addTags() {
-		
+		//Add to BULLETS
 		tag(ModTags.Items.BULLETS).add(Items.SIMPLE_BULLET.get())
 		.add(Items.PISTOL_ROUND.get())
 		.add(Items.SHOTGUN_SHELL.get())
-		.add(Items.RIFLE_ROUND.get());
+		.add(Items.RIFLE_ROUND.get())
+		.add(Items.SNIPER_ROUND.get())
+		.add(Items.ARTILLERY_SHELL.get())
+		.add(Items.HE_GRENADE_SHELL.get())
+		.add(Items.ROCKET.get());
+		
 		tag(ModTags.Items.CURIO_BELT).add(Items.TACTICAL_POUCHES.get());
 	}
 }

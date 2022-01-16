@@ -52,10 +52,16 @@ public class LensRandomsItemModelProvider extends ItemModelProvider{
 		simpleItem(Items.SHOTGUN_SHELL);
 		simpleItem(Items.BREEFCASE);
 		simpleItem(Items.BEECASE);
+		simpleItem(Items.HE_GRENADE_SHELL);
+		simpleItem(Items.ROCKET);
+		simpleItem(Items.SNIPER_ROUND);
+		simpleItem(Items.ARTILLERY_SHELL);
 		
 		//Tools
 		simpleTool(Items.GUN_BLUNDERBUS);
 		simpleTool(Items.GUN_FLINTLOCK);
 		simpleTool(Items.GUN_REVOLVER);
+		simpleTool(Items.GUN_FIFTYCAL);
+		simpleTool(Items.GUN_LENS_REVOLVER);
 	}
 }

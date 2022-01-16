@@ -1,9 +1,13 @@
 package io.github.v2lenkagamine.common;
 
+import java.util.List;
+import java.util.function.Predicate;
+
 import org.apache.logging.log4j.LogManager;
 
 import io.github.v2lenkagamine.Lensrandoms;
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
@@ -19,8 +23,10 @@ public class LensRandomsConfig {
 	public static final String CATEGORY_CLIENT = "Client";
 	public static final String CATEGORY_COMMON = "Common";
 	
-	public static ForgeConfigSpec.ConfigValue<Double> DAMAGE_MULTI;
+	public static Predicate<Object> isAString = x -> x instanceof String;
 	
+	public static ForgeConfigSpec.ConfigValue<Double> DAMAGE_MULTI;
+	public static ConfigValue<List<? extends String>> BADMIN_NAMES;
 	
 	static {
 		ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
@@ -50,6 +56,12 @@ public class LensRandomsConfig {
 		DAMAGE_MULTI = builder
 				.comment("Think this mod is too weak? Crank up the damage! default:1 Range: 0.1 to 10 Type: Double")
 				.defineInRange("damageMulti", 1.0, 0.1, 10.0);
+		
+		BADMIN_NAMES = builder
+				.comment("A list of 'Badmins', allows some funni features of the mod,like infinite ammo for 'Lens revolver'.")
+				.comment("These people ARE NOT ADMINS/OP.")
+				.comment("Default: LenKagamine,Type: List of Strings")
+				.<String>defineListAllowEmpty(List.of("badmins"),() -> List.of("LenKagamine") , isAString);
 		
 		builder.pop();
 		

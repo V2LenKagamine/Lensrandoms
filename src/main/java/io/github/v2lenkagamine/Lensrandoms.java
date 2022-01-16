@@ -15,6 +15,7 @@ import io.github.v2lenkagamine.core.util.RegistryHelper;
 import io.github.v2lenkagamine.datagen.BlockTags;
 import io.github.v2lenkagamine.datagen.ItemTags;
 import io.github.v2lenkagamine.datagen.LensRandomsBlockStateProvider;
+import io.github.v2lenkagamine.datagen.LensRandomsDungeonLootGenerator;
 import io.github.v2lenkagamine.datagen.LensRandomsItemModelProvider;
 import io.github.v2lenkagamine.datagen.LensRandomsLangauge;
 import io.github.v2lenkagamine.datagen.LensRandomsLootTableProvider;
@@ -70,6 +71,7 @@ public class Lensrandoms {
 			  gen.addProvider(blockTags);
 			  gen.addProvider(new ItemTags(gen,blockTags,helper));
 			  gen.addProvider(new LensRandomsSounds(gen,helper));
+			  gen.addProvider(new LensRandomsDungeonLootGenerator(gen, MOD_ID));
 		  }
 	  }
 	
