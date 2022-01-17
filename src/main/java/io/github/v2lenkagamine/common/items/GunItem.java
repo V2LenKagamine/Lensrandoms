@@ -96,11 +96,11 @@ public abstract class GunItem extends Item{
 	public void reload(ItemStack stack,LivingEntity ent,int cooldown,int maxAmmo,ItemStack ammoType,Boolean doConsume) {
 		GunAmmoData gunAmmoCap = stack.getCapability(TimerAmmoCapabilityProvider.GUN_AMMO_CAPABILITY).resolve().get();
 		GunTimerData gunTimerCap = stack.getCapability(TimerAmmoCapabilityProvider.GUN_TIMER_CAPABILITY).resolve().get();
+		int ammoCons = gunAmmoCap.getMaxAmmo() - gunAmmoCap.getAmmoLeft();
 		if (gunAmmoCap.getMaxAmmo()==0) {
 			gunAmmoCap.setMaxAmmo(maxAmmo);
 		}
-		if (gunAmmoCap.getAmmoLeft() < gunAmmoCap.getMaxAmmo()) {
-			int ammoCons = gunAmmoCap.getMaxAmmo() - gunAmmoCap.getAmmoLeft();
+		if (gunAmmoCap.getAmmoLeft() < gunAmmoCap.getMaxAmmo() && doConsume) {
 			if(ItemUtil.lookInPouches(ent, ammoType, doConsume, ammoCons)) {
 				gunAmmoCap.addAmmo(ammoCons);
 				gunTimerCap.setTimerTicks(cooldown);
@@ -112,6 +112,11 @@ public abstract class GunItem extends Item{
 				stack.setDamageValue(0);
 			}
 		}
+		else {
+			gunAmmoCap.addAmmo(ammoCons);
+			gunTimerCap.setTimerTicks(cooldown);
+			stack.setDamageValue(0);
+		}
 	}
 	
 	public InteractionResultHolder<ItemStack> fireWeapon(Player playerIn,Level worldIn,InteractionHand handIn,int maxAmmo,int reloadCdTicks,int shotCdTicks,int range,int minDmg,int maxDmg,RegistryObject<Item> ammoType,boolean pierce,boolean doConsume) {
@@ -119,7 +124,7 @@ public abstract class GunItem extends Item{
 	LazyOptional<GunTimerData> capTimer = item.getCapability(TimerAmmoCapabilityProvider.GUN_TIMER_CAPABILITY);
 	LazyOptional<GunAmmoData> capAmmo = item.getCapability(TimerAmmoCapabilityProvider.GUN_AMMO_CAPABILITY);
 	if (playerIn.isCrouching()) {
-		if (doConsume) {reload(item,playerIn,reloadCdTicks,maxAmmo,new ItemStack(ammoType.get()), true);}
+		if(doConsume){reload(item,playerIn,reloadCdTicks,maxAmmo,new ItemStack(ammoType.get()), true);}
 		else reload(item,playerIn,reloadCdTicks,maxAmmo,new ItemStack(ammoType.get()), false);
 		return super.use(worldIn, playerIn, handIn);
 	}
@@ -141,10 +146,11 @@ public abstract class GunItem extends Item{
 		}
 	return super.use(worldIn, playerIn, handIn);
 }
+	
 	public boolean usesAmmo(List<? extends String> noAmmoList,String name) {
 		Boolean nameMatches = false;
 		for(String string : noAmmoList) {
-			if (string == name)  {
+			if (string.equals(name))  {
 				nameMatches = true;
 				break;
 			} 

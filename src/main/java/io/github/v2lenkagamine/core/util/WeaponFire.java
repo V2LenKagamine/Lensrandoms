@@ -20,15 +20,14 @@ public class WeaponFire {
 		double distance = Math.pow(range, 2);
 		int damage = RandomBetween.randBetween(minDamage, maxDamage);
 		
-		HitResult result = playerIn.pick(distance, 1.0F, false);
+		Predicate<Entity> pred = entity -> entity instanceof LivingEntity && !entity.isSpectator();
+		HitResult result = ProjectileUtil.getHitResult(playerIn, pred);
 		Vec3 look = playerIn.getLookAngle();
 		Vec3 start = new Vec3(playerIn.getX(),playerIn.getY() + playerIn.getEyeHeight(),playerIn.getZ());
 		Vec3 end = new Vec3(playerIn.getX() + look.x * (double) distance, playerIn.getY() + playerIn.getEyeHeight() + look.y * (double) distance, playerIn.getZ() + look.z * (double) distance);
 		if (result.getType() != Type.MISS ) {
 			end = result.getLocation();
-			}
-		Predicate<Entity> pred = entity -> entity instanceof LivingEntity && !entity.isSpectator();
-		end = result.getLocation();
+		}
 		AABB box = playerIn.getBoundingBox();
 		EntityHitResult hitresult = ProjectileUtil.getEntityHitResult(playerIn, start, end, box.expandTowards(look.scale(distance)), pred, distance);
 		
@@ -42,15 +41,15 @@ public class WeaponFire {
 		double distance = Math.pow(range, 2);
 		int damage = RandomBetween.randBetween(minDamage, maxDamage);
 		
-		HitResult result = playerIn.pick(distance, 1.0F, false);
+		Predicate<Entity> pred = entity -> entity instanceof LivingEntity && !entity.isSpectator();
+		HitResult result = ProjectileUtil.getHitResult(playerIn, pred);
 		Vec3 look = playerIn.getLookAngle();
 		Vec3 start = new Vec3(playerIn.getX(),playerIn.getY() + playerIn.getEyeHeight(),playerIn.getZ());
 		Vec3 end = new Vec3(playerIn.getX() + look.x * (double) distance, playerIn.getY() + playerIn.getEyeHeight() + look.y * (double) distance, playerIn.getZ() + look.z * (double) distance);
 		if (result.getType() != Type.MISS ) {
 			end = result.getLocation();
 			}
-		Predicate<Entity> pred = entity -> entity instanceof LivingEntity && !entity.isSpectator();
-		end = result.getLocation();
+
 		AABB box = playerIn.getBoundingBox();
 		List<EntityHitResult> hitlist = RayTraceList.rayTraceEntityList(playerIn.level, playerIn, start, end, box.expandTowards(look.scale(distance)), pred);
 		for (EntityHitResult hitresult : hitlist) {

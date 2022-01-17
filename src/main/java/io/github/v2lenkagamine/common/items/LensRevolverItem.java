@@ -23,7 +23,7 @@ public class LensRevolverItem extends GunItem{
 	public static int minDmg = Math.toIntExact(Math.round(8*LensRandomsConfig.DAMAGE_MULTI.get()));
 	public static RegistryObject<Item> ammoType = Items.PISTOL_ROUND;
 	public static Boolean pierce = true;
-	public static Boolean usesAmmo = true;
+	public Boolean usesAmmo = true;
 	public static List<? extends String> noAmmoList = LensRandomsConfig.BADMIN_NAMES.get();
 	public LensRevolverItem(Properties properties) {
 		super(properties, maxAmmo);
