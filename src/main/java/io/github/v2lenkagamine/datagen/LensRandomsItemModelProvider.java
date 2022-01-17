@@ -63,5 +63,6 @@ public class LensRandomsItemModelProvider extends ItemModelProvider{
 		simpleTool(Items.GUN_REVOLVER);
 		simpleTool(Items.GUN_FIFTYCAL);
 		simpleTool(Items.GUN_LENS_REVOLVER);
+		simpleTool(Items.GUN_LASER_PISTOL);
 	}
 }

@@ -1,16 +1,37 @@
 package io.github.v2lenkagamine.common.capabilities;
 
-import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class LensEnergyData implements IEnergyStorage,INBTSerializable<CompoundTag>{
+public class LensEnergyData implements IEnergyStorage{
 
     protected int energy;
     protected int capacity;
     protected int maxReceive;
     protected int maxExtract;
 	
+    public LensEnergyData() {
+    	this(0,0,0,0);
+    }
+    
+    public LensEnergyData(int capacity) {
+    	this(capacity,0,0,0);
+    }
+    
+    public LensEnergyData(int capacity,int energy) {
+    	this(capacity,energy,0,0);
+    }
+    
+    public LensEnergyData(int capacity,int energy,int transfer) {
+    	this(capacity,energy,transfer,transfer);
+    }
+
+   public LensEnergyData(int capacity,int energy,int maxReceive,int maxExtract) {
+    	this.energy = energy;
+    	this.capacity = capacity;
+    	this.maxReceive = maxReceive;
+    	this.maxExtract = maxExtract;
+    }
+    
 	@Override
 	public int receiveEnergy(int maxReceive, boolean simulate) {
         if (!canReceive())
@@ -49,6 +70,22 @@ public class LensEnergyData implements IEnergyStorage,INBTSerializable<CompoundT
 		this.energy = newEnergy;
 	}
 	
+	public void removeEnergy(int amount) {
+		this.energy = getEnergyStored()-amount;
+	}
+	
+	public void addEnergy(int amount) {
+		this.energy = getEnergyStored()+amount;
+	}
+	
+	public int getReceive() {
+		return this.maxReceive;
+	}
+	
+	public int getExtract() {
+		return this.maxExtract;
+	}
+	
 	@Override
 	public int getEnergyStored() {
 		return energy;
@@ -58,7 +95,7 @@ public class LensEnergyData implements IEnergyStorage,INBTSerializable<CompoundT
 	public int getMaxEnergyStored() {
 		return capacity;
 	}
-
+	
 	@Override
 	public boolean canExtract() {
 		return this.maxExtract > 0;
@@ -68,17 +105,4 @@ public class LensEnergyData implements IEnergyStorage,INBTSerializable<CompoundT
 	public boolean canReceive() {
 		return this.maxReceive > 0;
 	}
-
-	@Override
-	public CompoundTag serializeNBT() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deserializeNBT(CompoundTag nbt) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

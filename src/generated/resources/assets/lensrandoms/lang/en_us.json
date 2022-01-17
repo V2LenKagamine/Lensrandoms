@@ -1,4 +1,5 @@
 {
+  "block.lensrandoms.charger": "Item Charger",
   "block.lensrandoms.clearglass": "Clear Glass",
   "block.lensrandoms.clearglass_border": "Bordered Clear Glass",
   "block.lensrandoms.clearglass_border_glow": "Glowing Bordered Clear Glass",
@@ -19,7 +20,9 @@
   "item.lensrandoms.beecase": "BeeCase",
   "item.lensrandoms.breefcase": "BrEEfcase",
   "item.lensrandoms.gun_blunderbus": "Blunderbus",
+  "item.lensrandoms.gun_fiftycal": "Fifty Cal. Rifle",
   "item.lensrandoms.gun_flintlock": "Flintlock Pistol",
+  "item.lensrandoms.gun_laser_pistol": "Laser Pistol",
   "item.lensrandoms.gun_lens_revolver": "Len's Revolver",
   "item.lensrandoms.gun_revolver": "Simple Revolver",
   "item.lensrandoms.he_grenade_shell": "HE Grenade Round",
@@ -41,6 +44,7 @@
   "lensrandoms.reload_base.sub": "Gun Reloads",
   "lensrandoms.shot_base.sub": "Gun Fires",
   "screen.lensrandoms.bulletpouch": "Tactical Pouches",
+  "screen.lensrandoms.charger": "Item Charger",
   "tooltip.breefcase.breefcase": "\u00A7cCreator not responsible for damages caused.",
   "tooltip.rgb_inator.rgb_inator": "When in Offhand, changes the color of placed RGBlocks."
 }

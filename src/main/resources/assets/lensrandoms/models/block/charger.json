@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "lensrandoms:block/charger",
+    "end": "lensrandoms:block/charger_end"
+  }
+}

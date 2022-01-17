@@ -34,6 +34,7 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add(Blocks.CLEARGLASS_BORDER.get(),"Bordered Clear Glass");
 		add(Blocks.CLEARGLASS_GLOW.get(),"Glowing Clear Glass");
 		add(Blocks.CLEARGLASS_BORDER_GLOW.get(),"Glowing Bordered Clear Glass");
+		add(Blocks.CHARGER.get(), "Item Charger");
 		
 		//Items
 		add(Items.TEST_APPLE.get(),"The Apple of Testing");
@@ -49,6 +50,9 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add(Items.GUN_REVOLVER.get(),"Simple Revolver");
 		add(Items.GUN_FIFTYCAL.get(),"Fifty Cal. Rifle");
 		add(Items.GUN_LENS_REVOLVER.get(), "Len's Revolver");
+		
+		//Energy Guns
+		add(Items.GUN_LASER_PISTOL.get(),"Laser Pistol");
 
 		//Ammo
 		add(Items.SIMPLE_BULLET.get(), "Simple Bullet");
@@ -73,6 +77,7 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add("tooltip.rgb_inator.rgb_inator", "When in Offhand, changes the color of placed RGBlocks.");
 		add("itemGroup.lensrandomstab","Len's Randoms Stuff");
 		add("screen.lensrandoms.bulletpouch","Tactical Pouches");
+		add("screen.lensrandoms.charger","Item Charger");
 		
 	}
 }

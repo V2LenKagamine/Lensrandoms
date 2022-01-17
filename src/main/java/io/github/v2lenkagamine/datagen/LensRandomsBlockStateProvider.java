@@ -37,6 +37,7 @@ public class LensRandomsBlockStateProvider extends BlockStateProvider {
 		simpleBlock(Blocks.CLEARGLASS_BORDER.get());
 		simpleBlock(Blocks.CLEARGLASS_GLOW.get(),model(Blocks.CLEARGLASS.getId()));
 		simpleBlock(Blocks.CLEARGLASS_BORDER_GLOW.get(),model(Blocks.CLEARGLASS_BORDER.getId()));
+		simplePillar(Blocks.CHARGER.get(), "charger");
 	
 	}
 
@@ -61,11 +62,16 @@ public class LensRandomsBlockStateProvider extends BlockStateProvider {
 		simpleBlockItem(block,model(key));
 	}
 	 private void simpleStairs(StairBlock block,ModelFile model) {
-	        ResourceLocation key = block.getRegistryName();
-	        this.stairsBlock(block, model(key), model(suffixPath(key, "_inner")), model(suffixPath(key, "_outer")));
-	        simpleBlockItem(block,model(key));
-	    }
-	
+	    ResourceLocation key = block.getRegistryName();
+	    this.stairsBlock(block, model(key), model(suffixPath(key, "_inner")), model(suffixPath(key, "_outer")));
+	    simpleBlockItem(block,model(key));
+	}
+	private void simplePillar(Block block,String string) {
+		ResourceLocation key = block.getRegistryName();
+		
+		ModelFile model = models().cubeColumn(string, prefixPath(key, "block/"),suffixPath(prefixPath(key,"block/"), "_end"));
+		this.simpleBlock(block,model);
+	}
 	
 	
 	

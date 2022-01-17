@@ -1,6 +1,7 @@
 package io.github.v2lenkagamine.core.init;
 
 import io.github.v2lenkagamine.Lensrandoms;
+import io.github.v2lenkagamine.common.tileentity.ChargerTE;
 import io.github.v2lenkagamine.common.tileentity.RGBlockTE;
 import io.github.v2lenkagamine.core.init.blocks.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -17,6 +18,6 @@ public class TileEntityTypes {
 			Blocks.RGBLOCK_BRICK.get(),Blocks.RGBLOCK_BRICK_GLOW.get(),Blocks.RGBLOCK_BRICK_SLAB.get(),Blocks.RGBLOCK_BRICK_STAIR.get(),Blocks.RGBLOCK_GLASS.get(),Blocks.RGBLOCK_GLASS_BORDER.get()
 			,Blocks.RGBLOCK_GLASS_BORDER_GLOW.get(),Blocks.RGBLOCK_GLASS_GLOW.get()).build(null));
 	
-	
+	public static final RegistryObject<BlockEntityType<ChargerTE>> CHARGERTE = BLOCK_ENTITY_TYPE.register("charger", () -> BlockEntityType.Builder.of(ChargerTE::new, Blocks.CHARGER.get()).build(null));
 	
 }

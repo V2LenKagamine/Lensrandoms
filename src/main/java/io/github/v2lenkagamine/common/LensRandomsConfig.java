@@ -58,9 +58,10 @@ public class LensRandomsConfig {
 				.defineInRange("damageMulti", 1.0, 0.1, 10.0);
 		
 		BADMIN_NAMES = builder
-				.comment("A list of 'Badmins', allows some funni features of the mod,like infinite ammo for 'Lens revolver'.")
-				.comment("These people ARE NOT ADMINS/OP.")
-				.comment("Default: LenKagamine,Type: List of Strings")
+				.comment("A list of 'Badmins', allows some funni features of the mod,like infinite ammo for 'Lens revolver'."
+						+ "Seperate with commas."
+						+ "These people ARE NOT ADMINS OR OP."
+						+ "Default: LenKagamine,Type: List of Strings")
 				.<String>defineListAllowEmpty(List.of("badmins"),() -> List.of("LenKagamine") , isAString);
 		
 		builder.pop();

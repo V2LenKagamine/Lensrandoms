@@ -6,6 +6,7 @@ import io.github.v2lenkagamine.common.items.BlunderbusItem;
 import io.github.v2lenkagamine.common.items.BrEEfcase;
 import io.github.v2lenkagamine.common.items.FiftyCalItem;
 import io.github.v2lenkagamine.common.items.FlintlockItem;
+import io.github.v2lenkagamine.common.items.LaserPistol;
 import io.github.v2lenkagamine.common.items.LensRevolverItem;
 import io.github.v2lenkagamine.common.items.PouchItem;
 import io.github.v2lenkagamine.common.items.RGB_Inator;
@@ -49,6 +50,9 @@ public final class Items {
 	public static final RegistryObject<FlintlockItem> GUN_FLINTLOCK = RegistryHelper.ITEMS.register("gun_flintlock", () -> new FlintlockItem(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	public static final RegistryObject<FiftyCalItem> GUN_FIFTYCAL = RegistryHelper.ITEMS.register("gun_fiftycal", () -> new FiftyCalItem(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	public static final RegistryObject<LensRevolverItem> GUN_LENS_REVOLVER = RegistryHelper.ITEMS.register("gun_lens_revolver", () -> new LensRevolverItem(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
+	
+	//Energy Guns
+	public static final RegistryObject<LaserPistol> GUN_LASER_PISTOL = RegistryHelper.ITEMS.register("gun_laser_pistol", () -> new LaserPistol(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));
 	
 	//Tactical Pouch
 	public static final RegistryObject<PouchItem> TACTICAL_POUCHES = RegistryHelper.ITEMS.register("tactical_pouches", () -> new PouchItem(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)));

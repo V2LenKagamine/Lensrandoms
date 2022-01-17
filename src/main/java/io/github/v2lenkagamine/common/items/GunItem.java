@@ -4,7 +4,9 @@ import java.util.List;
 
 import io.github.v2lenkagamine.common.capabilities.GunAmmoData;
 import io.github.v2lenkagamine.common.capabilities.GunTimerData;
+import io.github.v2lenkagamine.common.capabilities.LensEnergyData;
 import io.github.v2lenkagamine.common.capabilities.TimerAmmoCapabilityProvider;
+import io.github.v2lenkagamine.common.capabilities.TimerEnergyCapabilityProvider;
 import io.github.v2lenkagamine.core.init.Sounds;
 import io.github.v2lenkagamine.core.util.ItemUtil;
 import io.github.v2lenkagamine.core.util.WeaponFire;
@@ -53,18 +55,25 @@ public abstract class GunItem extends Item{
 	public void inventoryTick(ItemStack stack, Level worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 		
 		if(isSelected) {
-			LazyOptional<GunTimerData> lazyCap = stack.getCapability(TimerAmmoCapabilityProvider.GUN_TIMER_CAPABILITY);
+			LazyOptional<GunTimerData> timerCap = stack.getCapability(TimerAmmoCapabilityProvider.GUN_TIMER_CAPABILITY);
 			LazyOptional<GunAmmoData> ammoCap = stack.getCapability(TimerAmmoCapabilityProvider.GUN_AMMO_CAPABILITY);
-			if (lazyCap.isPresent())
+			LazyOptional<LensEnergyData> energyCap = stack.getCapability(TimerEnergyCapabilityProvider.GUN_ENERGY_CAPABILITY);
+			if (ammoCap.isPresent())
 			{
-				if (lazyCap.resolve().get().getTimerTicks() == 1 && ammoCap.resolve().get().isAmmoFull()) {
+				if (timerCap.resolve().get().getTimerTicks() == 1 && ammoCap.resolve().get().isAmmoFull()) {
 					if (entityIn instanceof Player player && !player.isCreative()) {playReload(player,worldIn);}
 					else
 					playReload(entityIn, worldIn);
 				}
-				if (lazyCap.resolve().get().getTimerTicks() > 0) 
+				if (timerCap.resolve().get().getTimerTicks() > 0) 
 				{
-					lazyCap.resolve().get().timerDown();
+					timerCap.resolve().get().timerDown();
+				}
+			}
+			if (energyCap.isPresent()) {
+				if (timerCap.resolve().get().getTimerTicks() > 0) 
+				{
+					timerCap.resolve().get().timerDown();
 				}
 			}
 		}		

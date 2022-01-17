@@ -1,8 +1,9 @@
-package io.github.v2lenkagamine.common.items;
+package io.github.v2lenkagamine.common.containers;
 
 import javax.annotation.Nonnull;
 
 import io.github.v2lenkagamine.client.util.ModTags;
+import io.github.v2lenkagamine.common.items.PouchItem;
 import io.github.v2lenkagamine.common.util.LockedSlot;
 import io.github.v2lenkagamine.core.init.ContainersInit;
 import io.github.v2lenkagamine.core.items.Items;
