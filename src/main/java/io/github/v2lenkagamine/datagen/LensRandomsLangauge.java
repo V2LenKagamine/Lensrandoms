@@ -35,6 +35,7 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add(Blocks.CLEARGLASS_GLOW.get(),"Glowing Clear Glass");
 		add(Blocks.CLEARGLASS_BORDER_GLOW.get(),"Glowing Bordered Clear Glass");
 		add(Blocks.CHARGER.get(), "Item Charger");
+		add(Blocks.GUNSMITHING_TABLE.get(),"Gunsmithing Table");
 		
 		//Items
 		add(Items.TEST_APPLE.get(),"The Apple of Testing");
@@ -69,6 +70,8 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add("lensrandoms.breefcase.sub", "Someone throws a briefcase of bees");
 		add("lensrandoms.reload_base.sub","Gun Reloads");
 		add("lensrandoms.shot_base.sub", "Gun Fires");
+		add("lensrandoms.fifty_cal.sub","50. Cal. fires");
+		add ("lensrandoms.laser_base.sub","Energy Weapon fires");
 	
 		//Misc
 		add("lensrandoms.gui.done","Done");
@@ -78,6 +81,9 @@ public class LensRandomsLangauge extends LanguageProvider{
 		add("itemGroup.lensrandomstab","Len's Randoms Stuff");
 		add("screen.lensrandoms.bulletpouch","Tactical Pouches");
 		add("screen.lensrandoms.charger","Item Charger");
-		
+		add("screen.lensrandoms.gunsmithingtable","Gunsmithing Table");
+		add("container.lensrandoms.gunsmithingtable","Gunsmithing Table");
+		add("lensrandoms.gui.craftgun","Craft Weapon");		
+		add("lensrandoms.gui.show_remaining", "Show Remaining");
 	}
 }

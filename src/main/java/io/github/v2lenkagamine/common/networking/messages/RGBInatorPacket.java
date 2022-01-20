@@ -1,4 +1,4 @@
-package io.github.v2lenkagamine.common.networking;
+package io.github.v2lenkagamine.common.networking.messages;
 
 import java.util.function.Supplier;
 
@@ -11,6 +11,7 @@ public class RGBInatorPacket {
     private final int R;
     private final int G;
     private final int B;
+    
        public RGBInatorPacket(FriendlyByteBuf buf) {
            R = buf.readInt();
            G = buf.readInt();

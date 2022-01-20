@@ -3,6 +3,7 @@ package io.github.v2lenkagamine.client.util;
 import io.github.v2lenkagamine.Lensrandoms;
 import io.github.v2lenkagamine.client.gui.BulletPouchScreen;
 import io.github.v2lenkagamine.client.gui.ChargerScreen;
+import io.github.v2lenkagamine.client.gui.GunSmithingTableScreen;
 import io.github.v2lenkagamine.core.init.ContainersInit;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
@@ -18,5 +19,6 @@ public class ClientEventBusSubscriber {
 	public static void clientSetup(FMLClientSetupEvent event) {
 		MenuScreens.register(ContainersInit.BULLET_POUCH_CONTAINER.get(),BulletPouchScreen::new);
 		MenuScreens.register(ContainersInit.CHARGER_CONTAINER.get(),ChargerScreen::new);
+		MenuScreens.register(ContainersInit.GUNSMITHINGTABLE_CONTAINER.get(), GunSmithingTableScreen::new);
 	}
 }

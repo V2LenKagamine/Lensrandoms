@@ -23,6 +23,8 @@ public class LensRandomsSounds extends SoundDefinitionsProvider{
 		addSoundSubtitled(Sounds.BREEFCASE,fileLoc("breefcase"));
 		addSoundSubtitled(Sounds.RELOAD_BASE,fileLoc("reload_base"));
 		addSoundSubtitled(Sounds.SHOT_BASE,fileLoc("shot_base"));
+		addSoundSubtitled(Sounds.FIFTY_CAL, fileLoc("fifty_cal"));
+		addSoundSubtitled(Sounds.LASER_BASE, fileLoc("laser_base"));
 	}
 
 

@@ -1,4 +1,4 @@
-package io.github.v2lenkagamine.common.networking;
+package io.github.v2lenkagamine.common.networking.messages;
 
 import java.util.Objects;
 import java.util.function.Supplier;

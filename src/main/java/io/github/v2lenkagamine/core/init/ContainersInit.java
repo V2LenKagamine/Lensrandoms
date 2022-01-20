@@ -3,6 +3,7 @@ package io.github.v2lenkagamine.core.init;
 import io.github.v2lenkagamine.Lensrandoms;
 import io.github.v2lenkagamine.common.containers.BulletPouchContainer;
 import io.github.v2lenkagamine.common.containers.ChargerContainer;
+import io.github.v2lenkagamine.common.containers.GunSmithingTableContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.Level;
@@ -19,6 +20,11 @@ public class ContainersInit {
 		BlockPos pos = data.readBlockPos();
 		Level world = playerInv.player.getCommandSenderWorld();
 		return new ChargerContainer(id,world,pos,playerInv,playerInv.player);
+		}));
+	public static final RegistryObject<MenuType<GunSmithingTableContainer>> GUNSMITHINGTABLE_CONTAINER = CONTAINERS.register("gun_smithing_table", () -> IForgeMenuType.create((id,playerInv,data) -> {
+		BlockPos pos = data.readBlockPos();
+		Level world = playerInv.player.getCommandSenderWorld();
+		return new GunSmithingTableContainer(id,world,pos,playerInv,playerInv.player);
 		}));
 	public static final RegistryObject<MenuType<BulletPouchContainer>> BULLET_POUCH_CONTAINER = CONTAINERS.register("bullet_pouch", () -> IForgeMenuType.create((id,playerInv,data) -> {return new BulletPouchContainer(id, playerInv);}));
 }

@@ -21,6 +21,7 @@ public class LensRandomsBlockLootTables extends BlockLoot {
 		this.dropSelf(Blocks.RGBLOCK_BRICK_SLAB.get());
 		this.dropSelf(Blocks.RGBLOCK_BRICK_STAIR.get());
 		this.dropSelf(Blocks.CHARGER.get());
+		this.dropSelf(Blocks.GUNSMITHING_TABLE.get());
 
 		
 		//Glasslikes

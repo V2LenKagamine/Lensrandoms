@@ -102,6 +102,7 @@ public abstract class GunItem extends Item{
 		world.playSound(player, ent.blockPosition(), Sounds.SHOT_BASE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
 		}
 	}
+	
 	public void reload(ItemStack stack,LivingEntity ent,int cooldown,int maxAmmo,ItemStack ammoType,Boolean doConsume) {
 		GunAmmoData gunAmmoCap = stack.getCapability(TimerAmmoCapabilityProvider.GUN_AMMO_CAPABILITY).resolve().get();
 		GunTimerData gunTimerCap = stack.getCapability(TimerAmmoCapabilityProvider.GUN_TIMER_CAPABILITY).resolve().get();
@@ -115,7 +116,7 @@ public abstract class GunItem extends Item{
 				gunTimerCap.setTimerTicks(cooldown);
 				stack.setDamageValue(0);
 			}
-			else if(ItemUtil.getPlayerItem(ent, ammoType, doConsume, ammoCons)) {
+			else if(ItemUtil.getPlayerItemStack(ent, ammoType, doConsume, ammoCons)) {
 				gunAmmoCap.addAmmo(ammoCons);
 				gunTimerCap.setTimerTicks(cooldown);
 				stack.setDamageValue(0);

@@ -29,5 +29,6 @@ public static class Items {
 	
 	public static final Tag.Named<Item> BULLETS = createTag("bullets");
 	public static final Tag.Named<Item> CURIO_BELT = createCuriosTag("belt");
+	public static final Tag.Named<Item> GUNS = createTag("guns");
 }
 }

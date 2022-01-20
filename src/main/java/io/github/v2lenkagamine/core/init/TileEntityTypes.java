@@ -2,6 +2,7 @@ package io.github.v2lenkagamine.core.init;
 
 import io.github.v2lenkagamine.Lensrandoms;
 import io.github.v2lenkagamine.common.tileentity.ChargerTE;
+import io.github.v2lenkagamine.common.tileentity.GunSmithingTableTE;
 import io.github.v2lenkagamine.common.tileentity.RGBlockTE;
 import io.github.v2lenkagamine.core.init.blocks.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -19,5 +20,6 @@ public class TileEntityTypes {
 			,Blocks.RGBLOCK_GLASS_BORDER_GLOW.get(),Blocks.RGBLOCK_GLASS_GLOW.get()).build(null));
 	
 	public static final RegistryObject<BlockEntityType<ChargerTE>> CHARGERTE = BLOCK_ENTITY_TYPE.register("charger", () -> BlockEntityType.Builder.of(ChargerTE::new, Blocks.CHARGER.get()).build(null));
+	public static final RegistryObject<BlockEntityType<GunSmithingTableTE>> GUNSMITHINGTABLETE = BLOCK_ENTITY_TYPE.register("gunsmithingtable", () -> BlockEntityType.Builder.of(GunSmithingTableTE::new, Blocks.GUNSMITHING_TABLE.get()).build(null));
 	
 }

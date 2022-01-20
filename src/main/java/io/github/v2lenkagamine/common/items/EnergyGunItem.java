@@ -4,10 +4,13 @@ import io.github.v2lenkagamine.common.capabilities.GunTimerData;
 import io.github.v2lenkagamine.common.capabilities.LensEnergyData;
 import io.github.v2lenkagamine.common.capabilities.TimerAmmoCapabilityProvider;
 import io.github.v2lenkagamine.common.capabilities.TimerEnergyCapabilityProvider;
+import io.github.v2lenkagamine.core.init.Sounds;
 import io.github.v2lenkagamine.core.util.WeaponFire;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -34,6 +37,15 @@ public class EnergyGunItem extends GunItem{
 		{return (pStack.getCapability(TimerEnergyCapabilityProvider.GUN_ENERGY_CAPABILITY).resolve().get().getEnergyStored() > 1);}
 		else return false;
 	   }
+	
+	@Override
+	public void playShot(Entity ent,Level world) {
+		Player player = null;
+		if(ent instanceof Player) {
+		player = (Player) ent;
+		world.playSound(player, ent.blockPosition(), Sounds.LASER_BASE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+		}
+	}
 	
 	public InteractionResultHolder<ItemStack> fireEWeapon(Player playerIn,Level worldIn,InteractionHand handIn,int energyPerShot,int shotCdTicks,int range,int minDmg,int maxDmg,boolean pierce,boolean doConsume) {
 		ItemStack item = playerIn.getItemInHand(handIn);

@@ -32,7 +32,8 @@ public class Blocks {
 	public static final RegistryObject<Block> CLEARGLASS_BORDER_GLOW = RegistryHelper.BLOCKS.register("clearglass_border_glow", ClearGlassBorder_Glow::new);
 	
 	//Charger
-	public static final RegistryObject<Block> CHARGER = RegistryHelper.BLOCKS.register("charger", ChargeBlock::new);;
+	public static final RegistryObject<Block> CHARGER = RegistryHelper.BLOCKS.register("charger", ChargeBlock::new);
+	public static final RegistryObject<Block> GUNSMITHING_TABLE = RegistryHelper.BLOCKS.register("gunsmithing_table", GunSmithingTable::new);
 	
 	//No touchy
 	public static void register() {}

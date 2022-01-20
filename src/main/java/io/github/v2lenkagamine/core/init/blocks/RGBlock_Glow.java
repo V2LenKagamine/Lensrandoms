@@ -6,8 +6,8 @@ import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import io.github.v2lenkagamine.common.networking.ChangeColorPacket;
 import io.github.v2lenkagamine.common.networking.Networking;
+import io.github.v2lenkagamine.common.networking.messages.ChangeColorPacket;
 import io.github.v2lenkagamine.common.tileentity.RGBlockTE;
 import io.github.v2lenkagamine.core.items.Items;
 import net.minecraft.core.BlockPos;

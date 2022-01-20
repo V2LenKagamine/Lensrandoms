@@ -38,6 +38,7 @@ public class LensRandomsBlockStateProvider extends BlockStateProvider {
 		simpleBlock(Blocks.CLEARGLASS_GLOW.get(),model(Blocks.CLEARGLASS.getId()));
 		simpleBlock(Blocks.CLEARGLASS_BORDER_GLOW.get(),model(Blocks.CLEARGLASS_BORDER.getId()));
 		simplePillar(Blocks.CHARGER.get(), "charger");
+		simplePillar(Blocks.GUNSMITHING_TABLE.get(), "gunsmithing_table");
 	
 	}
 

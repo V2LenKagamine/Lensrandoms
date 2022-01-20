@@ -4,7 +4,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 import io.github.v2lenkagamine.common.networking.Networking;
-import io.github.v2lenkagamine.common.networking.RGBInatorPacket;
+import io.github.v2lenkagamine.common.networking.messages.RGBInatorPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.ProgressOption;
