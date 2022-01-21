@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "lensrandoms:block/gunsmithing_table",
+    "end": "lensrandoms:block/gunsmithing_table_end"
+  }
+}

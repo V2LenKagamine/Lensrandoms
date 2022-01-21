@@ -1,0 +1,22 @@
+{
+  "type": "lensrandoms:lrnc",
+  "tool": [
+    {
+      "item": "lensrandoms:rgb_inator",
+      "count": 1
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "lensrandoms:rgblock_glass",
+      "count": 1
+    },
+    {
+      "item": "lensrandoms:rgb_inator",
+      "count": 1
+    }
+  ],
+  "result": {
+    "item": "lensrandoms:clearglass"
+  }
+}

@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraftforge.registries.RegistryObject;
 
-public class Blocks {
+public class LensBlocks {
 	
 	//Misc Blocks
 	

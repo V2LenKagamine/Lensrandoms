@@ -3,7 +3,7 @@ package io.github.v2lenkagamine.datagen;
 import java.util.function.Supplier;
 
 import io.github.v2lenkagamine.Lensrandoms;
-import io.github.v2lenkagamine.core.init.blocks.Blocks;
+import io.github.v2lenkagamine.core.init.blocks.LensBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -21,24 +21,24 @@ public class LensRandomsBlockStateProvider extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		simpleBlock(Blocks.RGBLOCK.get());
-		simpleSlab(Blocks.RGBLOCK_SLAB.get(),model(Blocks.RGBLOCK.getId()));
-		simpleStairs(Blocks.RGBLOCK_STAIR.get(),model(Blocks.RGBLOCK.getId()));
-		simpleBlock(Blocks.RGBLOCK_BRICK.get());
-		simpleSlab(Blocks.RGBLOCK_BRICK_SLAB.get(),model(Blocks.RGBLOCK_BRICK.getId()));
-		simpleStairs(Blocks.RGBLOCK_BRICK_STAIR.get(),model(Blocks.RGBLOCK_BRICK.getId()));
-		simpleBlock(Blocks.RGBLOCK_GLASS.get());
-		simpleBlock(Blocks.RGBLOCK_GLASS_BORDER.get());
-		simpleBlock(Blocks.RGBLOCK_GLOW.get(), model(Blocks.RGBLOCK.getId()));
-		simpleBlock(Blocks.RGBLOCK_BRICK_GLOW.get(), model(Blocks.RGBLOCK_BRICK.getId()));
-		simpleBlock(Blocks.RGBLOCK_GLASS_GLOW.get(), model(Blocks.RGBLOCK_GLASS.getId()));
-		simpleBlock(Blocks.RGBLOCK_GLASS_BORDER_GLOW.get(), model(Blocks.RGBLOCK_GLASS_BORDER.getId()));
-		simpleBlock(Blocks.CLEARGLASS.get());
-		simpleBlock(Blocks.CLEARGLASS_BORDER.get());
-		simpleBlock(Blocks.CLEARGLASS_GLOW.get(),model(Blocks.CLEARGLASS.getId()));
-		simpleBlock(Blocks.CLEARGLASS_BORDER_GLOW.get(),model(Blocks.CLEARGLASS_BORDER.getId()));
-		simplePillar(Blocks.CHARGER.get(), "charger");
-		simplePillar(Blocks.GUNSMITHING_TABLE.get(), "gunsmithing_table");
+		simpleBlock(LensBlocks.RGBLOCK.get());
+		simpleSlab(LensBlocks.RGBLOCK_SLAB.get(),model(LensBlocks.RGBLOCK.getId()));
+		simpleStairs(LensBlocks.RGBLOCK_STAIR.get(),model(LensBlocks.RGBLOCK.getId()));
+		simpleBlock(LensBlocks.RGBLOCK_BRICK.get());
+		simpleSlab(LensBlocks.RGBLOCK_BRICK_SLAB.get(),model(LensBlocks.RGBLOCK_BRICK.getId()));
+		simpleStairs(LensBlocks.RGBLOCK_BRICK_STAIR.get(),model(LensBlocks.RGBLOCK_BRICK.getId()));
+		simpleBlock(LensBlocks.RGBLOCK_GLASS.get());
+		simpleBlock(LensBlocks.RGBLOCK_GLASS_BORDER.get());
+		simpleBlock(LensBlocks.RGBLOCK_GLOW.get(), model(LensBlocks.RGBLOCK.getId()));
+		simpleBlock(LensBlocks.RGBLOCK_BRICK_GLOW.get(), model(LensBlocks.RGBLOCK_BRICK.getId()));
+		simpleBlock(LensBlocks.RGBLOCK_GLASS_GLOW.get(), model(LensBlocks.RGBLOCK_GLASS.getId()));
+		simpleBlock(LensBlocks.RGBLOCK_GLASS_BORDER_GLOW.get(), model(LensBlocks.RGBLOCK_GLASS_BORDER.getId()));
+		simpleBlock(LensBlocks.CLEARGLASS.get());
+		simpleBlock(LensBlocks.CLEARGLASS_BORDER.get());
+		simpleBlock(LensBlocks.CLEARGLASS_GLOW.get(),model(LensBlocks.CLEARGLASS.getId()));
+		simpleBlock(LensBlocks.CLEARGLASS_BORDER_GLOW.get(),model(LensBlocks.CLEARGLASS_BORDER.getId()));
+		simplePillar(LensBlocks.CHARGER.get(), "charger");
+		simplePillar(LensBlocks.GUNSMITHING_TABLE.get(), "gunsmithing_table");
 	
 	}
 

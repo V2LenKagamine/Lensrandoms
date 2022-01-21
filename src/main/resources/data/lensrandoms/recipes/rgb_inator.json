@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DDD",
+    "RIR",
+    " I "
+  ],
+  "key": {
+    "D": {
+      "tag": "forge:dyes"
+    },
+    "R": {
+      "tag": "forge:dusts/redstone"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "lensrandoms:rgb_inator"
+  }
+}

@@ -5,9 +5,9 @@ import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
-public class BlockTags extends BlockTagsProvider{
+public class LensBlockTags extends BlockTagsProvider{
 	
-	public BlockTags(DataGenerator generatorIn, ExistingFileHelper existingFileHelper) {
+	public LensBlockTags(DataGenerator generatorIn, ExistingFileHelper existingFileHelper) {
 		super(generatorIn,Lensrandoms.MOD_ID,existingFileHelper);
 	}
 	@Override

@@ -1,7 +1,7 @@
 package io.github.v2lenkagamine.common.items;
 
 import io.github.v2lenkagamine.common.LensRandomsConfig;
-import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.items.LensItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -18,7 +18,7 @@ public class BlunderbusItem extends GunItem{
 	public static int range = 5;
 	public static int maxDmg = Math.toIntExact(Math.round(5*LensRandomsConfig.DAMAGE_MULTI.get()));
 	public static int minDmg = Math.toIntExact(Math.round(2*LensRandomsConfig.DAMAGE_MULTI.get()));
-	public static RegistryObject<Item> ammoType = Items.SIMPLE_BULLET;
+	public static RegistryObject<Item> ammoType = LensItems.SIMPLE_BULLET;
 	public static Boolean pierce = true;
 	public static Boolean usesAmmo = true;
 	

@@ -2,7 +2,7 @@ package io.github.v2lenkagamine.common.containers;
 
 import io.github.v2lenkagamine.common.tileentity.GunSmithingTableTE;
 import io.github.v2lenkagamine.core.init.ContainersInit;
-import io.github.v2lenkagamine.core.init.blocks.Blocks;
+import io.github.v2lenkagamine.core.init.blocks.LensBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -28,17 +28,20 @@ public class GunSmithingTableContainer extends AbstractContainerMenu{
 	public GunSmithingTableContainer(int id,Level world,BlockPos pos,Inventory playerInv,Player player) {
 		super(ContainersInit.GUNSMITHINGTABLE_CONTAINER.get(),id);
 		tileEntity = world.getBlockEntity(pos);
+		specificTE = (GunSmithingTableTE) world.getBlockEntity(pos);
 		this.pos = pos;
 		this.playerInvHan = new InvWrapper(playerInv);
 		if (tileEntity != null) {
 			tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-				addSlotRange(h,0,80,18,9,18);
+				addSlotRange(h,0,116,35,3,18);
+				addSlotRange(h,3,116,53,3,18);
+				addSlotRange(h,6,116,71,3,18);
 			});
 		}
 		
 		
 		
-		layoutPInv(playerInv,8,84);
+		layoutPInv(playerInv,8,102);
 	}
 	
 	@Override
@@ -61,7 +64,7 @@ public class GunSmithingTableContainer extends AbstractContainerMenu{
 
 	@Override
 	public boolean stillValid(Player pPlayer) {
-		return stillValid(ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos()),pPlayer,Blocks.GUNSMITHING_TABLE.get());
+		return stillValid(ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos()),pPlayer,LensBlocks.GUNSMITHING_TABLE.get());
 	}
 	
 	public GunSmithingTableTE getTable() {

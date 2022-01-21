@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 import io.github.v2lenkagamine.common.networking.Networking;
 import io.github.v2lenkagamine.common.networking.messages.ChangeColorPacket;
 import io.github.v2lenkagamine.common.tileentity.RGBlockTE;
-import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.items.LensItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,7 +25,7 @@ public class RGBlock_Stair extends StairBlock implements EntityBlock{
 	
 	public RGBlock_Stair(Supplier<BlockState> state) {
 		super(state,BlockProperties.stoneProps);
-		state = () -> io.github.v2lenkagamine.core.init.blocks.Blocks.RGBLOCK.get().defaultBlockState();
+		state = () -> io.github.v2lenkagamine.core.init.blocks.LensBlocks.RGBLOCK.get().defaultBlockState();
 	}
 	 @Nullable
 	    @Override
@@ -35,7 +35,7 @@ public class RGBlock_Stair extends StairBlock implements EntityBlock{
 	 @Override
 	    @Nonnull
 	    public void setPlacedBy(Level worldIn,@Nonnull BlockPos pos, @Nonnull BlockState state,@Nonnull LivingEntity placer, ItemStack stack) {
-	        if (placer.getOffhandItem().getItem() == Items.RGB_INATOR.get()) {
+	        if (placer.getOffhandItem().getItem() == LensItems.RGB_INATOR.get()) {
 	        	CompoundTag nbt = placer.getOffhandItem().getTag();
 	        	int red = nbt.getInt("Red");
 	        	int green = nbt.getInt("Green");

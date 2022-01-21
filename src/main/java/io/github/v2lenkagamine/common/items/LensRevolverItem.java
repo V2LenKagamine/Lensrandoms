@@ -3,7 +3,7 @@ package io.github.v2lenkagamine.common.items;
 import java.util.List;
 
 import io.github.v2lenkagamine.common.LensRandomsConfig;
-import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.items.LensItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -21,7 +21,7 @@ public class LensRevolverItem extends GunItem{
 	public static int range = 32;
 	public static int maxDmg = Math.toIntExact(Math.round(10*LensRandomsConfig.DAMAGE_MULTI.get()));
 	public static int minDmg = Math.toIntExact(Math.round(8*LensRandomsConfig.DAMAGE_MULTI.get()));
-	public static RegistryObject<Item> ammoType = Items.PISTOL_ROUND;
+	public static RegistryObject<Item> ammoType = LensItems.PISTOL_ROUND;
 	public static Boolean pierce = true;
 	public Boolean usesAmmo = true;
 	public static List<? extends String> noAmmoList = LensRandomsConfig.BADMIN_NAMES.get();

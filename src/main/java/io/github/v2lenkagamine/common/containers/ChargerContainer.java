@@ -3,7 +3,7 @@ package io.github.v2lenkagamine.common.containers;
 import io.github.v2lenkagamine.common.capabilities.LensEnergyCapabilityProvider;
 import io.github.v2lenkagamine.common.capabilities.LensEnergyData;
 import io.github.v2lenkagamine.core.init.ContainersInit;
-import io.github.v2lenkagamine.core.init.blocks.Blocks;
+import io.github.v2lenkagamine.core.init.blocks.LensBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -91,7 +91,7 @@ public class ChargerContainer extends AbstractContainerMenu{
 	
 	@Override
 	public boolean stillValid(Player pPlayer) {
-		return stillValid(ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos()),pPlayer,Blocks.CHARGER.get());
+		return stillValid(ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos()),pPlayer,LensBlocks.CHARGER.get());
 	}
 
 	

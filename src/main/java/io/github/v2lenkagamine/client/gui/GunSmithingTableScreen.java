@@ -6,13 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.lwjgl.opengl.GL11;
-
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
 
 import io.github.v2lenkagamine.client.util.ModTags;
 import io.github.v2lenkagamine.client.util.RenderUtil;
@@ -29,7 +26,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
@@ -43,7 +39,7 @@ import net.minecraft.world.item.Items;
 //This totally isnt *slightly* stolen from MrCrayfish's Gun Mod. Nope. Not at all. Not even inspired by it.
 public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingTableContainer>{
 	
-	private static final ResourceLocation GUI_BASE = new ResourceLocation("lensrandoms:textures/gui/GunSmithing.png");
+	private static final ResourceLocation GUI_BASE = new ResourceLocation("lensrandoms:textures/gui/gunsmithing.png");
     private static boolean showRemaining = false;
 
     private Tab currentTab;
@@ -97,13 +93,13 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
 
         if(!weapons.isEmpty())
         {
-            ItemStack icon = new ItemStack(io.github.v2lenkagamine.core.items.Items.GUN_LENS_REVOLVER.get());
+            ItemStack icon = new ItemStack(io.github.v2lenkagamine.core.items.LensItems.GUN_LENS_REVOLVER.get());
             this.tabs.add(new Tab(icon, "weapons", weapons));
         }
 
         if(!ammo.isEmpty())
         {
-            this.tabs.add(new Tab(new ItemStack(io.github.v2lenkagamine.core.items.Items.SIMPLE_BULLET.get()), "ammo", ammo));
+            this.tabs.add(new Tab(new ItemStack(io.github.v2lenkagamine.core.items.LensItems.SIMPLE_BULLET.get()), "ammo", ammo));
         }
 
         if(!misc.isEmpty())
@@ -134,7 +130,7 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
         {
             this.topPos += 28;
         }
-        this.addRenderableWidget(new Button(this.leftPos + 9, this.topPos + 18, 15, 20, new TextComponent("<"), button ->
+        this.addRenderableWidget(new Button(this.leftPos + 9, this.topPos + 17, 15, 14, new TextComponent("<"), button ->
         {
             int index = this.currentTab.getCurrentIndex();
             if(index - 1 < 0)
@@ -146,7 +142,7 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
                 this.loadItem(index - 1);
             }
         }));
-        this.addRenderableWidget(new Button(this.leftPos + 153, this.topPos + 18, 15, 20, new TextComponent(">"), button ->
+        this.addRenderableWidget(new Button(this.leftPos + 153, this.topPos + 17, 15, 14, new TextComponent(">"), button ->
         {
             int index = this.currentTab.getCurrentIndex();
             if(index + 1 >= this.currentTab.getRecipes().size())
@@ -158,7 +154,7 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
                 this.loadItem(index + 1);
             }
         }));
-        this.btnCraft = this.addRenderableWidget(new Button(this.leftPos + 195, this.topPos + 16, 74, 20, new TranslatableComponent("lensrandoms.gui.craftgun"), button ->
+        this.btnCraft = this.addRenderableWidget(new Button(this.leftPos + 172, this.topPos + 16, 98, 20, new TranslatableComponent("lensrandoms.gui.craftgun"), button ->
         {
             int index = this.currentTab.getCurrentIndex();
             GunSmithingRecipe recipe = this.currentTab.getRecipes().get(index);
@@ -271,10 +267,12 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
             }
         }
 
-        if(RenderUtil.isMouseWithin(mouseX, mouseY, startX + 8, startY + 38, 160, 48))
+        /*
+        if(RenderUtil.isMouseWithin(mouseX, mouseY, startX + 8, startY + 38, 48, 24))
         {
             this.renderTooltip(poseStack, this.displayStack, mouseX, mouseY);
         }
+        */
     }
 
     @Override
@@ -348,14 +346,17 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
         {
             builder.append(ChatFormatting.GOLD);
             builder.append(ChatFormatting.BOLD);
-            builder.append(" x ");
+            builder.append("x");
             builder.append(currentItem.getCount());
-        }
-        drawCenteredString(poseStack, this.font, builder.toString(), startX + 88, startY + 22, Color.WHITE.getRGB());
-
+            Minecraft.getInstance().getItemRenderer().renderAndDecorateItem(currentItem, startX + 44, startY + 53);
+        }	
+        drawCenteredString(poseStack, this.font, builder.toString(), startX + 88, startY + 20, Color.WHITE.getRGB());
+        
+        //As far as I can tell, this is for rendering an items actual MODEL, which my guns dont have, but Im keeping around incase I end up adding them.
+        /*
         GL11.glEnable(GL11.GL_SCISSOR_TEST);
         RenderUtil.scissor(startX + 8, startY + 17, 160, 70);
-
+        
         PoseStack modelViewStack = RenderSystem.getModelViewStack();
         modelViewStack.pushPose();
         {
@@ -366,13 +367,14 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
             RenderSystem.applyModelViewMatrix();
             MultiBufferSource.BufferSource buffer = this.minecraft.renderBuffers().bufferSource();
            // Minecraft.getInstance().getItemRenderer().render(currentItem, ItemTransforms.TransformType.FIXED, false, poseStack, buffer, 15728880, OverlayTexture.NO_OVERLAY, RenderUtil.getModel(currentItem));
+            
             buffer.endBatch();
         }
         modelViewStack.popPose();
         RenderSystem.applyModelViewMatrix();
 
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
-
+        	*/
         this.filteredMaterials = this.getMaterials();
         for(int i = 0; i < this.filteredMaterials.size(); i++)
         {

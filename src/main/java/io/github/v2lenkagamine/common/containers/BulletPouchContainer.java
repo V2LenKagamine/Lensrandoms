@@ -6,7 +6,7 @@ import io.github.v2lenkagamine.client.util.ModTags;
 import io.github.v2lenkagamine.common.items.PouchItem;
 import io.github.v2lenkagamine.common.util.LockedSlot;
 import io.github.v2lenkagamine.core.init.ContainersInit;
-import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.items.LensItems;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -35,7 +35,7 @@ public class BulletPouchContainer extends AbstractContainerMenu{
 	
 	@Override
 	public boolean stillValid(Player player) {
-		return player.isHolding(Items.TACTICAL_POUCHES.get()) && !bag.isEmpty();
+		return player.isHolding(LensItems.TACTICAL_POUCHES.get()) && !bag.isEmpty();
 	}
 	
 	@Override

@@ -16,7 +16,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.RegistryObject;
 
-public final class Items {
+public final class LensItems {
 
 	//Test Image
 	public static final RegistryObject<Item> TEST_ITEM = RegistryHelper.ITEMS.register("test_item", () -> new Item(new Item.Properties().tab(Lensrandoms.LENS_RANDOMS)

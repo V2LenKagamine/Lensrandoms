@@ -1,0 +1,17 @@
+{
+  "type": "lensrandoms:gunsmithing_bench",
+  "materials": [
+    {
+      "tag": "forge:gunpowder",
+      "count": 2
+    },
+    {
+      "tag": "forge:cobblestone",
+      "count": 2
+    }
+  ],
+  "result": {
+    "item": "lensrandoms:simple_bullet",
+    "count": 64
+  }
+}

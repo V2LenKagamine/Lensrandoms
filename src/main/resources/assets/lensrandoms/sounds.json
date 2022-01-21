@@ -22,5 +22,17 @@
     "sounds": [
       "lensrandoms:shot_base"
     ]
+  },
+  "fifty_cal": {
+    "subtitle": "lensrandoms.fifty_cal.sub",
+    "sounds": [
+      "lensrandoms:fifty_cal"
+    ]
+  },
+  "laser_base": {
+    "subtitle": "lensrandoms.laser_base.sub",
+    "sounds": [
+      "lensrandoms:laser_base"
+    ]
   }
 }

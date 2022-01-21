@@ -4,8 +4,8 @@ import io.github.v2lenkagamine.Lensrandoms;
 import io.github.v2lenkagamine.core.init.Entitytype;
 import io.github.v2lenkagamine.core.init.LensRecipesSerializer;
 import io.github.v2lenkagamine.core.init.Sounds;
-import io.github.v2lenkagamine.core.init.blocks.Blocks;
-import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.init.blocks.LensBlocks;
+import io.github.v2lenkagamine.core.items.LensItems;
 import io.github.v2lenkagamine.datagen.LensRandomsDungeonLootGenerator;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
@@ -36,8 +36,8 @@ public class RegistryHelper {
 		
 		
 		Entitytype.register();
-		Blocks.register();
-		Items.register();
+		LensBlocks.register();
+		LensItems.register();
 		Sounds.register();
 		LensRandomsDungeonLootGenerator.register();
 		LensRecipesSerializer.register();

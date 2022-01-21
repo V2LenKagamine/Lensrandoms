@@ -1,7 +1,7 @@
 package io.github.v2lenkagamine.common.entities;
 
 import io.github.v2lenkagamine.core.init.Entitytype;
-import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.items.LensItems;
 import io.github.v2lenkagamine.core.util.RandomBetween;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.EntityType;
@@ -29,7 +29,7 @@ public class BeeCaseProjectile extends ThrowableItemProjectile{
 
 	@Override
 	protected Item getDefaultItem() {
-		return Items.BEECASE.get();
+		return LensItems.BEECASE.get();
 	}
 	@Override	
 	protected void onHit(HitResult result) {

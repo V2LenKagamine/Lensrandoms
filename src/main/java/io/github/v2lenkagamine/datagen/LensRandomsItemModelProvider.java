@@ -3,7 +3,7 @@ package io.github.v2lenkagamine.datagen;
 import java.util.function.Supplier;
 
 import io.github.v2lenkagamine.Lensrandoms;
-import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.items.LensItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
 import net.minecraft.resources.ResourceLocation;
@@ -42,27 +42,27 @@ public class LensRandomsItemModelProvider extends ItemModelProvider{
 	protected void registerModels() {
 		
 		//Items
-		simpleItem(Items.RGB_INATOR);
-		simpleItem(Items.TEST_APPLE);
-		simpleItem(Items.TEST_ITEM);
-		simpleItem(Items.SIMPLE_BULLET);
-		simpleItem(Items.TACTICAL_POUCHES);
-		simpleItem(Items.PISTOL_ROUND);
-		simpleItem(Items.RIFLE_ROUND);
-		simpleItem(Items.SHOTGUN_SHELL);
-		simpleItem(Items.BREEFCASE);
-		simpleItem(Items.BEECASE);
-		simpleItem(Items.HE_GRENADE_SHELL);
-		simpleItem(Items.ROCKET);
-		simpleItem(Items.SNIPER_ROUND);
-		simpleItem(Items.ARTILLERY_SHELL);
+		simpleItem(LensItems.RGB_INATOR);
+		simpleItem(LensItems.TEST_APPLE);
+		simpleItem(LensItems.TEST_ITEM);
+		simpleItem(LensItems.SIMPLE_BULLET);
+		simpleItem(LensItems.TACTICAL_POUCHES);
+		simpleItem(LensItems.PISTOL_ROUND);
+		simpleItem(LensItems.RIFLE_ROUND);
+		simpleItem(LensItems.SHOTGUN_SHELL);
+		simpleItem(LensItems.BREEFCASE);
+		simpleItem(LensItems.BEECASE);
+		simpleItem(LensItems.HE_GRENADE_SHELL);
+		simpleItem(LensItems.ROCKET);
+		simpleItem(LensItems.SNIPER_ROUND);
+		simpleItem(LensItems.ARTILLERY_SHELL);
 		
 		//Tools
-		simpleTool(Items.GUN_BLUNDERBUS);
-		simpleTool(Items.GUN_FLINTLOCK);
-		simpleTool(Items.GUN_REVOLVER);
-		simpleTool(Items.GUN_FIFTYCAL);
-		simpleTool(Items.GUN_LENS_REVOLVER);
-		simpleTool(Items.GUN_LASER_PISTOL);
+		simpleTool(LensItems.GUN_BLUNDERBUS);
+		simpleTool(LensItems.GUN_FLINTLOCK);
+		simpleTool(LensItems.GUN_REVOLVER);
+		simpleTool(LensItems.GUN_FIFTYCAL);
+		simpleTool(LensItems.GUN_LENS_REVOLVER);
+		simpleTool(LensItems.GUN_LASER_PISTOL);
 	}
 }

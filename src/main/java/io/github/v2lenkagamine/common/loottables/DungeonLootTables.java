@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
 
-import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.items.LensItems;
 import io.github.v2lenkagamine.datagen.LensRandomsDungeonLootGenerator;
 import net.minecraft.world.item.ItemStack;
 
@@ -24,11 +24,11 @@ public class DungeonLootTables {
 		
 		//Rare Loot
 		
-		RARE_LOOT.add(() -> new ItemStack(Items.BEECASE.get(),1));
+		RARE_LOOT.add(() -> new ItemStack(LensItems.BEECASE.get(),1));
 		
 		//Ultra Rare Loot
 		
-		ULTRA_LOOT.add(() -> new ItemStack(Items.GUN_LENS_REVOLVER.get(),1));
+		ULTRA_LOOT.add(() -> new ItemStack(LensItems.GUN_LENS_REVOLVER.get(),1));
 		
 	}
 	

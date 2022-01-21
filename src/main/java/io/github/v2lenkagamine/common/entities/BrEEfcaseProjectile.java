@@ -1,7 +1,7 @@
 package io.github.v2lenkagamine.common.entities;
 
 import io.github.v2lenkagamine.core.init.Entitytype;
-import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.items.LensItems;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,7 +28,7 @@ public class BrEEfcaseProjectile extends ThrowableItemProjectile{
 
 	@Override
 	protected Item getDefaultItem() {
-		return Items.BREEFCASE.get();
+		return LensItems.BREEFCASE.get();
 	}
 	@Override	
 	protected void onHit(HitResult result) {

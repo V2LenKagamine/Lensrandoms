@@ -20,7 +20,7 @@ import net.minecraftforge.fml.DistExecutor;
 
 public class RGB_Inator extends Item {	
 	public RGB_Inator(Properties properties) {
-		super(properties);
+		super(properties.stacksTo(1));
 	}
 
 	

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "CRC",
+    "IWI"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "C": {
+      "tag": "forge:ingots/copper"
+    },
+    "R": {
+      "tag": "forge:storage_blocks/redstone"
+    },
+    "W": {
+      "tag": "forge:chests/wooden"
+    }
+  },
+  "result": {
+    "item": "lensrandoms:charger"
+  }
+}

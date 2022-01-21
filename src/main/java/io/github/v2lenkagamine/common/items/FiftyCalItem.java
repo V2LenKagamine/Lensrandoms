@@ -1,7 +1,7 @@
 package io.github.v2lenkagamine.common.items;
 
 import io.github.v2lenkagamine.common.LensRandomsConfig;
-import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.items.LensItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -19,7 +19,7 @@ public class FiftyCalItem extends GunItem{
 	public static int range = 100;
 	public static int maxDmg = Math.toIntExact(Math.round(30*LensRandomsConfig.DAMAGE_MULTI.get()));
 	public static int minDmg = Math.toIntExact(Math.round(25*LensRandomsConfig.DAMAGE_MULTI.get()));
-	public static RegistryObject<Item> ammoType = Items.SNIPER_ROUND;
+	public static RegistryObject<Item> ammoType = LensItems.SNIPER_ROUND;
 	public static Boolean pierce = true;
 	public static Boolean usesAmmo = true;
 	

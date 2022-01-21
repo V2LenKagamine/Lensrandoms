@@ -3,7 +3,7 @@ package io.github.v2lenkagamine.core.util;
 import java.util.ArrayList;
 
 import io.github.v2lenkagamine.common.crafting.gunsmithingtable.GunSmithingIngredient;
-import io.github.v2lenkagamine.core.items.Items;
+import io.github.v2lenkagamine.core.items.LensItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -213,7 +213,7 @@ public static boolean findPlayerItem(LivingEntity entity, Item item, int amount)
 		var stacks = CuriosApi.getCuriosHelper().getCuriosHandler(player).orElse(null).getCurios().get("belt").getStacks();
 		for (int i = 0 ; i < stacks.getSlots();i++) {
 			ItemStack beltCurioItem = stacks.getStackInSlot(i);
-			if (beltCurioItem.getItem() == Items.TACTICAL_POUCHES.get()) {
+			if (beltCurioItem.getItem() == LensItems.TACTICAL_POUCHES.get()) {
 				LazyOptional<IItemHandler> beltCap = beltCurioItem.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
 				for (int y = 0; y < 9;y++) {
 					ItemStack bulletStack = beltCap.orElse(null).getStackInSlot(y);
@@ -225,7 +225,7 @@ public static boolean findPlayerItem(LivingEntity entity, Item item, int amount)
 			}
 		}
 		for(ItemStack inventoryStack : player.getInventory().items) {
-			if (inventoryStack.getItem() == Items.TACTICAL_POUCHES.get()) {
+			if (inventoryStack.getItem() == LensItems.TACTICAL_POUCHES.get()) {
 				LazyOptional<IItemHandler> beltCap = player.getInventory().getItem(slotNum).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
 					for (int x = 0; x < 9; x++) {
 						ItemStack bulletStack = beltCap.orElse(null).getStackInSlot(x);

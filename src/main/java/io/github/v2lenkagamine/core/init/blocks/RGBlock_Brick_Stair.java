@@ -10,7 +10,7 @@ public class RGBlock_Brick_Stair extends RGBlock_Stair{
 	
 	public RGBlock_Brick_Stair(Supplier<BlockState> state) {
 		super(state);
-		state = () -> io.github.v2lenkagamine.core.init.blocks.Blocks.RGBLOCK.get().defaultBlockState();
+		state = () -> io.github.v2lenkagamine.core.init.blocks.LensBlocks.RGBLOCK.get().defaultBlockState();
 	}
     public static int getColorAsInt(Color color) {
         if (color == null) {

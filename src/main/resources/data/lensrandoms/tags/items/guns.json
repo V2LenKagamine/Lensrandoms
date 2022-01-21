@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lensrandoms:gun_blunderbus",
+    "lensrandoms:gun_fiftycal",
+    "lensrandoms:gun_flintlock",
+    "lensrandoms:gun_laser_pistol",
+    "lensrandoms:gun_lens_revolver",
+    "lensrandoms:gun_revolver"
+  ]
+}

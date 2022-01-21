@@ -19,6 +19,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.Tags.IOptionalNamedTag;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 
@@ -52,6 +53,11 @@ public class GunSmithingRecipeBuilder {
 	        return new GunSmithingRecipeBuilder(item, count);
 	    }
 
+		public GunSmithingRecipeBuilder addIngredient(IOptionalNamedTag<Item> tag, int count) {
+			this.ingredients.add(GunSmithingIngredient.of(tag, count));
+			return this;
+		}
+	    
 	    public GunSmithingRecipeBuilder addIngredient(ItemLike item, int count)
 	    {
 	        this.ingredients.add(GunSmithingIngredient.of(item, count));
@@ -76,7 +82,8 @@ public class GunSmithingRecipeBuilder {
 	        return this;
 	    }
 
-	    public void build(Consumer<FinishedRecipe> consumer)
+	    @SuppressWarnings("deprecation")
+		public void build(Consumer<FinishedRecipe> consumer)
 	    {
 	        ResourceLocation resourcelocation = Registry.ITEM.getKey(this.result);
 	        this.build(consumer, resourcelocation);
@@ -118,7 +125,8 @@ public class GunSmithingRecipeBuilder {
 	            this.advancementId = advancementId;
 	        }
 
-	        @Override
+	        @SuppressWarnings("deprecation")
+			@Override
 	        public void serializeRecipeData(JsonObject json)
 	        {
 	            JsonArray conditions = new JsonArray();
