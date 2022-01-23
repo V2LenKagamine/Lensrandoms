@@ -1,0 +1,21 @@
+{
+  "type": "lensrandoms:gunsmithing_bench",
+  "materials": [
+    {
+      "tag": "forge:ingots/copper",
+      "count": 5
+    },
+    {
+      "tag": "forge:gunpowder",
+      "count": 4
+    },
+    {
+      "tag": "forge:ingots/lead",
+      "count": 1
+    }
+  ],
+  "result": {
+    "item": "lensrandoms:sniper_round",
+    "count": 16
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "lensrandoms:lrnc",
+  "tool": [
+    {
+      "item": "minecraft:water_bucket",
+      "count": 1
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:green_concrete_powder",
+      "count": 1
+    },
+    {
+      "item": "minecraft:water_bucket",
+      "count": 1
+    }
+  ],
+  "result": {
+    "item": "minecraft:green_concrete"
+  }
+}

@@ -16,6 +16,7 @@ import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.Tag.Named;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
@@ -53,6 +54,11 @@ public class GunSmithingRecipeBuilder {
 	        return new GunSmithingRecipeBuilder(item, count);
 	    }
 
+		public GunSmithingRecipeBuilder addIngredient(Named<Item> tag, int count2) {
+			this.ingredients.add(GunSmithingIngredient.of(tag, count));
+			return this;
+		}
+	    
 		public GunSmithingRecipeBuilder addIngredient(IOptionalNamedTag<Item> tag, int count) {
 			this.ingredients.add(GunSmithingIngredient.of(tag, count));
 			return this;
@@ -173,5 +179,4 @@ public class GunSmithingRecipeBuilder {
 	            return this.advancementId;
 	        }
 	    }
-	
 }

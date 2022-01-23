@@ -11,7 +11,6 @@ import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
-import io.github.v2lenkagamine.client.util.ModTags;
 import io.github.v2lenkagamine.client.util.RenderUtil;
 import io.github.v2lenkagamine.common.containers.GunSmithingTableContainer;
 import io.github.v2lenkagamine.common.crafting.gunsmithingtable.GunSmithingIngredient;
@@ -20,7 +19,9 @@ import io.github.v2lenkagamine.common.crafting.gunsmithingtable.GunSmithingRecip
 import io.github.v2lenkagamine.common.networking.Networking;
 import io.github.v2lenkagamine.common.networking.messages.MessageCraft;
 import io.github.v2lenkagamine.common.tileentity.GunSmithingTableTE;
+import io.github.v2lenkagamine.core.items.LensItems;
 import io.github.v2lenkagamine.core.util.ItemUtil;
+import io.github.v2lenkagamine.core.util.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
@@ -35,7 +36,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 //This totally isnt *slightly* stolen from MrCrayfish's Gun Mod. Nope. Not at all. Not even inspired by it.
 public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingTableContainer>{
 	
@@ -93,18 +93,18 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
 
         if(!weapons.isEmpty())
         {
-            ItemStack icon = new ItemStack(io.github.v2lenkagamine.core.items.LensItems.GUN_LENS_REVOLVER.get());
+            ItemStack icon = new ItemStack(LensItems.GUN_LENS_REVOLVER.get());
             this.tabs.add(new Tab(icon, "weapons", weapons));
         }
 
         if(!ammo.isEmpty())
         {
-            this.tabs.add(new Tab(new ItemStack(io.github.v2lenkagamine.core.items.LensItems.SIMPLE_BULLET.get()), "ammo", ammo));
+            this.tabs.add(new Tab(new ItemStack(LensItems.SIMPLE_BULLET.get()), "ammo", ammo));
         }
 
         if(!misc.isEmpty())
         {
-            this.tabs.add(new Tab(new ItemStack(Items.BARRIER), "misc", misc));
+            this.tabs.add(new Tab(new ItemStack(LensItems.TACTICAL_POUCHES.get()), "misc", misc));
         }
 
         if(!this.tabs.isEmpty())
@@ -164,6 +164,9 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
         this.btnCraft.active = false;
         this.checkBoxMaterials = this.addRenderableWidget(new CheckBox(this.leftPos + 172, this.topPos + 51, new TranslatableComponent("lensrandoms.gui.show_remaining")));
         this.checkBoxMaterials.setToggled(GunSmithingTableScreen.showRemaining);
+        if(this.currentTab == null) {
+        	this.currentTab = this.tabs.get(0);
+        }
         this.loadItem(this.currentTab.getCurrentIndex());
     }
 
@@ -339,8 +342,11 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
         {
             this.blit(poseStack, startX + 174, startY + 18, 165, 199, 16, 16);
         }
+    	ItemStack currentItem = new ItemStack(LensItems.SIMPLE_BULLET.get());
+        if(this.displayStack != null) {
+        	currentItem = this.displayStack;
+        }
 
-        ItemStack currentItem = this.displayStack;
         StringBuilder builder = new StringBuilder(currentItem.getHoverName().getString());
         if(currentItem.getCount() > 1)
         {
@@ -348,10 +354,9 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
             builder.append(ChatFormatting.BOLD);
             builder.append("x");
             builder.append(currentItem.getCount());
-            Minecraft.getInstance().getItemRenderer().renderAndDecorateItem(currentItem, startX + 44, startY + 53);
         }	
         drawCenteredString(poseStack, this.font, builder.toString(), startX + 88, startY + 20, Color.WHITE.getRGB());
-        
+        Minecraft.getInstance().getItemRenderer().renderAndDecorateItem(currentItem, startX + 44, startY + 53);
         //As far as I can tell, this is for rendering an items actual MODEL, which my guns dont have, but Im keeping around incase I end up adding them.
         /*
         GL11.glEnable(GL11.GL_SCISSOR_TEST);

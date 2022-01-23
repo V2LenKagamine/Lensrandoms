@@ -1,4 +1,4 @@
-package io.github.v2lenkagamine.client.util;
+package io.github.v2lenkagamine.core.util;
 
 import io.github.v2lenkagamine.Lensrandoms;
 import net.minecraft.resources.ResourceLocation;
@@ -24,11 +24,15 @@ public static class Items {
 	}
 	private static IOptionalNamedTag<Item> createCuriosTag (String name) {
 		return ItemTags.createOptional(new ResourceLocation(Curios.MODID,name));
-		
+	}
+	private static IOptionalNamedTag<Item> createForgeTag (String name) {
+		return ItemTags.createOptional(new ResourceLocation("forge",name));
 	}
 	
-	public static final Tag.Named<Item> BULLETS = createTag("bullets");
-	public static final Tag.Named<Item> CURIO_BELT = createCuriosTag("belt");
-	public static final Tag.Named<Item> GUNS = createTag("guns");
+	
+	public static final IOptionalNamedTag<Item> BULLETS = createTag("bullets");
+	public static final IOptionalNamedTag<Item> CURIO_BELT = createCuriosTag("belt");
+	public static final IOptionalNamedTag<Item> GUNS = createTag("guns");
+	public static final IOptionalNamedTag<Item> FORGELEAD = createForgeTag("ingots/lead");
 }
 }

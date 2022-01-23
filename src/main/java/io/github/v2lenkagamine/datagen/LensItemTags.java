@@ -1,8 +1,8 @@
 package io.github.v2lenkagamine.datagen;
 
 import io.github.v2lenkagamine.Lensrandoms;
-import io.github.v2lenkagamine.client.util.ModTags;
 import io.github.v2lenkagamine.core.items.LensItems;
+import io.github.v2lenkagamine.core.util.ModTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -34,7 +34,10 @@ public class LensItemTags extends ItemTagsProvider{
 		.add(LensItems.GUN_LENS_REVOLVER.get())
 		.add(LensItems.GUN_REVOLVER.get());
 		
-		
+		//Add to CURIOS belt slot
 		tag(ModTags.Items.CURIO_BELT).add(LensItems.TACTICAL_POUCHES.get());
+		
+		//Add to FORGE LEAD INGOTS
+		tag(ModTags.Items.FORGELEAD);
 	}
 }

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lensrandoms:gun_blunderbus"
+    ]
+  },
+  "criteria": {
+    "has_flintlock": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lensrandoms:gun_flintlock"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lensrandoms:gun_blunderbus"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_flintlock",
+      "has_the_recipe"
+    ]
+  ]
+}

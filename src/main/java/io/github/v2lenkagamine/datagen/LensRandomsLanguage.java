@@ -85,5 +85,8 @@ public class LensRandomsLanguage extends LanguageProvider{
 		add("container.lensrandoms.gunsmithingtable","Gunsmithing Table");
 		add("lensrandoms.gui.craftgun","Craft Item");		
 		add("lensrandoms.gui.show_remaining", "Show Remaining");
+		add("lensrandoms.gui.gunsmithing.tab.weapons","Weapons");
+		add("lensrandoms.gui.gunsmithing.tab.ammo","Ammo");
+		add("lensrandoms.gui.gunsmithing.tab.misc","Misc");
 	}
 }

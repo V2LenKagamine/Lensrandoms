@@ -1,8 +1,8 @@
 package io.github.v2lenkagamine.common.items;
 
-import io.github.v2lenkagamine.client.util.ModTags;
 import io.github.v2lenkagamine.common.capabilities.CapabilityBulletPouch;
 import io.github.v2lenkagamine.common.containers.BulletPouchContainer;
+import io.github.v2lenkagamine.core.util.ModTags;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;

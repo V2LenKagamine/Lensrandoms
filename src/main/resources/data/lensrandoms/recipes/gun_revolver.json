@@ -1,0 +1,16 @@
+{
+  "type": "lensrandoms:gunsmithing_bench",
+  "materials": [
+    {
+      "tag": "forge:ingots/iron",
+      "count": 3
+    },
+    {
+      "tag": "minecraft:planks",
+      "count": 1
+    }
+  ],
+  "result": {
+    "item": "lensrandoms:gun_revolver"
+  }
+}

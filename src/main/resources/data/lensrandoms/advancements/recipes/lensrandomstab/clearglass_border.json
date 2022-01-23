@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lensrandoms:clearglass_border"
+    ]
+  },
+  "criteria": {
+    "has_clearglass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lensrandoms:clearglass"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lensrandoms:clearglass_border"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_clearglass",
+      "has_the_recipe"
+    ]
+  ]
+}

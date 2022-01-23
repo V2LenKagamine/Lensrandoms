@@ -1,0 +1,21 @@
+{
+  "type": "lensrandoms:gunsmithing_bench",
+  "materials": [
+    {
+      "item": "minecraft:tnt",
+      "count": 2
+    },
+    {
+      "tag": "forge:gunpowder",
+      "count": 4
+    },
+    {
+      "tag": "forge:ingots/iron",
+      "count": 5
+    }
+  ],
+  "result": {
+    "item": "lensrandoms:artillery_shell",
+    "count": 16
+  }
+}

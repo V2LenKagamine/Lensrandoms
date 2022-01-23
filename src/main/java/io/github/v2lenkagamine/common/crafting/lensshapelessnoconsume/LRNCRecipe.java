@@ -13,7 +13,6 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
-import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -21,7 +20,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
-import net.minecraft.world.level.Level;
 
 public class LRNCRecipe extends ShapelessRecipe{
 	private final ItemStack item;
@@ -41,26 +39,6 @@ public class LRNCRecipe extends ShapelessRecipe{
 
 	public ImmutableList<Ingredient> getMaterials() {
 		return this.materials;
-	}
-
-	@Override
-	public boolean matches(CraftingContainer inv, Level worldIn) {
-		StackedContents helper = new StackedContents();
-		int count = 0;
-		boolean hasTool = false;
-
-		for (int i = 0; i < inv.getContainerSize(); i++) {
-			ItemStack stack = inv.getItem(i);
-
-			if (!stack.isEmpty()) {
-				if (!hasTool && toolItem.test(stack)) {
-					hasTool = true;
-					count++;
-					helper.accountStack(stack, 1);
-				}
-			}
-		}
-		return hasTool && count == this.getIngredients().size() && helper.canCraft(this, null);
 	}
 
 	@Override

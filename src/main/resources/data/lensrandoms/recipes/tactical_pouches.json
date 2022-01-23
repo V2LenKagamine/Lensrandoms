@@ -1,0 +1,24 @@
+{
+  "type": "lensrandoms:gunsmithing_bench",
+  "materials": [
+    {
+      "tag": "forge:leather",
+      "count": 5
+    },
+    {
+      "tag": "forge:chests/wooden",
+      "count": 1
+    },
+    {
+      "tag": "forge:ingots/copper",
+      "count": 1
+    },
+    {
+      "tag": "forge:string",
+      "count": 3
+    }
+  ],
+  "result": {
+    "item": "lensrandoms:tactical_pouches"
+  }
+}

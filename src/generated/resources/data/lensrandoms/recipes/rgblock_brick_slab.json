@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lensrandoms:rgblock_brick"
+    }
+  },
+  "result": {
+    "item": "lensrandoms:rgblock_brick_slab"
+  }
+}

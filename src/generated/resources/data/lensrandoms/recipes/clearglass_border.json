@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "lensrandoms:clearglass"
+    }
+  ],
+  "result": {
+    "item": "lensrandoms:clearglass_border"
+  }
+}

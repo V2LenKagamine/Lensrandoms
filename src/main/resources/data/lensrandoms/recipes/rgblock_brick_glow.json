@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dusts/glowstone"
+    },
+    {
+      "item": "lensrandoms:rgblock_brick"
+    },
+    {
+      "item": "lensrandoms:rgblock_brick"
+    },
+    {
+      "item": "lensrandoms:rgblock_brick"
+    },
+    {
+      "item": "lensrandoms:rgblock_brick"
+    },
+    {
+      "item": "lensrandoms:rgblock_brick"
+    },
+    {
+      "item": "lensrandoms:rgblock_brick"
+    },
+    {
+      "item": "lensrandoms:rgblock_brick"
+    },
+    {
+      "item": "lensrandoms:rgblock_brick"
+    }
+  ],
+  "result": {
+    "item": "lensrandoms:rgblock_brick_glow",
+    "count": 8
+  }
+}

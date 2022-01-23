@@ -1,0 +1,24 @@
+{
+  "type": "lensrandoms:gunsmithing_bench",
+  "materials": [
+    {
+      "tag": "forge:ingots/iron",
+      "count": 5
+    },
+    {
+      "tag": "forge:ingots/copper",
+      "count": 2
+    },
+    {
+      "tag": "forge:glass",
+      "count": 1
+    },
+    {
+      "tag": "forge:dusts/redstone",
+      "count": 9
+    }
+  ],
+  "result": {
+    "item": "lensrandoms:gun_laser_pistol"
+  }
+}

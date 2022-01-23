@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "lensrandoms:rgblock"
+    }
+  },
+  "result": {
+    "item": "lensrandoms:rgblock_slab"
+  }
+}
