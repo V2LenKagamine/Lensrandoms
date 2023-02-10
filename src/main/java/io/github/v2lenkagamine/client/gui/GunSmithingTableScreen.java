@@ -77,7 +77,7 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
         for(GunSmithingRecipe recipe : recipes)
         {
             ItemStack output = recipe.getItem();
-            if(output.is(ModTags.Items.GUNS))
+            if(ModTags.Items.GUNS.getValues().contains(output))
             {
                 weapons.add(recipe);
             }
@@ -115,7 +115,7 @@ public class GunSmithingTableScreen extends AbstractContainerScreen<GunSmithingT
 
     private boolean isAmmo(ItemStack stack)
     {
-        if(stack.is(ModTags.Items.BULLETS))
+        if(ModTags.Items.BULLETS.getValues().contains(stack))
         {
             return true;
         }

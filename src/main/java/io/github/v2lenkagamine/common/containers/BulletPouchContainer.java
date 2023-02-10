@@ -47,13 +47,13 @@ public class BulletPouchContainer extends AbstractContainerMenu{
 			itemStack = itemStack1.copy();
 			if (slotnum < 27) {
 	            if (!this.moveItemStackTo(itemStack1, 27, this.slots.size(), true)) return ItemStack.EMPTY; 
-	            else { if (itemStack.is(ModTags.Items.BULLETS)){
+	            else { if (ModTags.Items.GUNS.getValues().contains(itemStack)){
 	            	return ItemStack.EMPTY;
 	            }
 	            return ItemStack.EMPTY;}
 			}
 			else if (!moveItemStackTo(itemStack1, 0, 27, false)) {return ItemStack.EMPTY;}
-				else { if (itemStack.is(ModTags.Items.BULLETS)) {
+				else { if (ModTags.Items.BULLETS.getValues().contains(itemStack)) {
 					return ItemStack.EMPTY;
 					}
 				}

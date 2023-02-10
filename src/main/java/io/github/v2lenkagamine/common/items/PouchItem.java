@@ -56,7 +56,7 @@ public class PouchItem extends Item implements MenuProvider{
 		return stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElse(null);
 	}
 	public static boolean mayPlaceIn(ItemStack item) {
-		return !item.isEmpty() && item.is(ModTags.Items.BULLETS);
+		return !item.isEmpty() && ModTags.Items.BULLETS.getValues().contains(item);
 	}
 	
 }

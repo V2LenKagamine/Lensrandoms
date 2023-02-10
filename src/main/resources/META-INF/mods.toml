@@ -2,13 +2,13 @@
 
 modLoader="javafml" #mandatory
 loaderVersion="[35,)" #mandatory
-license="All rights reserved" #mandatory https://choosealicense.com/
+license="MIT" #mandatory https://choosealicense.com/
 
 [[mods]] #mandatory
 modId="lensrandoms" #mandatory
 version="0.1" #mandatory
 displayName="Len's Randoms" #mandatory
-authors="Len Kagamine." #optional
+authors="Len Kagamine" #optional
 description='''
 A mod adding many random unthemed things and such. Updated at my will.
 ''' #mandatory
